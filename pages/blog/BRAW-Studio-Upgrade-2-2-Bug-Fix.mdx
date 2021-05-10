@@ -1,0 +1,38 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "BRAW Studio Upgrade to v2.2+ Bug Fix",
+  preview: "You might have offline medias & timeline shifts after upgrading from before 2.2.0, here's how to fix this !",
+  author: "Antoine",
+  date: "2020-12-24",
+  //lastUpdated: "2020-08-13",
+  tags: ["BRAW Studio","Premiere Pro"],
+  thumbnail: "images/_Poster/Relocation_Button_Panel_37.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+In BRAW Studio version 2.2.0 we introduced a change in BRAW Studio behavior inside Premiere Pro to fix various issues. It seemed to have triggered an undocumented Adobe Premiere Pro behavior, where the footages might get offlined after upgrading to BRAW Studio v2.2.0 or earlier from a version of BRAW Studio earlier than 2.1.5 included. This issue won't happen anymore in future updates, except for old projects migrating to a new version like this. As all Adobe bugs, it doesn't affect everyone but you should know about this just in case it happens to you.
+
+The main issue this brings out is that once you relink your .BRAW footage, you might actually get the infamous <Link href={"/blog/Premiere-Pro-Timeline-Shift-First-Frame-After-Moving-Project-Relinking/"}>Premiere Pro 2020 Shift explained in this article</Link>. Again, the shift doesn't happen to everyone. So what you should **absolutely do is to always keep backup of your old projects, and fix your previous project with our dedicated tool**. Luckily for you, we found an automatic way of fixing PrPro projects without having to relocate all footages. Since version 2.2.3 you can find a new button in our Toolbox.
+
+<BlogImage
+  src={require("assets/images/_BR/BRAW_Studio_Panel_Automatic_Fix_200_Shift_Premiere_Pro.png")}
+  hasShadow
+/>
+
+
+You can find this button as the first button in the "Premiere Pro 2020 Shift" part of the Toolbox tab. The other buttons are here to do an automatic footage relinking so that you avoid having offline medias to relocate. But it is slower to use because you need to specify the common paths of the footages. With this new method you won't waste your time !
+
+**Once your project fixed, you can safely relink / relocate your offlined .BRAW and you shouldn't get the PrPro 2020 shift anymore**. 
+
+Note : you absolutely need to feed into the button your PrPro project created BEFORE you upgraded BRAW Studio, otherwise it won't work.
+
+Note 2 : This new tool needs a registered BRAW Studio V2 license.
+
+We have been contacted for this issue in December 2020 and we provided a fix for it with version 2.2.3 on December 16. We are sorry for this inconvenience and it shouldn't happen anymore !
+
+<br />
+Happy editing with BRAW Studio,
+<br />
+Antoine and Nicolas

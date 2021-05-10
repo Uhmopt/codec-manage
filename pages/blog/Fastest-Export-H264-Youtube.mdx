@@ -1,0 +1,72 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "The Fastest Way to Export H.264 for YouTube from Adobe Premiere Pro, Media Encoder and After Effects",
+  preview: "Full tutorial on the fastest way to export H.264 to Youtube in Premiere Pro, Media Encoder and After Effects using our plugin, AfterCodecs",
+  author: "Antoine",
+  date: "2020-05-15",
+  tags: ["Premiere Pro", "After Effects", "AfterCodecs"],
+  thumbnail: "images/_AC/28/H264_Youtube_thumbnail.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# What is AfterCodecs?
+
+AfterCodecs is a new native plugin for the whole Adobe CC Video suite, working on both MacOS and Windows. It brings fast and efficient codecs to After Effects’ <i>Render Queue</i> and a new <i>Format</i> choice in Premiere Pro and Media Encoder's <i>Export</i> window. AfterCodecs also removes a lot of the limitations that are found in regular Premiere Pro and streamlines certain workflows, like uploading to Youtube.
+
+With over a billion daily watch hours, YouTube is by far the largest video streaming website in the world. Uploading to YouTube is something many people do every day. However, their compression algorithm and technical delivery specifications are fairly complex, which can make it difficult to set up your video export correctly for YouTube. 
+
+AfterCodecs streamlines this process by offering features that help YouTube process the video faster, as well as a dedicated export preset with all the recommended specifications. These features can save you a lot of time if you upload regularly, and this guide will show you how to use them.
+
+# How to export H.264 for YouTube from Adobe Premiere Pro and Media Encoder
+
+In Premiere Pro, select the sequence you would like to export and go to <i>File</i> &gt; <i>Export</i> &gt; <i>Media</i>, this will open your export settings.
+In Media Encoder, once you have a sequence queued for export, click on the button in the <i>Format</i> column to open your export settings.
+From this point onwards, the process is exactly the same for both applications.
+Select <i>AfterCodecs</i> in the <i>Format</i> drop-down menu then, under the <i>Video</i> tab, select the <code>.MP4</code> format (you can also select <code>.MOV</code>; even if YouTube recommends <code>.MP4</code>, it will also work).
+Click on “Open AfterCodecs Settings”
+
+<BlogImage src={require("assets/images/_AC/28/PPro_Export_settings.png")} hasShadow scaledDown/>
+
+# Selecting your AfterCodecs settings
+
+On the <i>Video Codec</i> drop-down menu, select <i>H.264 Youtube Upload</i>. This preset follows the recommended YouTube video specifications for bitrate, color and audio. Depending on your sequence’s resolution, framerate and other specs, AfterCodecs will automatically adjust export settings. The only parameter that you can change is the encoding speed, making the process a lot simpler.
+
+<BlogImage src={require("assets/images/_AC/28/H264_Youtube_settings.png")} hasShadow scaledDown/>
+
+This slider affects compression optimisation, meaning lower render speeds will result in smaller files, and faster speeds will result in larger files. Speeds of 7 or above should only be used for quick previews as they will produce lower quality files.
+You can also select your audio bitrate manually if you wish to do so.
+
+
+At the bottom of the <i>Encoding</i> tab, you will see a feature called <i>Fast Start</i>. This is an AfterCodecs feature that optimises your video for web streaming. It will allow your video to start playing quicker online and it also means Youtube will process it faster, making it available sooner after uploading. It causes a slight increase in render time, but the time saved in Youtube processing more than makes up for it.
+
+<BlogImage src={require("assets/images/_AC/28/Fast_Start.png")} hasShadow scaledDown/>
+
+Once you have selected your desired settings, click <i>OK</i> on the AfterCodecs menu.
+If you’d like to upload as quickly as possible, you can also use this in conjunction with Premiere Pro’s direct YouTube upload feature under the <i>Publish</i> tab.
+
+Click <i>Export</i> in PrPro or the play button in AME and you’re done!
+
+# How to export H.264 for YouTube from After Effects
+First, add your composition to the After Effects <i>Render Queue</i>.
+In the <i>Render Queue</i> tab, click on the button shown on the right to bring up your output module settings.
+
+<BlogImage src={require("assets/images/_AC/28/AE_Render_queue.png")} hasShadow scaledDown/>
+
+Select <i>AfterCodecs .mp4</i> from the <i>format</i> drop-down menu and click on <i>Format Options</i> to open the AfterCodecs settings (you can also select <i>AfterCodecs .mov</i>; even if YouTube recommends <code>.MP4</code>, it will also work).
+
+<BlogImage src={require("assets/images/_AC/28/AE_Output_module.png")} hasShadow scaledDown/>
+
+<strong>For all information required on setting up your export, please refer to “Selecting your AfterCodecs settings”, earlier in this article.</strong>
+
+
+Once everything is configured to your liking, click <i>OK</i> on the AfterCodecs settings menu.
+Click <i>OK</i> on the <i>Output Module</i> settings.
+
+Click <i>Render</i> in the After Effects queue and you’re done!
+
+
+
+<br />
+<Link href={"/AfterCodecs/Download/"}>Install and try for free AfterCodecs from here ! 500 Frames trial included as well as the full version if you have a license</Link>

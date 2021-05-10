@@ -1,0 +1,46 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "What's the Difference between AfterCodecs and BRAW Studio?",
+  preview:
+    "In this article you'll learn what plugins are, what the differences are between Autokroma plugins and why AfterCodecs available with different licenses for each Adobe CC Host.",
+  author: "Antoine",
+  date: "2019-09-08",
+  tags: ["AfterCodecs", "BRAW Studio"],
+  thumbnail: "images/_Poster/AfterCodecs_And_BRAW_Studio.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+## What are Plugins?
+
+There are two main ways to extend features of Adobe CC Video softwares (Premiere Pro, Media Encoder, After Effects):
+
+- Native C++ Plugins: they are loaded by the Adobe host at startup and they are the most efficient way to provide new features for your Adobe software. The main types of C++ plugins you can find are:
+  - Effects: they either change the current image or generate a new one, from keyframe-able parameters and other resources from your projects (images, layers, music etc.)
+  - <strong>
+      Importers: they let you import new file formats
+    </strong> and new codecs, often with more features than Adobe built-in importing codecs. You'll be able to play the files, see what they contain (image and metadata), change their visual aspect, edit them on a timeline, export and convert them
+  - <strong>
+      Exporters: they are useful at the last step of your projects when you
+      want to preview, deliver or render your final sequence / composition
+    </strong> into a new file format and/or a new codec, with more options than Adobe built-in exporting codecs
+  - Titlers, Recorders, Transmitters for other more complex features, but they are rarer
+- Scripts and CEP Panels: they are easier to integrate and faster to develop and will mostly affect the UI of your Adobe software (Premiere Pro or After Effects) to automate and improve your day by day workflow. You can find a lot of them on <Link href={"https://aescripts.com/"}>aescripts + aeplugins</Link>, some of them for free!
+
+<BlogImage src={require("assets/images/_CO/Adobe_Workflow_Plugins.png")} alt="" />
+
+## What are AfterCodecs and BRAW Studio for?
+
+As of now, we develop two native C++ plugins: <Link href={"/BRAW_Studio/"}>BRAW Studio</Link> (Importer type, step 1) of the diagram) and <Link href={"/AfterCodecs/"}>AfterCodecs</Link> ((Exporter type, step 3) of the diagram). They are both useful for different goals: <strong>AfterCodecs will provide you new codecs to export your projects, whereas BRAW Studio will provide you the ability to import the new Blackmagic RAW <code>.BRAW</code></strong> format developed by Blackmagic Design for their new cameras and new firmwares (not the old CinemaDNG <code>.dng</code>!).
+
+That means you can <strong>use them both at the same time inside the same project inside the same Adobe host</strong> if you have the need to both import <code>.BRAW</code> and export in new codecs. You don't need BRAW Studio to export in the new codecs given by AfterCodecs, and you don't need AfterCodecs to import <code>.BRAW</code>. Moreover, AfterCodecs won't let you export <code>.BRAW</code> and BRAW Studio won't let you export in new codecs, so <strong>you should license the right plugin for the right need</strong>.
+
+## What Licenses should I use?
+
+AfterCodecs is available <strong>in a separate License unique for each Host</strong> (Premiere Pro, Media Encoder and After Effects). BRAW Studio, on the other hand, is available with a unique license for Adobe CC. Previously, it had been available like AfterCodecs with different licenses, but we ended up merging all the licenses to provide you with a full Adobe .BRAW experience and simplify licensing.
+
+As we developed AfterCodecs gradually over time, more hosts became available, so they were sold in new licenses for new hosts. This separation of licenses is also made so that each use case is cheaper and can be bought individually, instead of buying all features at the same time:
+
+- If you need AfterCodecs' new codecs and only want to render your AE projects and PPro projects with Adobe Media Encoder, you can only buy a license for <strong>AfterCodecs for Media Encoder</strong> and use all the new codecs for the price of only one license!
+- If you only need to export directly from within After Effects, you can only use <strong>AfterCodecs for After Effects</strong>.

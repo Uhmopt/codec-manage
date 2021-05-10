@@ -1,0 +1,96 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to Export H264 in .MOV QuickTime from Adobe Premiere Pro, Media Encoder and After Effects",
+  preview: "Full tutorial on how to export H.264 MOV in Premiere Pro, Media Encoder and After Effects using our plugin, AfterCodecs",
+  author: "Antoine",
+  date: "2020-05-15",
+  tags: ["Premiere Pro", "After Effects", "AfterCodecs"],
+  thumbnail: "images/_AC/26/H.264_Thumbnail.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# Introduction to AfterCodecs
+
+AfterCodecs is a new native plugin for the whole Adobe CC Video suite, it supports many codecs for <code>.MOV</code> containers and is compatible with MacOS and Windows. One such codec is <code>H.264</code>. This article will show you how to export a <code>H.264</code> <code>.mov</code> file, which is impossible to do in regular Premiere Pro.
+
+Although Quicktime support ended in 2016/2018 for Windows/MacOS, the <code>.MOV</code> video container is still very commonplace in the industry, with many places still asking for <code>.MOV</code> files on delivery. Because of this, the format will be supported by most NLEs for years to come. Since it is still so common, having more codec options when exporting <code>.MOV</code> files in Premiere can save you a lot of hassle.
+
+
+# How to Export H264 in .MOV QuickTime from Adobe Premiere Pro and Media Encoder
+
+In Premiere Pro, select the sequence you would like to export and go to <i>File</i> &gt; <i>Export</i> &gt; <i>Media</i>, this will open your export settings.
+In Media Encoder, once you have a sequence queued for export, click on the button in the <i>Format</i> column to open your export settings.
+From this point onwards, the process is exactly the same for both applications.
+Select <i>AfterCodecs</i> in the <i>Format</i> drop-down menu, then, under the <i>Video</i> tab, select the <i>MOV</i> format.
+Click on <i>Open AfterCodecs Settings</i>
+
+<BlogImage src={require("assets/images/_AC/26/PPro_Export_Settings.png")} hasShadow scaledDown/>
+
+# Selecting your AfterCodecs settings
+In the <i>Video Codec</i> drop-down, select one of the <code>H.264</code> variants:
+<BlogImage src={require("assets/images/_AC/26/H264_variants.png")} hasShadow scaledDown/>
+
+* <strong><code>H.264</code></strong> is the normal option of the codec.
+* <strong><code>H.264 Youtube Upload</code></strong> is the AfterCodecs preset that follows the recommended Youtube export specifications. This is the simplest profile to use, as it only has a render speed slider. <i>Speed</i> = 8 should be avoided for final uploads, as it will produce low quality files that are only acceptable for quick previews.
+* <strong><code>H.264 RGB</code></strong> is for power users only. Do not use it if you don't know what you're doing.
+* <strong><code>H.265</code></strong> you can follow the same tutorial here to export in H.265, a more advanced codec compared to H.264, leading to better quality or lower file size, if you can afford to spend more time compressing the file.
+
+The AfterCodecs menu also offers a wide range of export settings for this codec.
+So that the export suits your needs, you can toggle between three main “trade-offs” when choosing your settings: <i>Quality</i>, <i>Bitrate</i> and <i>FileSize</i>.
+
+<BlogImage src={require("assets/images/_AC/26/H264_tradeoffs.png")} hasShadow scaledDown/>
+
+* <strong>Quality: </strong>If you would like to maintain a constant quality standard throughout the video. A quality between 80-90% is excellent, so there is no need to go above that. An extreme quality of 99 or 100 may result in an unplayable file, depending on where you are trying to play it.
+* <strong>Bitrate: </strong>If you would like to maintain a specific bitrate throughout the video, which can be at the expense of quality.
+* <strong>FileSize: </strong>If you have specific size requirements, this option will give you the best quality file for that size.
+
+<p><i>Speed</i> affects compression optimisation, meaning lower render speeds will result in smaller files, and faster speeds will result in larger files. However, if you choose <i>Bitrate</i> or <i>FileSize</i>, the algorithm will also compromise file quality to get your render out faster. <i>Speed</i> = 8 should be only be used for quick previews, as it will produce low quality files. As a general rule, with slower render speeds, you will get smaller files of higher quality.</p>
+
+As you can see, each of the options has a slider which will affect that specific parameter, so choose the one that works best for you.
+
+
+
+There are also more advanced settings that make changes to color range and the video processing algorithm. Remember that if you would like more information about any AfterCodecs settings, you can simply hover over it with your cursor, and an explanation will pop up on the right. Changing these settings without knowing what they do may create an export that is unplayable on some software/players. 
+
+<BlogImage src={require("assets/images/_AC/26/Advanced_settings.png")} hasShadow scaledDown/>
+
+Under the <i>Audio Codec</i> options, if you choose <i>AAC</i>, a slider that lets you select the bitrate will appear.
+
+<BlogImage src={require("assets/images/_AC/26/AAC_Options.png")} hasShadow scaledDown/>
+
+Higher quality bitrates will encode slower, and lower quality ones encode faster.
+
+At the bottom of the <i>Encoding</i> tab, you will see a feature called <i>Fast Start</i>. This is an AfterCodecs feature that optimises your video for web streaming. It will allow your video to start playing quicker online, and it also means Youtube will process it faster, making it available sooner after uploading.
+
+<BlogImage src={require("assets/images/_AC/26/Fast_Start.png")} hasShadow scaledDown/>
+
+
+Once everything is configured to your liking, click <i>OK</i> on the AfterCodecs panel.
+
+As an added bonus, AfterCodecs has many more <code>H.264</code> audio options than regular Premiere, including multitrack export, regardless of if you are exporting <code>.MP4</code> or <code>.MOV</code>. These can be found in the <i>Audio</i> tab of the Premiere export menu.
+
+<BlogImage src={require("assets/images/_AC/26/Audio_options.png")} hasShadow scaledDown/>
+
+Once you have selected all your settings, click <i>Export</i> in PrPro or the play button in AME and you’re done!
+
+# How to Export H264 in .MOV QuickTime from Adobe After Effects
+First, add your composition to the After Effects render queue.
+In the <i>Render Queue</i> tab, click on the button shown on the right to bring up your output module settings.
+
+<BlogImage src={require("assets/images/_AC/26/AE_Render_queue.png")} hasShadow scaledDown/>
+
+Select <i>AfterCodecs .mov</i> from the <i>Format</i> drop-down menu and click on <i>Format Options</i> to open the AfterCodecs settings.
+
+<BlogImage src={require("assets/images/_AC/26/AE_Output_module_settings.png")} hasShadow scaledDown/>
+
+<strong>For all information required on setting up your export, please refer to “Selecting your AfterCodecs settings” earlier in this article.</strong>
+
+
+Once everything is configured to your liking, click <i>OK</i> on the AfterCodecs settings menu and on the <i>Output Module</i> settings.
+Click <i>Render</i> in the After Effects queue and you’re done!
+
+
+<br />
+<Link href={"/AfterCodecs/Download/"}>Install and try for free AfterCodecs from here! 500 Frames trial included as well as the full version if you have a license</Link>.

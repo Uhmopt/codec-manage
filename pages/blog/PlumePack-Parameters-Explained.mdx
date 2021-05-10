@@ -1,0 +1,130 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "PlumePack Options Explained",
+  preview:
+    "What are the PlumePack options ? You should get all information here !",
+  thumbnail: "images/_PP/PP_Parameters/Autokroma_PlumePack_Parameters_Poster.jpg",
+  author: "Nicolas",
+  tags: ["PlumePack", "Premiere Pro"],
+  date: "2021-02-16"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+You need more explanation about PlumePack options ?
+In this article you find find detailed informations about each option : when to use them, their purpose,...
+
+
+# Trim Options
+
+<BlogImage src={require("assets/images/_PP/PP_Parameters/Autokroma_PlumePack_Parameters_Trim.JPG")} hasShadow />
+
+## Option : Disable Trimming (Only Copy)
+
+By disabling trimming, your footage will stay the same and will only be copied by PlumePack. 
+
+Note: if you only have a Basic License (and not a Premium one), Trimming will be disabled.
+
+## Option : Handles 
+
+If you footage is used in your timeline from frame N to frame M, trimming will trim your footage from frame (N - handle) to (M + handle). 
+
+It could be useful for example if you want later to edit your project and change a bit your in/out points, or if you want to add or set longer transitions between clips.
+
+Note : At the right of the slider, you can click into the number to set the precise number you want.
+
+## Option : Add In/Out to trimmed Filenames
+
+By enabling this option, any trimmed footage will have its filename finishing by "_[inFrame]\_to\_[outFrame].ext". For audio only media, the In/Out frame number will be replaced by sample number.
+
+For example : 
+* footage.mov => footage_56_to_123.mov
+* audio.wav => audio_1022_to_2645.wav
+
+It can be useful not to confuse trimmed media with original and also how this media was produced.
+
+## Advanced Settings
+
+In PlumePack you also have access to some advances settings to deal with special cases.
+
+### Option : Trim New Codecs In Beta
+
+We need you ! The new codecs we want to support in PlumePack would need more tests on some different files to be in the official release.
+
+If enabled, this option will allow trimming for this new codecs: so you will be able to test if it works on your side (don't forget to check the footages !).
+
+Please send us your feedback !
+
+If it fails, you can upload your file directly at: https://mega.nz/megadrop/EV9rqKYs4QQ. 
+We will not share it with anyone, it will only be used for our internal tests.
+
+### Option : Re-encode Audio if Necessary
+
+This option will affect only AAC Audio files but also some ProRes files which contain AAC Audio codec.
+
+For these files, re-encoding Audio is needed. New audio will keep the same bitrate as the original audio. 
+
+PlumePack uses the high quality Fraunhofer SDK encoding library to re-encode those audio files, so you should not hear the difference from the original.
+
+Disabling this option will exclude those files from trimming, instead they will be copied.
+
+This option is enabled by default because mostly people don't care about the Audio Codec inside their footages and if Audio is re-encoded or not, as long as they can't hear the difference from the original.
+
+### Option : Drop Metadata Streams if Necessary
+
+This option could affect some particular footages with metadata information stored as "Stream" inside the file. 
+
+Storing Metadata as Stream often means that the information depends on frames. 
+
+For example in a GoPro footage, a Metadata Stream can be the GPS position of the Camera along the footage.
+
+For these files, PlumePack automatically detects an unknown Metadata Stream on the footage and depending on this option, decides to trim the footage and drops (removes) this metadata from the trimmed file or excludes this file from trimming (the file will be copied instead).
+
+This option is set to "Enabled" by default because users mostly don't care about those Metadata and don't even know of their existence.
+
+
+### Option : Trim InPoint when Rounding Issues on clip
+
+This option is useful only if you are using media inside a sequence that have a different frame rate than their sequence.
+
+In this particular case, when Premiere Pro want to display a given frame of the sequence, the frame of the media with a different frame rate is rounded and this is dependant to the first frame of the clip used in the timeline.
+
+This can lead to duplicate frames or frames missing when reading the timeline. PremierePro users generally change the "Footage Interpretation" of their clips for that purpose : so footage and sequence have the same framerate.
+
+So if you want trim the beginning of the clip which have a different frame rate than its sequence, the first frame of the clip will not be the same. So the duplicate/missing frames will be moved, and you will not have the exact same displayed frames.
+
+For example, if 2 frames were duplicated initially at a time given in timeline for the current clip, after trimming the duplicated frames will be at another time.
+
+If you enable this option, this means you don't care about this little issue and you want to trim your clip from inPoint to outPoint.
+
+If you disable this option, you will force PlumePack not to trim the beginning of the file and avoid this little issue but the final project could be bigger.
+
+# Clean Options
+
+<BlogImage src={require("assets/images/_PP/PP_Parameters/Autokroma_PlumePack_Parameters_Clean.png")} hasShadow />
+
+## Option : Remove Unused Items
+
+This option will remove any unused items imported into the project. It can be for example some footages you imported but didn't use in any timeline.
+
+If you set this option to false, nothing will be removed from your original projects if it could not be replaced (replaced by copied/strimmed footage).
+
+## Option : Keep only Chosen Sequence and Deps
+
+With PlumePack you can choose to export all sequences in your project or choose to export only a chosen Sequence. 
+
+By selecting the "Chosen Sequence", only elements which are in this sequence OR in the nested sequences which are inside this sequence (OR nested sequences inside the nested sequences, etc ...) will be exported at the new location. 
+
+The sequence can be chosen from the dropdown option. If you don't find the sequence name you would want in the list, hit the "Reload" button next to the dropdown. 
+
+Other Premiere Pro items (Media but also any other item not used from the Main Sequence) will be deleted. 
+
+This option can't be used if "Removed Unused Items" is set to false.
+
+
+# Want more options for PlumePack?
+
+You tell us!
+
+How do you use PlumePack, what are your pain points? <Link href={"/contact"}>Contact us to tell us ! We might find more solutions to your issues</Link>

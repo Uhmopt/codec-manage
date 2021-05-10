@@ -1,0 +1,62 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "BETA for AfterCodecs V2 (Exporter for Adobe Premiere Pro, Media Encoder and After Effects)",
+  preview: "Try out our latest BETA for the second upcoming version of AfterCodecs, new features to test !",
+  author: "Antoine",
+  date: "2021-04-05",
+  tags: ["AfterCodecs", "Premiere Pro", "Media Encoder", "After Effects"],
+  thumbnail: "images/_Poster/47_AfterCodecs-V2-Exporter-Adobe-Premiere-Pro-After-Effects.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+
+
+# What is Autokroma AfterCodecs and what's new ? 
+
+AfterCodecs is our Exporter plugin suite for Adobe CC (After Effects, Premiere Pro and Media Encoder), that brings you new codecs, new containers, new metadata and new workflow options. Some codecs are faster or provide better quality. There are already some articles to help you with export with AfterCodecs on our website if you need more information : 
+
+Our new Version 2 brings new features and we would like you to test them right now ! MKV, Audio only clips, new workflow feature with temporary folders etc. <Link href={"/contact/"}>Contact us if you need new features and new codecs !</Link>
+
+# How to download and test AfterCodecs Version 2
+
+## Download Link
+
+Download and extract the .zip and launch the installer just like any other Autokroma plugin and official AfterCodecs.
+
+<ul>
+  <li>Windows 10 : <Link href={" https://dl.autokroma.com/AfterCodecs/AfterCodecs_v2.2.0beta1_Windows_Installer.zip"}>https://dl.autokroma.com/AfterCodecs/AfterCodecs_v2.2.0beta1_Windows_Installer.zip</Link></li>
+  <li>macOS : <Link href={" https://dl.autokroma.com/AfterCodecs/AfterCodecs_v2.2.0beta1_MacOS_Installer.zip"}>https://dl.autokroma.com/AfterCodecs/AfterCodecs_v2.2.0beta1_MacOS_Installer.zip</Link></li>
+</ul>
+
+<br />
+
+## Warnings
+
+You should only use one version of AfterCodecs at the same time, do not try to use both Version 1 and 2 as there could be conflicts
+
+In Premiere Pro / Media Encoder your previous presets will not be transferred over AfterCodecs Version 2, you will need to recreate them yourself
+
+## Changelog
+
+<code style={{fontFamily: "monospace"}}>
+Upcoming&nbsp;version&nbsp;(BETA)&nbsp;:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;New&nbsp;internal&nbsp;improvements&nbsp;on&nbsp;containers&nbsp;and&nbsp;extensions&nbsp;:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;New&nbsp;"AfterCodecs"&nbsp;choice&nbsp;in&nbsp;After&nbsp;Effects&nbsp;format&nbsp;dropdown&nbsp;that&nbsp;has&nbsp;the&nbsp;.ext&nbsp;extension&nbsp;but&nbsp;will&nbsp;change&nbsp;at&nbsp;export&nbsp;time,&nbsp;according&nbsp;to&nbsp;what&nbsp;choice&nbsp;of&nbsp;container&nbsp;you&nbsp;choose&nbsp;in&nbsp;the&nbsp;Encoding&nbsp;popup<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Container&nbsp;choice&nbsp;and&nbsp;Alpha&nbsp;channel&nbsp;choice&nbsp;in&nbsp;Premiere&nbsp;Pro&nbsp;/&nbsp;Media&nbsp;Encoder&nbsp;has&nbsp;been&nbsp;moved&nbsp;inside&nbsp;the&nbsp;Encoding&nbsp;popup<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Support&nbsp;for&nbsp;.MKV&nbsp;container<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Support&nbsp;for&nbsp;.GIF&nbsp;without&nbsp;the&nbsp;previous&nbsp;hack&nbsp;where&nbsp;you&nbsp;had&nbsp;to&nbsp;choose&nbsp;.MOV<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Support&nbsp;for&nbsp;Audio&nbsp;only&nbsp;exports,&nbsp;very&nbsp;useful&nbsp;for&nbsp;PrPro&nbsp;MultiRender&nbsp;feature&nbsp;with&nbsp;audio&nbsp;clips<br />
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Now&nbsp;saving&nbsp;all&nbsp;recent&nbsp;rendering&nbsp;logs&nbsp;in&nbsp;a&nbsp;cached&nbsp;folder,&nbsp;so&nbsp;you&nbsp;can&nbsp;send&nbsp;us&nbsp;.log&nbsp;files&nbsp;or&nbsp;inspect&nbsp;them&nbsp;even&nbsp;if&nbsp;you&nbsp;don't&nbsp;use&nbsp;the&nbsp;log&nbsp;writing&nbsp;feature<br />
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;You&nbsp;can&nbsp;now&nbsp;make&nbsp;your&nbsp;exports&nbsp;in&nbsp;a&nbsp;temporary&nbsp;folder,&nbsp;that&nbsp;you&nbsp;can&nbsp;customize&nbsp;in&nbsp;the&nbsp;Settings,&nbsp;before&nbsp;the&nbsp;file&nbsp;is&nbsp;finally&nbsp;being&nbsp;written&nbsp;at&nbsp;your&nbsp;desired&nbsp;original&nbsp;location.&nbsp;Useful&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;change&nbsp;easily&nbsp;which&nbsp;disk&nbsp;you&nbsp;are&nbsp;writing&nbsp;to&nbsp;while&nbsp;Adobe&nbsp;reads&nbsp;another&nbsp;disk&nbsp;during&nbsp;rendering<br />
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;New&nbsp;option&nbsp;to&nbsp;keep&nbsp;temporary&nbsp;files&nbsp;used&nbsp;when&nbsp;rendering,&nbsp;in&nbsp;case&nbsp;you&nbsp;want&nbsp;to&nbsp;save&nbsp;separated&nbsp;streams&nbsp;created&nbsp;by&nbsp;AfterCodecs&nbsp;when&nbsp;exporting<br />
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Warning&nbsp;:&nbsp;you&nbsp;should&nbsp;only&nbsp;use&nbsp;one&nbsp;version&nbsp;of&nbsp;AfterCodecs&nbsp;at&nbsp;the&nbsp;same&nbsp;time,&nbsp;do&nbsp;not&nbsp;try&nbsp;to&nbsp;use&nbsp;both&nbsp;Version&nbsp;1&nbsp;and&nbsp;2&nbsp;as&nbsp;there&nbsp;could&nbsp;be&nbsp;conflicts<br />
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Warning&nbsp;:&nbsp;in&nbsp;Premiere&nbsp;Pro&nbsp;/&nbsp;Media&nbsp;Encoder&nbsp;your&nbsp;previous&nbsp;presets&nbsp;will&nbsp;not&nbsp;be&nbsp;transferred&nbsp;over&nbsp;AfterCodecs&nbsp;Version&nbsp;2,&nbsp;you&nbsp;will&nbsp;need&nbsp;to&nbsp;recreate&nbsp;them&nbsp;yourself
+</code>
+
+
+# What new features and codecs do you need ? Tell us !
+
+We would be glad to know what are your current challenges exporting from Adobe CC software. Do you need VP9, AV1, WebM, FLAC, FFV1 etc. ? <Link href={"/contact/"}>Contact us to tell us about your needs !</Link>
+

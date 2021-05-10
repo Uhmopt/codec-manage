@@ -1,0 +1,191 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "Blackmagic RAW Plugin and BRAW Studio - What's the difference ?",
+  preview:
+    "Blackmagic Design released their own plugin for Premiere Pro and Media Encoder to decode BRAW : in this article we will explain its differences with our plugin BRAW Studio so you can choose what's best for you",
+  author: "Nicolas",
+  date: "2019-09-13",
+  lastUpdated: "2020-11-05",
+  tags: ["BRAW Studio", "Blackmagic"],
+  thumbnail: "images/_BR/DifferenceWithOfficialPlugin_Post/officialPlugInDiff_Poster.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<VideoEmbed videoSrc={"i_rnQra4Iv4"}></VideoEmbed>
+
+# TL;DR : Pros & Cons
+
+Straight to the point, here's a summary of our findings ! 
+
+And if you want to test BRAW Studio after reading this article, you can transfer your existing project as explained <Link href={"/blog/How-to-convert-your-project-to-BRAW-Studio"}>here</Link>.
+
+## Why would you want to use our plugin BRAW Studio ?
+
+* **Support : we're here to fix your issues and answer you by email**
+* <Link href={"/blog/Introduction-to-BRAW-Studio/#Setting-Custom-A-and-Custom-B"}>BRAW Studio PrPro Panel</Link> will allow you to access and modify your RAW Settings directly in a Lumetri-like dockable Panel ! It allows batch modifications to any number of selected <code>.BRAW</code> Sources with Presets or Sidecars, and lots of others features
+* <Link href={"/blog/BRAW-Studio-How-To-Trim-BRAW/"}>You can trim your .BRAW files in our PrPro Panel</Link> to reduce its size and remove unused frames, all this 100% losslessly without re encoding and keeping the .BRAW format !
+* <Link href={"/blog/BRAW-Studio-Presets/"}>Global Presets feature</Link>
+* <Link href={"/blog/Introduction-to-BRAW-Studio/#Setting-Custom-A-and-Custom-B"}>Custom A/B feature</Link> to quickly compare two different sets of RAW params
+* <strong>No Replace Clip bug, No Ctrl-Z bug, Source Settings Copy/Paste works fine</strong> (see at the bottom of this post for a full list of BMD bugs, BMD plugin cache issue seem to have been fixed in Blackmagic RAW 1.5.1 update)
+* Metadata available inside Premiere Pro (displayed both as <i>Properties</i> and <i>Project Panel</i> columns)
+* <i>Reconnect Full Resolution</i> button for proxies works with BRAW Studio
+* <i>Collect Files and copy to new location</i> in <i>Project Manager</i> works perfectly
+* Increased compatibility (it works with CC 2017 and all newer versions)
+* Correct timecode for NTSC framerates in Premiere, so you have the ability to export the timeline to DaVinci Resolve (you also have the Export FCP .XML feature in our panel) without issue
+* Premiere Pro Video Previews still linked after restart (<i>Render In To Out</i> and green line above timeline staying green)
+
+<Link href={"/blog/BRAW-Studio-YouTube-Short-Tutorials"}>Here is the list of all our Youtube tutorials about BRAW Studio features, watch them !</Link>
+
+<br />
+
+## Why would you want to use Blackmagic Design's Blackmagic RAW plugin ?
+
+Basically the only good feature of their plugin is that it is free. Some MacOS users had crashes with BRAW Studio and could avoid them by using BMD's plugin (But the reverse is also true, there are issues with Blackmagic plugin that can be avoided with BRAW Studio, so make your own tests !).
+
+You can **switch from Blackmagic plugin to BRAW Studio** using our official feature here : <Link href={"/blog/How-to-convert-your-project-to-BRAW-Studio"}>How to convert your project to BRAW Studio ?</Link>. But you can't go the other way around because BMD plugin is too buggy.
+
+## Some Free features with BRAW Studio
+
+With the BRAW Studio Panel, you have access to some free features which can be used with the Blackmagic Plugin as the plugin importer.
+
+Here is a list of these free features :
+* <Link href={"/blog/BRAW-Studio-Metadata-PPro/"}>Metadata inside Premiere Pro (<i>Project Panel</i> columns)</Link>
+* <Link href={"/blog/BRAW-Wrong-Timecode-Adobe-Premiere-Pro/"}>Correct timecode for NTSC framerates</Link>
+
+<br />
+
+After installing BRAW Studio, in order to disable the BRAW Studio importer (to use the Blackmagic Plugin importer), please change the BRAW Studio settings.<Link href={"/blog/BRAW-Studio-Settings-And-License-Popup/"}>Check this article to know how to do it !</Link>
+
+<br />
+<br />
+
+Now we'll explain each point, as well as if you can use both plugins at the same time and how to install / uninstall each of them.
+
+# Differences in features
+
+## Source Settings Panel for Premiere Pro 
+
+<Link href={"/blog/Introduction-to-BRAW-Studio/#Setting-Custom-A-and-Custom-B"}>BRAW Studio V2 introduced a new BRAW Studio Panel for Premiere Pro, check it out !</Link>
+
+<br/>
+
+## 20 Global Presets
+
+In Premiere Pro, there is a native feature to save and apply presets from any effect by right clicking on the effect name. This feature doesn't work with either the BMD plugin or with our BRAW Studio plugin. It will sometimes result in bad situations  (when the ISO lists or LUTs available are different for example). 
+
+But from the 1.7.0 version of BRAW Studio onwards, there is a <strong>BRAW Studio Presets feature directly available on the <i>BRAW Settings</i> tab</strong>, with which you can save up to 20 presets and apply them quickly !
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_presets.png")} hasShadow />
+
+## BRAW Metadata Tab in Panel and Columns in the Project Panel
+
+<VideoEmbed videoSrc={"Vv1QvV3loeg"}></VideoEmbed>
+
+When shooting with Blackmagic cameras, the users can set some useful metadata like Reel, Scene, Take, Good etc. This metadata is set inside the <code>.BRAW</code> file when it is saved.
+
+For more informations, check out our article : <Link href={"/blog/BRAW-Studio-Metadata-PPro/"}>BRAW Metadata on Premiere Pro's Project Panel</Link>
+
+<BlogImage src={require("assets/images/_BR/Metadata_Post/metadata_imageInCamera.jpg")} hasShadow scaledDown />
+
+Some of this metadata can be shown on the Premiere Pro <i>Project Panel</i> in list view with the <i>BRAW Studio panel</i>. So you can sort and organize your files in terms of the metadata. For example, you can organize files using the Reel number metadata, or separate the files which are tagged Good. 
+
+Note that this feature is free in BRAW Studio, and can be used with the Blackmagic Plugin ! More info in <Link href={"/blog/BRAW-Studio-Metadata-PPro/"}>this article</Link>.
+
+<BlogImage src={require("assets/images/_BR/Metadata_Post/metadata_shownInProject.png")} hasShadow />
+
+Also, when right-clicking on a <code>.BRAW</code> clip, either on the <i>Project Panel</i> or on the timeline, and selecting <i>Properties...</i>, with our plugin, you have other information like <code>BRAW</code> compression and much more. 
+
+It seems these kinds of metadata are not visible in Premiere Pro with the BMD's plugin for now.
+
+<BlogImage src={require("assets/images/_BR/Metadata_Post/metadata_otherProperties.png")} hasShadow />
+
+## Timecode Issue
+
+
+The NTSC <code>.BRAW</code> files (framerate 23.976 / 29.97) have a timecode problem in Premiere Pro due to an Adobe bug, <strong>with both our BRAW Studio plugin AND in BMD's plugin</strong>.
+
+No big deal... except if you want to export your timeline in FCP XML and import it back to DaVinci Resolve (for color grading for example) : there will be an error when importing. 
+
+Check our <Link href={"/blog/BRAW-Wrong-Timecode-Adobe-Premiere-Pro/"}>article</Link> about the wrong timecode for more details about how to deal with this problem with BRAW Studio.
+
+Exporting the correct FCP XML directly will need a registered BRAW Studio license, but <strong>correcting the timecodes in Premiere Pro is free</strong> and this function can be used along with the Blackmagic Plugin. (Take care of <Link href={"/blog/Clip-Shifted-Issue-BRAW-Studio/"}>the Timecode Shift Issue !</Link>) 
+
+<BlogImage src={require("assets/images/_BR/DifferenceWithOfficialPlugin_Post/officialPlugInDiff_setTimecodePPro.png")} hasShadow scaledDown />
+
+<strong>Update : Adobe has fixed their timecode issue from Premiere Pro version 14.3 !</strong>
+
+## Sidecar 
+
+There are minor differences with how both plugins handle sidecars. The Blackmagic RAW plugin hides away the fact that <i>Revert to Metadata</i> is actually loading the <code>.sidecar</code> file's content (if it's available) AND updating <i>Decode Using Camera Metadata</i>, whereas, with BRAW Studio, it is clear that <i>Load Sidecar</i> loads the <code>.sidecar</code> values into the GUI Custom RAW Values, and <i>Decode using Camera Metadata</i> stays the same once the <code>.BRAW</code> has been imported.
+
+## Reconnect Full Resolution
+
+BRAW Studio lets you reconnect full resolution media when you are attaching proxies to <code>.BRAW</code> in Premiere Pro, while the Blackmagic plugin doesn't let you do this.
+
+WARNING : For this, you should make sure you don't have Blackmagic RAW Adobe plugins installed, because they will conflict with BRAW Studio and prevent you from reconnecting your <code>.BRAW</code> media.
+
+## Project Manager : Collect Files and copy to new location
+
+BRAW Studio lets you choose <i>Collect Files and Copy to New Location</i> in Premiere Pro's <i>Project Manager</i>, while Blackmagic plugin has a bug. Topic discussed, with screenshots, <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=114632#p641126"}>here</Link> and <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=2&t=99534&p=641125"}>here</Link>. 
+
+# Performances and Bugs
+
+BMD's plugin speed was better than BRAW Studio for a few months. Since BRAW Studio version 2.0.1, this has been corrected. Sometimes BRAW Studio is even faster, because we also offer a hybrid CPU-CUDA (nVidia) decoding technique on Windows, please test it !
+
+Also, when importing hundreds of <code>.BRAW</code> Sources, we noticed that BRAW Studio was faster than Blackmagic's plugin.
+
+## Known Bugs of Blackmagic Design's Blackmagic RAW plugin
+
+We experienced a lot of image caches issues with BMD plugin version 1.5. Cache issues basically mean that what you see on the screen is not the real content of the <code>.BRAW</code> color grade with the RAW params you selected. Note : this has been fixed with BMD Blackmagic RAW 1.5.1 update, so don't forget to update!
+
+Some users also report Source Settings controls freezing forever. We also experienced a (rare) crash on Windows.
+
+Trying to copy / paste the plugin from one braw clip to another works well, but if the ISO Lists are not the same (which can be the case even with files from the same camera, due to the Dual ISO system), it could result in bad situations, like corrupted source settings.
+
+Using <i>Undo</i> (<i>Ctrl</i>/<i>Cmd</i> + <i>Z</i>) is also a problem : the value you see in the GUI returns back to its previous value, but the image will stay the same; and it's not a problem with the cache. If you generate a new image, the value used will be the one before you made the undo ! The only solution to get the correct value back is to change this value again.
+
+Also, using Premiere Pro's <i>Replace Clip</i> feature might lead to corrupted projects with the Blackmagic RAW plugin, but not with BRAW Studio.
+
+If you want to know more about Blackmagic Raw BMD plugin issues, here are some users posts on the official Blackmagic forums :
+
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=110290"}>"BRAW in Premiere - exposure adjustment not working?"</Link>
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=110847"}>"BRAW Settings in Effects Controls - Reset and LOCKED away"</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=102027"}>Bugs in CC2020</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=99221"}>"Unsupported format or damaged file - Braw Plugin..."</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=2&t=98746"}>Overexposure issues</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=101445"}>"aaaaaaaaaaaaaaaaa" corrupted Source Settings</Link> (<Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=102004"}>Other Link</Link>)
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=99624"}>"BRAW causes Premiere to freeze"</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=2&t=98907"}>"issue with braw 1.5 support in premiere"</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=99020"}>"BRAW Premiere Plugin, Another BUG (Color Temp)"</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=99211"}>"BRAW v1.5 Premiere Plugin - Timecode incorrect"</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=98993"}>"BRAW 1.5 Plugin hangs Premiere (BRAW controls)"</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=3&t=98983"}>"Bug in Premiere with BRAW 1.5 Plugin (max bit depth)"</Link> 
+* <Link href={"https://forum.blackmagicdesign.com/viewtopic.php?f=2&t=99534"}>"Project Manager (Consolidate Projects) is not working with the BMD Plugin"</Link> 
+* <Link href={"https://community.adobe.com/t5/premiere-pro/braw-settings-don-t-save-to-project/td-p/11267962?page=1"}>"BMD Plugin BRAW Settings could be lost after re-opening the Premiere Pro project"</Link> 
+
+<br/>
+
+## Known Bugs of BRAW Studio
+
+We already know that some MacOS users experienced crashes with BRAW Studio, but most have our plugin running just fine. We have not found the origin of these crashes, for now we are still investigating.
+
+# Should I install Blackmagic RAW ?
+
+Yes of course ! Because it will also install the Blackmagic RAW Player and the Explorer / Finder thumbnail previewer, which are awesome tools for your daily workflow. But you should uninstall the Adobe plugins that are installed along with them if you want to use BRAW Studio.
+
+We have a checkbox <Link href={"/BRAW_Studio/Download/"}>in our installer</Link> to directly install only the Player and the thumbnails and delete the Adobe plugins !
+
+# Compatibility between the two plugins ?
+
+Now that you understand how each plugin works, don't forget to <Link href={"/blog/Compatibility-Blackmagic-Raw-Plugin-BRAW-Studio/"}>read our other article about their compatibility</Link>, especially if you have created a project with one plugin and want to switch to the other !
+
+<VideoEmbed videoSrc={"i_rnQra4Iv4"}></VideoEmbed>
+
+Please note that some features of BRAW Studio for Adobe CC V2 are available for Blackmagic RAW Adobe plugins users, such as metadata import, timecode fix, timecode shift fix and export .XML !
+
+<br/>
+<br/>
+
+That's all for now. Don't forget to follow us on <Link href={"https://facebook.com/autokroma/"}>Facebook</Link> or to subscribe to our newsletter, at the bottom of this page, to be sure to not miss any news ! You can also <Link href={"/contact/"}>contact us</Link>  if you have any trouble.

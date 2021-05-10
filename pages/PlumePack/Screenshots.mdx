@@ -1,0 +1,22 @@
+import ProductPage from "../../components/ProductPage";
+import { meta } from './index.mdx';
+import Screenshots from "../../components/Screenshots";
+import { config } from "../../config";
+import { Flex } from 'rebass';
+
+export default props => (
+  <ProductPage
+    landerImage={require("assets/images/_PP/Autokroma_PlumePack_Premiere_Pro_product_background.jpg?trace")}
+    meta={meta}
+    {...props}
+  />
+);
+
+<Flex mt={4} justifyContent="center">
+    <Link href="/PlumePack">Go Back to PlumePack</Link>
+</Flex>
+
+<H2 centered underline={meta.mainColor}>
+  Screenshots
+</H2>
+<Screenshots images={config.PlumePackScreenshots} meta={meta} />

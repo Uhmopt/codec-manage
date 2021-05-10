@@ -1,0 +1,72 @@
+import { meta as indexMeta } from "./index.mdx";
+import ProductPage from "../../components/ProductPage";
+import Changelog from "../../components/Changelog";
+import DownloadPage from "../../components/Download";
+import { config } from "../../config";
+import changelog from "assets/docs/BRAW Studio Changelog";
+import Timeline from '../../components/Timeline';
+
+export const meta = {
+  ...indexMeta,
+  seoTitle: "Download BRAW Studio Installers for Windows and Mac OS",
+  timelineData: [
+    { date: '2019-01-29', label: 'V1', version: '1.0' }, 
+    //{ date: '2019-04-08', label: 'Metadata and Timecode Fix', version: '1.3' }, // Not important anymore
+    { date: '2019-09-10', label: 'Global Presets, Custom A/B', version: '1.7'},
+    { date: '2019-11-10', label: 'AEfx Layer Settings with GPU Acceleration', version: '1.8'},
+    //{ date: '2020-02-28', label: 'Export Corrected FCP .XML', version: '1.9'}, // Not important anymore
+    { date: '2020-05-22', label: 'V2 : BRAW Settings Panel, Batch modifications', version: '2.0'},
+    //{ date: '2020-06-25', label: 'AEfx GPU Acceleration', version: '2.1'},
+    { date: '2020-10-10', label: 'BMD Convert, Metadata tab, Partial Presets', version: '2.2'},
+    //{ date: '2021-03-18', label: 'Trimming', version: '2.3'},
+    { date: '2021-03-28', label: 'Trimming, Color Gen5, URSA 12K, BMPCC 6K Pro', version: '2.4'}
+  ],
+};
+
+export default props => (
+  <ProductPage
+    downloadPage
+    meta={meta}
+    {...props}
+    landerImage={require("assets/images/_BR/BR_product_background.jpg?trace")}
+  />
+);
+
+<DownloadPage productName={"BRAW Studio"} linkForMacOs={config.brawStudioLinkForMacOs} linkForWindows={config.brawStudioLinkForWindows} />
+
+<WindowsOnly strict mb={-4}>
+
+- <a href={config.brawStudioLinkForWindows}>
+    Download and Install for Microsoft Windows
+  </a> : extract and run the Installer <code>.exe</code> - Free trial included !
+
+</WindowsOnly>
+
+<MacOnly strict mb={-4}>
+
+- <a href={config.brawStudioLinkForMacOs}>
+    Download and Install for Apple Mac OS
+  </a> : extract (Open with Archive Utility) and run the Installer <code>.pkg</code> - Free trial included !
+
+</MacOnly>
+
+- <span><Link href="/blog/How-to-License-BRAW-Studio/">How to License BRAW Studio and access RAW Params</Link></span>
+- <span><Link href="/BRAW_Studio/User_Guide/">BRAW Studio User Guide</Link></span>
+- How To Update Plugins : download and install the usual way and it will update automatically, replacing old plugins with newer versions.
+- How To Uninstall Plugins : download and go into the "Uninstall Plugins" folder to find the Uninstaller. Don't forget to tick the <code>Uninstall BRAW Studio</code> checkbox !
+
+<!--
+- <p>Installer didn't work ? Try Manual Installation : <WindowsOnly inline strict><a href={config.brawStudioLinkForWindows_Manual}>BRAW Studio Manual Installation for Windows</a></WindowsOnly> <MacOnly inline strict><a href={config.brawStudioLinkForMacOs_Manual}>BRAW Studio Manual Installation for Mac OS</a></MacOnly></p>
+-->
+
+<H2 centered id="Changelog" underline={meta.mainColor}>
+  Changelog
+</H2>
+
+<Timeline data={meta.timelineData} color={meta.mainColor} />
+
+<Changelog
+  changelog={changelog}
+  color={meta.mainColor}
+  version={config.brawStudioChangelogVersion}
+/>

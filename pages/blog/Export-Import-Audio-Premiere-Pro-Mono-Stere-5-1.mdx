@@ -1,0 +1,134 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "Exporting/Importing Mono, Stereo and 5.1 in Premiere Pro",
+  preview: "Full Tutorial on how to export/import different types of audio in Premiere Pro",
+  author: "Antoine",
+  date: "2021-04-02",
+  tags: ["Premiere Pro", "AfterCodecs", "Audio"],
+  thumbnail: "images/_AC/30/Import_Export_Thumbnail.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# What does AfterCodecs do?
+
+AfterCodecs is a new native plugin for the whole Adobe CC Video suite, working on both Mac OS and Windows. It brings fast and efficient codecs to After Effects’ render queue and a new <i>format</i> choice in Premiere Pro and Media Encoder's <i>Export</i> Window.
+
+AfterCodecs offers more advanced audio features in Premiere Pro, but first this article will take you through exporting/importing different types of audio. There are myriad of audio features, tools and settings in Premiere Pro, especially since the addition of the essential sounds panel in 2017. We will go through some of those options for Mono, Stereo, and 5.1, including mono split tracks and audio channel mapping for 5.1 files.
+
+
+# Exporting/Importing Mono
+
+The main way mono is used in most workflows is to create a L/R stereo split track, but Premiere does allow you to export a single mono track as well. In terms of importing, very little can go wrong with mono as it is just a single channel of audio.
+
+### Exporting a Mono Track
+
+Exporting a single mono track is very straightforward. All you have to do is select <i>Mono</i> under the <i>Audio</i> tab of your <i>Export</i> settings, as seen below. This will mix down your sequence audio into a single mono track. If you would like to have more control over this mix, you can create a mono sequence and export it.
+
+<BlogImage src={require("assets/images/_AC/30/Mono_export.png")} hasShadow scaledDown/>
+
+### Exporting Mono Split Tracks
+
+To export a L/R split track, first it is necessary to make sure your stereo files are being interpreted correctly using Premiere Pro’s audio channel mapping feature. The audio channel mapping section of our <Link href={"/blog/Setting-up-your-Audio-PPro-Basics"}> Premiere Pro audio basics article </Link> covers how to separate a stereo file into two mono tracks.
+Once you have remapped your stereo file, it should be separated into two mono tracks, as seen below. If your stereo file is already split into two mono files, you can simply drag them into a sequence.
+
+<BlogImage src={require("assets/images/_AC/30/Split_track.png")} hasShadow scaledDown/>
+
+Create a stereo sequence and add 2 mono tracks to it. This can be done when creating the sequence or after the sequence is already created. To add mono tracks to an already existing sequence, right–click and select <i>Add Tracks</i>.
+
+<BlogImage src={require("assets/images/_AC/30/Add_tracks.png")} hasShadow scaledDown/>
+
+Select <i>2</i> as the number of tracks you would like to add and select where you would like them placed. Select <i>Mono</i> in the <i>Track Type</i> drop-down menu.
+
+<BlogImage src={require("assets/images/_AC/30/Add_mono_tracks.png")} hasShadow scaledDown/>
+
+The two mono tracks will be identified by a small speaker symbol next to the track, as seen below. Drag your stereo file into the sequence and place it on both tracks. It should be laid out on 2 tracks automatically if you interpreted it properly.
+
+<BlogImage src={require("assets/images/_AC/30/2_mono_tracks.png")} hasShadow scaledDown/>
+
+Once your stereo file is on both tracks, in this case <i>A1</i> and <i>A2</i>, open up the <i>Audio Track Mixer</i> – not to be confused with the <i>Audio Clip Mixer</i>. To open it, go to the <i>Window</i> tab on your top main menu and you will find it.
+
+Assuming that <i>A1</i> is your left track, turn the audio panner all the way to the left or <i>-100</i> and turn the <i>A2</i> (your right track) panner to <i>100</i>.
+
+<BlogImage src={require("assets/images/_AC/30/Track_Panner.png")} hasShadow scaledDown/>
+
+Now <i>A1</i> will only output to the left, and <i>A2</i> to the right. You can test this by muting one of the tracks. The other track should only play on its designated speaker. Now you can open your <i>Export</i> menu and select <i>Stereo</i> as your <i>Channels Layout</i> to export your mono split tracks.
+
+<BlogImage src={require("assets/images/_AC/30/Stereo_export.png")} hasShadow scaledDown/>
+
+### Importing Mono
+
+Importing mono is very straightforward, as there is only a single channel of audio, meaning it will rarely be interpreted incorrectly. You can always check the <i>Audio Info</i> column in your <i>Project</i> tab to make sure the file is being interpreted correctly.
+
+
+<BlogImage src={require("assets/images/_AC/30/mono_audio_info.png")} hasShadow scaledDown/>
+
+# Exporting/Importing Stereo
+
+### Exporting Stereo
+
+Because stereo is used as the default for most audio processes in Premiere Pro, that makes it the easiest to export/import. Most sequences you create will have a stereo master track by default. This means all the tracks in your sequence will be mixed down into a single stereo track. You can control the L/R mix of individual files using the audio panner in the <i>Audio Clip Mixer</i> window. Those changes will be reflected in the final export, when you select <i>Stereo</i> on the <i>Audio</i> tab of the <i>Export Settings</i> window.
+
+
+<BlogImage src={require("assets/images/_AC/30/Stereo_export.png")} hasShadow scaledDown/>
+
+### Importing Stereo
+
+Importing stereo is also a very simple process, your file will be interpreted as an L/R stereo if it has 2 channels of audio in it.
+
+<BlogImage src={require("assets/images/_AC/30/stereo_audio_info.png")} hasShadow scaledDown/>
+
+If you would like to have independent control over each channel of your stereo file, check the audio channel mapping section of our  <Link href={"/blog/Setting-up-your-Audio-PPro-Basics"}> Premiere Pro audio basics article </Link>.
+
+
+# Exporting/Importing 5.1 Surround
+
+This section will cover exporting/importing simultaneously, since how you import/interpret your 5.1 file will affect the process quite significantly.
+
+Any sequence will technically support a 5.1 track, but, to have control over the mix, you need to create a 5.1 sequence. In the <i>New Sequence</i> window, under the <i>Tracks</i> tab, select <i>5.1</i> in the <i>Master</i> drop-down menu. If you have a 5.1 file that is already mixed and that you would like to export, you can create a 5.1 sequence with a single 5.1 track in it, as seen below.
+
+<BlogImage src={require("assets/images/_AC/30/new_5.1_sequence.png")} hasShadow />
+
+Then you can simply drop your 5.1 file into that sequence and export it. The export settings will be shown later.
+
+If you would like to be able to control all 6 tracks in your 5.1 file, the sequence needs to be created differently, and your file needs to be re-interpreted.
+
+First, create your 5.1 sequence and add 6 mono tracks to it.
+
+<BlogImage src={require("assets/images/_AC/30/new_5.1_sequence_6_mono.png")} hasShadow />
+
+Then you need to interpret you 5.1 file as 6 mono channels. Right-click the file and select <i>Modify</i> &gt; <i>Audio Channels</i>. 
+
+Change the clip channel format to <i>Mono</i> and the number of audio clips to <i>6</i>. Doing this should automatically reassign all the channels correctly. It should look like the example below.
+
+<BlogImage src={require("assets/images/_AC/30/5.1_channel_mapping.png")} hasShadow scaledDown/>
+
+Once you have setup the 6 mono tracks in a 5.1 sequence, and that your file has been interpreted as 6 mono tracks, you can drop the file in that sequence.
+
+The file in that sequence should now look similar to the image below. However, when playing back the file, you will notice that each track is not isolated in its designated channel. This is because the audio was broken down into mono tracks.
+
+<BlogImage src={require("assets/images/_AC/30/5.1_timeline.png")} hasShadow scaledDown/>
+
+To fix this, go to the <i>Window</i> tab on the main top menu and open up your <i>Audio Track Mixer</i>. You should see a 5.1 panner for each track. Use the dot found in the middle of them and pan it so each track matches the correct speaker. You can use the screenshot below as an example, where the <i>5.1 SMPTE</i> layout was used (L, R, C, LFE, Ls, Rs). Now, when you play back the file, each channel should be isolated in their correct speaker.
+
+<strong> Note: This method will not isolate the LFE track. This requires a workaround with a multichannel sequence. </strong> Watch <Link href={"https://youtu.be/Tb4HwSUrAjw?t=782"}> this tutorial</Link> from 13:02 (or watch the full video to find out how to mix 5.1 in Premiere).
+
+<BlogImage src={require("assets/images/_AC/30/5.1_panner.png")} hasShadow />
+
+You can check the track isolation with the <i>Audio Meter</i>. If you solo one of the tracks, you should only get audio in one of the channels, as seen below. Once your tracks are isolated properly, you can edit/mix them as you wish before exporting.
+
+<BlogImage src={require("assets/images/_AC/30/5.1_levels.png")} hasShadow scaledDown />
+
+### Exporting 5.1
+
+Many formats support 5.1 in Premiere Pro, most of them using the standard SMPTE layout (L, R, C, LFE, Ls, Rs). <i>ProRes</i> will be used as an example, but, as a general rule, you simply want to pick <i>5.1</i> from the <i>Output Channels</i> drop-down menu, under the <i>Audio</i> tab.
+
+<BlogImage src={require("assets/images/_AC/30/5.1_Export.png")} hasShadow scaledDown />
+
+
+As you can see, <i>ProRes</i> gives you 3 different layout options for 5.1, but, in most cases, you want to use the SMPTE layout, which is the middle one, as seen above. Then hit export, and your file will have 5.1 audio!
+
+
+<br />
+<Link href={"/AfterCodecs/Download/"}>Install and try AfterCodecs for free from here ! 500 Frames trial included as well as the full version if you have a license.</Link>

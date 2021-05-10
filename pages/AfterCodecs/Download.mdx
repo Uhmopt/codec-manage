@@ -1,0 +1,95 @@
+import { meta as indexMeta } from "./index.mdx";
+import ProductPage from "../../components/ProductPage";
+import Changelog from "../../components/Changelog";
+import DownloadPage from "../../components/Download";
+import { config } from "../../config";
+import changelog from "assets/docs/AfterCodecs Changelog";
+import Timeline from '../../components/Timeline';
+
+export const meta = {
+  ...indexMeta,
+  timelineData: [
+    { date: '2017-05-11', label: 'After Effects Windows Launch', version: '1.0' }, 
+    { date: '2017-09-11', label: 'MacOS Support', version: '1.2' }, 
+    { date: '2018-04-11', label: 'Premiere Pro and Media Encoder Support', version: '1.3'},
+    { date: '2018-10-10', label: 'New advanced HAP algorithms', version: '1.5' },
+    { date: '2019-02-10', label: 'VR360 metadata and GIF encoder', version: '1.6'},
+    { date: '2020-02-10', label: 'PrPro Panel : MultiRender Workflow', version: '1.8'}/*,
+    { date: '2020-03-10', label: 'Support for BG Renderer Max', version: '2.0'}*/
+  ],
+  seoTitle: "Download AfterCodecs Installers for Windows and MacOS"
+};
+
+export default props => (
+  <ProductPage
+    downloadPage
+    meta={meta}
+    {...props}
+    landerImage={require("assets/images/_AC/AC_product_background.jpg?trace")}
+  />
+);
+
+<DownloadPage productName={"AfterCodecs"} linkForMacOs={config.afterCodecsLinkForMacOs} linkForWindows={config.afterCodecsLinkForWindows} />
+
+<WindowsOnly strict mb={-4}>
+
+- <a href={config.afterCodecsLinkForWindows}>
+    Download and Install for Microsoft Windows
+  </a> : extract and run the Installer <code>.exe</code> - Free trial included !
+
+</WindowsOnly>
+
+<MacOnly strict mb={-4}>
+
+- <a href={config.afterCodecsLinkForMacOs}>
+    Download and Install for Apple MacOS
+  </a> : extract (Open with Archive Utility) and run the Installer <code>.pkg</code> - Free trial included !
+
+</MacOnly>
+
+- <span><Link href="/blog/How-to-License-AfterCodecs/">How to License AfterCodecs</Link></span>
+- <span><Link href="/AfterCodecs/User_Guide/">AfterCodecs User Guide</Link></span>
+- How To Update Plugins : download and install the usual way and it will update automatically, replacing old plugins with newer versions.
+- How To Uninstall Plugins : download and go into the "Uninstall Plugins" folder to find the Uninstaller. Don't forget to tick the <code>Uninstall AfterCodecs</code> checkbox !
+
+<!--
+- <p>Installer didn't work ? Try Manual Installation : <WindowsOnly inline strict><a href={config.afterCodecsLinkForWindows_Manual}>AfterCodecs Manual Installation for Windows</a></WindowsOnly> <MacOnly inline strict><a href={config.afterCodecsLinkForMacOs_Manual}>AfterCodecs Manual Installation for MacOS</a></MacOnly></p>
+- I have an issue and need an older version : <WindowsOnly><a href={config.afterCodecsLinkForWindows_old}>Older version for Microsoft Windows</a></WindowsOnly> <MacOnly><a href={config.afterCodecsLinkForMacOs_old}>Older version for Apple MacOS</a></MacOnly>
+-->
+
+<!--
+<WindowsOnly>
+  <BlogImage
+    src={[
+      require("assets/images/_CO/Installer/Installer_BRAW_Studio_Windows_1.png"),
+      require("assets/images/_CO/Installer/Uninstaller_Windows.jpg"),
+    ]}
+    scaledDown
+    hasShadow
+  />
+</WindowsOnly>
+
+<MacOnly>
+
+  <BlogImage
+    src={[
+      require("assets/images/_CO/Installer/Installer_AfterCodecs_MacOS_1.png"),
+      require("assets/images/_CO/Installer/Uninstaller_MacOS.jpg")
+    ]}
+    scaledDown
+    hasShadow
+  />
+</MacOnly>
+-->
+
+<H2 centered id="Changelog" underline={meta.mainColor}>
+  Changelog
+</H2>
+
+<Timeline data={meta.timelineData} color={meta.mainColor} />
+
+<Changelog
+  changelog={changelog}
+  color={meta.mainColor}
+  version={config.afterCodecsChangelogVersion}
+/>

@@ -1,0 +1,14 @@
+import ProductPage, { BackToProductLink } from "../../components/ProductPage";
+import { Requirements } from "../../components/content/PlumePack/Overview";
+import { meta } from './index.mdx';
+
+export default props => (
+  <ProductPage
+    landerImage={require("assets/images/_PP/Autokroma_PlumePack_Premiere_Pro_product_background.jpg?trace")}
+    meta={meta}
+    {...props}
+  />
+);
+
+<BackToProductLink {...meta} product="PlumePack" title="Technical Specifications" />
+<Requirements mainColor={meta.mainColor} / >

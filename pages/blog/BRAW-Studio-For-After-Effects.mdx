@@ -1,0 +1,112 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "BRAW Studio for After Effects is available now",
+  preview: "Learn the basics of our new plugin BRAW Studio for After Effects !",
+  author: "Nicolas",
+  date: "2019-11-12",
+  tags: ["BRAW Studio", "After Effects"],
+  thumbnail: "images/_BR/BR_For_AE/Poster_AE.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<VideoEmbed videoSrc={"2HqCIBOm94Y"}></VideoEmbed>
+
+BRAW Studio for After Effects works with two plugins :
+
+# The BRAW Studio Importer
+
+First, the BRAW Studio Importer imports the BRAW Source footage into After Effects. There is no way to modify the RAW Parameters on the Source footage that you see in the Project Panel, but we will see in the next section that you will be able to tweak the parameters on each layer instead.
+
+The Importer will decode your footage using the "Camera Metadata" Parameters that were available at the first import of this file through the After Effects session : if there is a <code>.sidecar</code> file next to the <code>.braw</code> file, the importer will decode the footage using the Sidecar values (but if the Sidecar is added next to the file after importing it, you will need to restart After Effects to see the modification applied).
+
+If there is no Sidecar file next to the braw file, then the RAW Parameters inside the <code>.braw</code> file that were set when shooting will be used.
+
+The importer will produce an image in 8bits / 16bits / 32bits according to your Project Settings.
+
+# The BRAW Studio Layer Settings to modify the RAW Parameters
+
+Once you added the BRAW Source in a composition, you can add the BRAW Studio Layer Settings effect (available in the effect list in the "Autokroma" category) <strong>on your BRAW Layer. It won't work and an error will be raised if the layer is not coming from a BRAW Source file</strong> (for example if you precomposed the BRAW Source, then applied the Effect onto that precomposition).
+
+<BlogImage
+  src={require("assets/images/_BR/BR_For_AE/layerSettingsInList.png")}
+  hasShadow
+/>
+
+For more information on the BRAW Parameters in the Layer Settings, please read the section about Source Settings in <Link href={"/blog/Introduction-to-BRAW-Studio/"}>our article "Introduction of BRAW Studio"</Link>
+
+Notes :
+
+* This effect should be at the top of the list, because any effect before it will be erased : indeed this effect works like a generator (it creates the image, so the image in input of the effect is not used, you will lose it !)
+* The BRAW Studio Presets are global and accessible whether you are in the Source Settings or Layer Settings, in both Premiere Pro and After Effects. They're all the same and it is a good way to copy RAW Parameters from Premiere Pro to After Effects or vice-versa
+* You can only apply rectangular masks on your braw layer if the layer settings is applied on it. Solving this on our side would  mean drastically reducing performance, that's why we don't plan to fix this behavior. However, to obtain the same result, you can easily precompose your braw layer and create your mask on the composition
+* BRAW Studio Layer Settings supports 32 bpc (as well as the importer)
+
+<BlogImage src={require("assets/images/_BR/BR_For_AE/layerSettings.png")} hasShadow />
+
+# The Layer Settings can give you a full GPU decoding !
+
+From BRAW Studio 2.1.0, the Layer Settings uses your GPU to decode the BRAW Studio frames. As the Layer Settings bypass the BRAW Studio importer (and works like an importer + effect), applying the effect to a BRAW layer in After Effects will gives you better performance depending on your GPU hardware.
+
+<p>The GPU decoding on the Layer Settings is <strong>only available on Windows from After Effects CC 2019, and on Mac from After Effects 2020.</strong></p>
+
+<strong>It is not activated by default.</strong> You will need to tick a checkbox in the "Settings & License" popup (available from a button in the Layer Settings effect), and click "Ok" for that.
+
+You will also need to choose your GPU acceleration in the Project Settings (top menu : File -> Project Settings) : In Windows, choose CUDA or OpenCL, on Mac choose Metal.
+
+<BlogImage src={require("assets/images/_BR/BR_For_AE/EnableGPUAccelerationMode.png")} hasShadow />
+
+
+# Working with Dynamic Link from Premiere Pro
+
+<BlogImage src={require("assets/images/_BR/BR_For_AE/DynamicLink.png")} hasShadow>
+You will be able to use Dynamic Link to work with Premiere Pro, but the RAW Parameters applied in the "Source Settings" of Premiere Pro will not be transferred by the dynamic link when from Premiere Pro you click on "Replace with After Effects Composition"
+<br />
+<br />
+However, there is a workaround thanks to Sidecar files OR the BRAW Studio Presets feature.
+<br />
+<br />
+First solution : you export your RAW Parameters in the .sidecar by pressing the button "Save Sidecar" in the Source Settings BEFORE sending the BRAW file to After Effects via Dynamic Link, After Effects will load the values inside this Sidecar file by default (because of the "Camera Metadata" decoding mode as described previously).
+</BlogImage>
+
+
+Second solution, you can apply the Layer Settings on your After Effects BRAW Layer, and then hit the "Load Preset" button, which will load what has been saved previously in the preset (when you were in Premiere Pro for example). This solution is the best and can work with both software opened at the same time !
+
+<BlogImage src={[
+      require("assets/images/_BR/BR_For_AE/SaveSidecar1.png"),
+      require("assets/images/_BR/BR_For_AE/LoadSidecar2.png"),
+  ]} hasShadow />
+
+# BRAW Metadata in the comment section
+
+In After Effects, once you apply the Layer Settings to a BRAW Layer, if the "Comment" section of its Source, which is available in the project panel, is empty, it will be filled with some BRAW Information.
+
+For example, you can get in the comment section : "G.0 - R.1 - S.4 - T.35 - CR.12:1"
+
+- "G.0" means Good Take : false (G.1 would means : Good Take : true)
+- "R.1" means Reel : 1
+- "S.4" means Scene : 4
+- "T.35" means Take : 35
+- "CR.12:1" means Compression Ratio : 12:1
+
+If you want to get more metadata here, please contact us !
+
+<BlogImage src={require("assets/images/_BR/BR_For_AE/Metadata.png")} hasShadow />
+
+# Tip : Quickest way to access the Settings & License Popup !
+
+If you don't want to apply any Layer Settings on top of your <code>.braw</code>, the quickest way to reach the Settings & License Popup is to go into the Interpretation of your <code>.braw</code> : Go to the "Project Panel" window and right click on the BRAW source file. After that, go to "Interpret Footage > Main". Go to the botton left of the "Main Options" tab and click on the "More Options" button.
+
+<BlogImage src={[
+  require("assets/images/_BR/BR_For_AE/InterpretFootage1.png"),
+  require("assets/images/_BR/BR_For_AE/InterpretFootage2.png")
+]} hasShadow />
+
+And then you get the Settings & License popup :
+
+<BlogImage src={require("assets/images/_BR/BR_For_AE/SettingsAndLicenseWindow1.png")} hasShadow />
+
+# Working with low resolutions to improve performance
+
+To get more performance from BRAW Studio, you should obviously reduce the playback resolutions. <strong>But you should choose 1/2, 1/4 or 1/8 (1/8 being of course the fastest) instead of other resolutions (i.e. do not choose 1/3). They are faster because they are native to the way Blackmagic RAW file format works</strong> : each frame is encoded in the file in a progressive way that makes it really easy to decode it quickly in half, quarter and eighth resolution.

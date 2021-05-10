@@ -1,0 +1,55 @@
+import ProductPage from "../../components/ProductPage";
+import Screenshots from "../../components/Screenshots";
+import { config } from "../../config";
+import { Features, TechnicalSpecs } from "../../components/content/AfterCodecs/Overview";
+import BlogpostList, { ProductBlogpostList } from "../../components/BlogpostList";
+import { ExternalLinkIcon } from "../../components/ExternalLinkIcon";
+import { Flex, Box } from 'rebass';
+
+export const meta = {
+  title: "AfterCodecs",
+  seoTitle: "Overview",
+  quicktagline: "AfterCodecs Fast Exporter for Adobe CC (After Effects, Premiere Pro and Media Encoder)",
+  preview:
+    "AfterCodecs plugins for Adobe CC, giving you the best and missing codecs for faster exports!",
+  ogImage: "images/_AC/AC_product_background.jpg",
+  carouselImage: "images/_AC/AC_product_background.jpg",
+  playlistId: "PL95F-QjAL6dFlhsRDuaw8kp2tSlt7qGLe",
+  mainColor: "#B80D4D",
+  secondaryColor: "#4F2359",
+  supportedPlatforms: ["win", "mac", "AdobeAE", "AdobeAME", "AdobePPro"],
+  pluginCapabilities: ["8k", "prores", "h265", "h264"],
+  buyLinkWin: "https://autokroma.onfastspring.com/aftercodecs-win",
+  buyLinkMac: "https://autokroma.onfastspring.com/aftercodecs-osx",
+  buyLinkDefault: "https://autokroma.onfastspring.com/aftercodecs",
+  firstInCarousel: false
+};
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    landerImage={require("assets/images/_AC/AC_product_background.jpg?trace")} // TODO: Investigate why moving url src to variable creates infinite loop
+    {...props}
+  />
+);
+
+<Features mainColor={meta.mainColor} assetPrefix="" overview />
+
+<H2 centered underline={meta.mainColor}>Articles</H2>
+<ProductBlogpostList tag={"AfterCodecs"} />
+
+<TechnicalSpecs mainColor={meta.mainColor} overview />
+
+<Flex alignItems="center" justifyContent="center">
+  <H2 centered underline={meta.mainColor}>
+    Screenshots
+  </H2>
+  <Box
+    as="a"
+    ml={2}
+    href={`/AfterCodecs/Screenshots`}
+  >
+    <ExternalLinkIcon mt={1} />
+  </Box>
+</Flex>
+<Screenshots images={config.AfterCodecsScreenshots} meta={meta} />

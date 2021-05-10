@@ -1,0 +1,39 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "Blackmagic RAW 1.7 Bug : no thumbnails and file access issues (Fixed)",
+  preview: "More information about the bug in Blackmagic RAW API 1.7 on Windows that might affect you on Windows",
+  author: "Antoine",
+  date: "2020-09-06",
+  tags: ["BRAW Studio", "After Effects", "Blackmagic"],
+  thumbnail: "images/_Poster/31_BRAW_1.7_Bug.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<strong>Update September 2020 : Blackmagic fixed this bug in their BRAW API version 1.8.1 onwards. Don't forget to update BRAW Studio with this latest bug fix !</strong>
+
+# What's the bug ?
+
+The Blackmagic RAW SDK (BRAW API) version 1.7 that was published March 7 2020 contains a bug on Windows. Here are two threads on Blackmagic forums discussing this issue and official acknowledgement of the bug :
+
+* Blackmagic RAW SDK: OpenClip file permissions https://forum.blackmagicdesign.com/viewtopic.php?f=12&t=115802
+* Blackmagic RAW Player : no thumbnails on Windows anymore https://forum.blackmagicdesign.com/viewtopic.php?f=12&t=112955
+
+As BRAW Studio is using the official API from Blackmagic it suffers from the same issues, the bug comes from Blackmagic not Autokroma.
+
+# How is this going to affect my workflow ?
+
+Here are three issues that will pop up while using Blackmagic RAW and BRAW Studio with Adobe applications :
+
+* No thumbnails on Windows Explorer of your .BRAW files. The Blackmagic RAW Player icon will be displayed instead. Thumbnails that were generated previously and still in your Thumbnail cache will still be displayed !
+* Some files cannot be imported into Adobe Premiere Pro, Media Encoder and After Effects; both using BRAW Studio or using the Blackmagic Premiere Pro plugin
+* In After Effects when using our BRAW Studio Layer Settings effect on a .BRAW layer you will get the message "file X.braw couldn't be open for reading" as well as "Unable to open file X.braw. If the file is opened in another application, closing it may solve the problem." 
+
+# What can I do ?
+
+Blackmagic hasn't officially released an update to fix this bug, nor has specified any date when an update will be released. We've noticed this issue back in the beginning of May 2020 and waited for an updated since then.
+
+If those issues are affecting your workflow, please contact Blackmagic about it or open a new thread on their forums https://forum.blackmagicdesign.com/viewforum.php?f=3 ! 
+
+If you only need the thumbnails in Windows Explorer you could try to install a previous version of Blackmagic RAW SDK, for example version 1.6.1

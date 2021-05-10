@@ -1,0 +1,44 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "QuickTime Is Dead : How To Export HAP from Adobe After Effects, Premiere Pro & Media Encoder?",
+  preview:
+    "Adobe finally dropped support for Quicktime but we have a working solution for exporting HAP codecs!",
+  thumbnail: "images/_Poster/Poster4_.png",
+  author: "Antoine",
+  tags: ["AfterCodecs", "HAP", "ProRes", "After Effects", "Premiere Pro"],
+  date: "2018-04-07"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# What happened
+
+<span><Link href={"https://theblog.adobe.com/quicktime-on-windows/"}>Adobe warned for years</Link> that Quicktime support was going away. Quicktime wss abandoned by Apple (which replaced it with AVFoundation) and pose some serious security threats to its users. In the April 2018 release of Adobe video software, <Link href={"https://helpx.adobe.com/x-productkb/multi/quicktime7-support-dropped.html"}>Adobe decided to drop support for the Quicktime exporter</Link>. Animation, ProRes and DNxHD are still available, but codecs that were coded as Quicktime extensions don't work anymore, such as <Link href={"https://hap.video/"}>HAP codecs</Link>.</span>
+
+# How to export HAP codecs from After Effects, Media Encoder and Premiere Pro?
+
+<span><Link href={"/AfterCodecs/"}>AfterCodecs</Link> are new native plugins for the whole Adobe CC Video suite, working on both MacOS and Windows. It brings <strong>fast and efficient codecs to After Effects's render queue and a new <i>Format</i> choice in Premiere Pro and Media Encoder's <i>Export</i> window</strong>. It supports HAP codecs, with Snappy lossless compression and CPU chunks for multi threaded decompression, without any resolution restriction. And it even provides new algorithms for better HAP quality.</span>
+<br/>
+
+Here are two tutorials with screenshot to guide you through exporting HAP with AfterCodecs:
+
+
+* <Link href={"/blog/Best-Way-Export-Hap-After-Effects-Encoder-High-Quality"}>The Best Way to Export HAP Codecs from After Effects</Link>
+* <Link href={"/blog/Best-Way-Export-Hap-Premiere-Pro-Media-Encoder-High-Quality"}>The Best Way to Export HAP Codecs from Premiere Pro and Media Encoder</Link>
+
+# More features you'll need
+
+An update also brought numerous improvements over the default options offered by the original work of Vidvox, the creators of HAP:
+
+* <Link href={"/AfterCodecs/"}>AfterCodecs</Link>' Hap and Hap Alpha support three different algorithms, with which you can choose your own trade-off between quality and encoding speed: the two first algorithms are from ffmpeg and original Vidvox work. The latest one, slower but offering the best quality, is a new one we developed to allow you to get the best quality in HAP out of your Adobe Projects!
+* <Link href={"/AfterCodecs/"}>AfterCodecs</Link> now supports any resolution without previous limitations (previously, the resolution had to be a multiple of 4, which is not very convenient in some situations)
+* AfterCodecs offers more features than other exporters: For example, you can export all your audio channels from Premiere Pro, and they'll reimport the same way in your PrPro projects, keeping all the audio information you have to store. Another example, you can tag the output video with VR360 and VR180 metadata!
+
+Click here for more information about <Link href={"/AfterCodecs/"}>AfterCodecs</Link>!
+
+# Is .MOV Dead too?
+
+No, <code>MOV</code> is a standard, still written and read by most video software and unaffected by Adobe's and Apple's decisions.
+
+Happy rendering with AfterCodecs for Adobe CC!

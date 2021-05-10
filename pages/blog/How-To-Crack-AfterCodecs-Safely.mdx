@@ -1,0 +1,80 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to Crack AfterCodecs Safely",
+  preview:
+    "Ahoy, Pirates! In this post you will learn how to safely download a cracked version of our product AfterCodecs and check that the cracked plugin is virusless.",
+  thumbnail: "images/_AC/0/Aescripts.jpg",
+  author: "Antoine",
+  tags: [],
+  date: "2017-11-21",
+  lastUpdated: "2017-11-21",
+  hidden: true
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+## What is AfterCodecs?
+
+<span><Link href={"/aftercodecs/"}>AfterCodecs</Link> is a new native plugin for Adobe After Effects for both Mac OS and Windows that brings <strong>fast and efficient codecs to AE's render queue</strong>.</span>
+
+<BlogImage src={require("assets/images/_AC/Afc_AME_Comp.gif")} alt="" mb={4} />
+
+AfterCodecs is currently the best option out there to <strong>encode ProRes files on Windows</strong> directly from AE and the best & fastest way to <strong>encode H.264 / H.265 videos for YouTube</strong> / Vimeo / Web streaming / sending to your client a lightweight and good looking render.
+
+You can buy AfterCodecs on <Link href={"https://aescripts.com/aftercodecs/"}>aescripts + aeplugins</Link>. If you thought about <strong>getting it illegaly</strong>, we prepared for you a guide in 5 easy steps, trying to minimize the risks for you and your computer. We wouldn't want you to get a nasty virus! Remember, <strong>software crackers are incentized to retrieve money and information about you</strong>, and giving you a virus is a good way to achieve that goal.
+
+## AfterCodecs Cracking Guide
+
+### 1) First, find a crack
+
+As you can guess it all starts by looking on your favorite search engine for <code>aftercodecs crack</code>. Be sure to use a browser extension like uMatrix or NoScript in order to be minimally protected when surfing on underground forums and clicking potentially dangerous links.
+
+<BlogImage src={require("assets/images/_AC/0/Crack_Sites.jpg")} hasShadow scaledDown />
+
+You will most likely stumble upon some VFX-related piracy forums: follow links and try to download an archive of the cracked AfterCodecs. The file extension should be <code>.zip</code> or <code>.rar</code> or <code>.7z</code>. You should NOT be downloading an executable (<code>.exe</code> file on Windows), this will definitely be a virus. Now, rename your downloaded archive and suffix it with <code>_cracked</code> so you can remember later that this archive is the dangerous one you should inspect.
+
+### 2) Download original
+
+Once you've downloaded the cracked AfterCodecs archive, you should also download the official AfterCodecs plugin in order to compare them and be sure you're not running a virus. Go to <Link href={"https://aescripts.com/aftercodecs/"}>aescripts + aeplugins</Link> and click <code>TRY</code>.
+
+<BlogImage src={require("assets/images/_AC/0/Aescripts.jpg")} />
+
+### 3) Unzip safely the crack
+
+Third step, unzip both archives in their own folder with your OS's built-in unzipper or a software like 7-Zip. Warning: this operation is dangerous as the crackers could exploit a bug in the unzipper software. <strong>This guide cannot guarantee you 100% chance of not getting a virus</strong>. If you're really afraid of getting a virus, stop at this step or use a <Link href={"https://www.virtualbox.org/"}>Virtualbox</Link>. Once unzipped you should have an <code>.aex</code> file (Windows) or <code>.plugin</code> bundle folder (Mac OS) that is the plugin. If you find an executable and really want to use it safely you should setup a <Link href={"https://www.virtualbox.org/"}>Virtualbox</Link> and run it inside it (less than an hour to do).
+
+### 4) Check the differences with the original
+
+Now that you unzipped both plugins, you should check that the two plugins have exactly the same size like in this screenshot (4 lines):
+
+<BlogImage src={require("assets/images/_AC/0/Crack_Size_Comparison.jpg")} />
+
+If they don't: it means that the crackers could have added their own code to the plugin, and it's not good for you. My advice would be to not use this cracked version of AfterCodecs.
+
+Now if the two plugins filesizes matches, what you should do to ensure that the crackers only removed the license protection from AfterCodecs is to look at the difference between the two files. It's the most painful step but <strong>you can't be too careful</strong> about theses things.
+
+Here what's you should do on Windows: Shift + Right Click in your folder and click "Open Powershell here" or something like "Open window command prompt here" and then type <code>fc.exe /b AfterCodecs.v.1.2.0.aex AfterCodecs.v.1.2.0_cracked.aex</code> (replace the filenames with yours of course!) and finally <code>Enter</code>.
+
+<BlogImage src={require("assets/images/_AC/0/Crack_Binary_Comparisons.jpg")} />
+
+You should obtain something very similar as in this screenshot: it means only a few characters have been changed in the plugin, removing only the license protection. If more characters are changed there could be a threat!
+
+### 5) Install it and done!
+
+Now that the file seems fine you should install it manually by copying the <code>.aex</code> file (Windows) or <code>.plugin</code> bundle folder (Mac OS) into your Plugins directory of your After Effects installation folder.
+
+There's one last step you should be careful about. You need ffmpeg to use AfterCodecs. <strong>Do NOT use a ffmpeg provided by crackers</strong> whether in the archive you downloaded or by clicking "Download ffmpeg" in the Settings tab of AfterCodecs cracked. The crackers could have changed the ffmpeg binaries and put their virus inside it. You should <Link href={"https://aescripts.com/aftercodecs/"}>go at the bottom of this page</Link> download the ffmpeg and follow the manual installation PDF.
+
+## Get support and new features!
+
+Happy rendering! Don't forget, it's never too late to buy AfterCodecs, <strong>get support for your bugs and get the latest versions automatically</strong>. We plan on making <strong>AfterCodecs even better and faster</strong> and we need resources in order to do so.
+
+With your financial help we could for example:
+
+- Add support for more codecs and options ;
+- Add special After Effects features to make your life easier (Quick rendering, Multiple-AE-processes rendering, etc.) ;
+- Add the support for a custom ffmpeg command line ;
+- Create a desktop version of AfterCodecs with batch rendering features ;
+- Cover more video production softwares ;
+- etc.

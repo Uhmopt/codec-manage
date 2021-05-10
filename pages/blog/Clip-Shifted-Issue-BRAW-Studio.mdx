@@ -1,0 +1,88 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How do I avoid the Shift Issue in BRAW Studio ?",
+  preview:
+    "In this article you'll learn how to deal with the shift issue which could happen to your project with BRAW Studio : first how to avoid it, and then how to repair a project with shifts.",
+  thumbnail: "images/_BR/Shift_Post/shift_Poster.png",
+  author: "Nicolas",
+  tags: ["BRAW Studio", "Timecode"],
+  date: "2019-06-29",
+  lastUpdated: "2020-02-29"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# When does this issue happen ?
+
+This issue only happens if you modified the <i>Media Start</i> timecode of your footage, manually or also for example using our BRAW Studio Panel (see below). For all we know, this Adobe CC behavior is not specific to Blackmagic RAW (<code>.BRAW</code>) files.
+
+Important Note : if you are using Premiere Pro 2020 and don't think you changed the timecodes of your footage (manually or with our Panel), it could be another issue. Please read our article about this : <Link href={"/blog/Premiere-Pro-Timeline-Shift-First-Frame-After-Moving-Project-Relinking/"}>Premiere Pro Timeline Shifts (or First Frame) After Moving Project or Relinking Footage</Link>.
+
+This issue happens when clips go offline and then are relinked. It can be the case when :
+
+- You updated Premiere Pro and are opening projects saved from an older version of Premiere Pro
+- When you move the location of your <code>.BRAW</code> footage
+- When your <code>.BRAW</code> files are located on an external drive (or a network location) : their filepath could change from one session to another (on Windows, the letter of the drive can change)
+
+<BlogImage
+  src={require("assets/images/_BR/Shift_Post/shift_clipShiftedExample.png")}
+  hasShadow
+  scaledDown
+/>
+
+By a "shift", we mean that the <i>in</i> and <i>out</i> points of the clips on the timeline are moved by the same amount of time. Sometimes, the duration of the clip on the timeline is changed and you will see stripes on your clips. This is not strictly a bug, but a behavior chosen by Adobe, related to how to transfer timecode after a footage relocation.
+
+# Where does this issue come from ?
+
+There's an Adobe bug related to NTSC timecode interpretation (framerate of 23.976 or 29.97). We created the <i>BRAW Studio Panel</i> in order to correct such timecodes from your imported <code>.BRAW</code> clips.
+
+When these clips are getting offlined by Premiere Pro and need to be relinked (and this can be done automatically), <strong>if the option <i>Align Timecode</i> is set, then Premiere Pro will shift some clips in your timeline</strong>.
+
+Note that some clips could be shifted, and others, not. It could also happen if you modified the timecodes manually and it can happen to any other video files with other formats than <code>.BRAW</code>.
+
+# How do I avoid this shift ?
+
+When PPro wants you to relocate the files, you need to untick the option <i>Align Timecode</i> and the shift should be avoided !
+
+<BlogImage
+  src={require("assets/images/_BR/Shift_Post/shift_alignTimecodeCheckbox.png")}
+  hasShadow
+/>
+
+# I want to avoid the shift, but the relink is done automatically : what should I do ?
+
+1. Open a new project
+2. Import one <code>.BRAW</code> file inside
+3. Right-click on the clip on the project panel and select <i>Make Offline...</i>
+4. Right-click again on the clip and this time select <i>Link Media...</i>
+5. In the <i>Link</i> panel, which will be displayed, untick the checkbox <i>Align Timecode</i> and then click <i>Cancel</i>.
+
+Now, <strong>the option will be disabled every time you need to locate files</strong> (for new projects also), even if the <i>Locate</i> action is done automatically by Premiere Pro.
+
+<BlogImage
+  src={require("assets/images/_BR/Shift_Post/shift_clipOfflineThenRelinked.png")}
+  hasShadow
+/>
+
+# My project has been saved with the shifts and I can't go back in time... How do I repair it ?
+
+Go to <i>Window</i> &gt; <i>Extensions</i> &gt; <i>BRAW Studio Panel</i>.
+
+On the <i>Toolbox</i> tab of the panel, scroll down to the section named <i>Timecode Shift</i>.There, you will see 4 buttons to help you recover the original clips timecode on yout timeline. If you don't see these buttons, please <Link href={"/BRAW_Studio/Download/"}>update BRAW Studio</Link>.
+
+<BlogImage
+  src={require("assets/images/_BR/Shift_Post/Shift_Panel_Shift_Correction.png")}
+  hasShadow
+  scaledDown
+/>
+
+The first 2 buttons should repair all your clips, if all your files have gone offline then been relocated before. If the clips have gone offline and been relinked many times, your files could have suffered multiple shifts. In that case, you will need to click on the <i>Correct Shift (Auto)</i> button many times (for each click, check if the in and out points of the clip on the timelines are correct !). If you click one time more than needed by mistake, the second button, <i>Undo Correct Shift (Auto)</i>, is here to undo the global shift of the first button.
+
+The last two buttons are here to shift selected clips in your current timeline, in case the first 2 buttons are not sufficient.
+
+# I'm using Blackmagic RAW Premiere Pro plugins, can I still use this feature ?
+
+Yes, and <strong>you can use these tools for free</strong> ! The tool to automatically correct the timecodes in Premiere Pro and the tool to correct Timecode Shifts don't need any license and can be used with the Blackmagic Plugin.
+
+We hope these tools will help you recover your projects ! Please contact us about any issue that comes up.

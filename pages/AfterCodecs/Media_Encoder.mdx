@@ -1,0 +1,36 @@
+import { meta as indexMeta } from "./index.mdx";
+import ProductPage, { FAQ } from "../../components/ProductPage";
+import BlogpostList from "../../components/BlogpostList";
+import Link from "../../components/Link";
+
+export const meta = {
+  ...indexMeta,
+  seoTitle: "AfterCodecs for Media Encoder Features",
+};
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    {...props}
+    landerImage={require("assets/images/_AC/AC_product_background.jpg?trace")}
+  />
+);
+
+<H2>What you can do with an AfterCodecs for Media Encoder License</H2>
+
+* Export directly from within Media Encoder Queue or when selecting the "Queue" button in Premiere Pro's Export Window
+* You can also **export your After Effects project using only the AfterCodecs for Media Encoder license** !
+* All the features **from AfterCodecs for Premiere Pro directly from Media Encoder** :
+  * Supports both .MOV and .MP4 format and a broad range of codecs : H264, H265, ProRes, HAP etc.
+  * Supports MultiRenders Markers in a Premiere Pro sequence : <Link href={"/blog/Batch-Export-Clips-Quickly-Premiere-Pro-with-our-Panel/"}>Batch Export 300 Clips Quickly in a few clicks</Link>
+  * Export all audio tracks separately (multichannel mono track or all audio tracks in different mono or stereo tracks in the output file)
+  * <Link href={"/blog/How-to-Export-Custom-Framerates-PPro-AME/"}>Custom Framerate option</Link>
+  * <Link href={"/blog/Best-Way-Export-Hap-Premiere-Pro-Media-Encoder-High-Quality/"}>HAP : all 4 codecs from Vidvox but with faster algorithms and without resolution restrictions</Link>
+  * H264 : <Link href={"/blog/Fastest-Export-H.264-Youtube/"}>a fast easy-to-use (one parameter to select) YouTube Upload profile that respects YouTube upload recommendation</Link>
+  * VR180 and VR360 metadata option
+
+
+<H2 centered id="Articles" underline={meta.mainColor}>Articles</H2>
+
+<BlogpostList tag={"AfterCodecs"} flat />
+

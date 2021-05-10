@@ -1,0 +1,77 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to convert your project to BRAW Studio ?",
+  preview: "How to convert your project started with the Blackmagic Plugin to BRAW Studio !",
+  author: "Nicolas",
+  date: "2020-11-10",
+  //lastUpdated: "2020-08-13",
+  tags: ["BRAW Studio"],
+  thumbnail: "images/_Poster/Poster_36_Convert_BMD.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+Because you are suffering of one of the <Link href={"/blog/BlackmagicRaw-Plugin-BRAW-Studio-Difference"}>numerous bugs of the Blackmagic Plugin</Link>, or because you just want to test BRAW Studio and use all its features, we explain here how to properly convert one of your project started with Blackmagic Plugin into a project using BRAW Studio.
+
+<strong>Note that this feature is only available for Premiere Pro from version 12.1 (Premiere Pro CC 2018.1)</strong>
+
+<VideoEmbed videoSrc={"i_rnQra4Iv4"}></VideoEmbed>
+
+# First Step : Install BRAW Studio
+
+The first step is easy, close Premiere Pro, <Link href={"/BRAW_Studio/Download"}>download</Link> and install BRAW Studio from our installer and follow the different steps.
+
+We advise you to uninstall the Blackmagic Plugin when the installer will ask you this.
+
+<strong>Do not open your project once BRAW Studio is installed ! Please follow the next steps before.</strong>
+
+# Second Step : Open an empty project and the BRAW Studio Panel
+
+Open an new empty project in Premiere Pro.
+
+Go to <i>Window</i> &gt; <i>Extensions</i> &gy; <i>BRAW Studio Panel</i>.
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/extensionMenu.png")} hasShadow >
+</BlogImage>
+
+# Third Step : Launch Conversion
+
+Go to the <i>ToolBox</i> tab, and click on <i>Convert</i>, then select your project started with the Blackmagic Plugin.
+
+<BlogImage src={require("assets/images/_BR/Convert_BMD_Project_Post/panel_convertMain.png")} hasShadow scaledDown>
+</BlogImage>
+
+Note : don't worry, we will export the converted project into a new .prproj file and let your original project untouched.
+
+The process should begin and you should see a progress bar. It's time for you to have a coffee / make a break and let the magic happen ! The process can take some time when converting bigger projects, on very exceptional cases, even up to one hour.
+
+<strong>At the middle of the conversion, the new converted project will be automatically loaded. If any Premiere Pro popup messages appear, please close them, because the conversion process will be paused while the popup is on. But after this, do not touch your project and wait for the progress bar to be complete !</strong> 
+
+<BlogImage src={require("assets/images/_BR/Convert_BMD_Project_Post/panel_convertProcessing.png")} hasShadow scaledDown>
+</BlogImage>
+
+Once the conversion is finished, you should see a message, as seen on the picture below, and a result <code>.txt</code> will tell you how the conversion handled all the Source Settings.
+
+<BlogImage src={require("assets/images/_BR/Convert_BMD_Project_Post/panel_endProcess.png")} hasShadow scaledDown>
+</BlogImage>
+
+# Fourth Step : Monitor Conversion Results
+
+You can monitor how the conversion processed your project with the result <code>.txt</code> exported, by simply clicking on the link which will appear on the panel at the end of the process (the blue text seen on the picture above). The <code>.txt</code> file will be opened by your default text editor.
+
+In this result <code>.txt</code> you will find details about the Source Settings parameters which have been transfered from the Blackmagic Source Settings to the BRAW Studio <i>BRAW Settings</i>.
+
+Note that if you didn't grade any <code>.BRAW</code> footage in Premiere Pro on this project, you should not care about the Source Settings conversion, and so you should not care about this conversion results file  ! 
+
+If the conversion of any given Source Settings was successful, you will get one of the following messages : 
+
+*  "Source Settings were not initialized : Nothing to do" : if you never changed the BMD Source Settings, and so it should not have been initialized, which means that the <i>Camera Metadata</i> was used to decode the <code>BRAW</code> file, and, as it is the default value when loading the BRAW Studio <i>BRAW Settings</i>, nothing needs to be done.
+*  "BMD DecodeUsing is set to CameraMetadata : Nothing to do" : if you let the BMD Source Settings <i>Decode Using</i> parameter as <i>Camera Metadata</i>, for the same reason as the previous case, there is nothing to do.
+*  A list of "[ParameterName] : [ParameterValue]" : It indicates all the different values found in the BMD Source Settings, which have been transfered to the BRAW Studio <i>BRAW Settings</i>.
+
+If you get any errors in this conversion result, please <Link href={"/contact/"}>contact us and send us your project</Link> ! Do not contact us for the messages described above, as they are perfectly normal.
+
+# Et voilà !
+
+You can now use your project with BRAW Studio ! You will just need to enter your license to unlock the full potential of BRAW Studio, <Link href={"/blog/How-to-License-BRAW-Studio"}>you can see here how to do this</Link>.

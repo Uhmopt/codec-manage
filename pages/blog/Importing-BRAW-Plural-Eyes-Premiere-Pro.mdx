@@ -1,0 +1,36 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "Importing Blackmagic RAW (.BRAW) in PluralEyes - Syncing audio for editing in Premiere Pro",
+  preview:
+    "How to use .BRAW with Red Giant PluralEyes in order to sync your footage and audio automatically in Adobe Premiere Pro",
+  thumbnail: "images/_Poster/Poster_PluralEyes.jpg",
+  author: "Antoine",
+  tags: ["BRAW Studio", "Premiere Pro"],
+  date: "2019-06-24"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<BlogImage src={require("assets/images/_Poster/Poster_PluralEyes.jpg")} hasShadow scaledDown />
+
+<span><Link href={"https://www.redgiant.com/products/shooter-pluraleyes/"}>PluralEyes</Link> lets you easily sync your footage and audio together. If it's already part of your workflow and you would like to use it with Blackmagic RAW .BRAW files, there's a way! Please follow these steps:</span>
+
+<br/>
+
+1. Rename your video file extensions from <code>.braw</code> to <code>.mov</code>. If you have too many clips, batch-renaming software is available
+
+2. Import your BRAW footage, now suffixed <code>.mov</code>, along with any other supplementary footage or audio, into PluralEyes and sync as usual. Plural Eyes will not be able to view the video but it will recognize the audio PCM tracks anyway and will be able to sync it like any other supported video
+
+3. Then in PluralEyes, export the <code>.xml</code> with the synced timeline for Premiere Pro as usual
+
+4. Open the <code>.xml</code> file with a text editor and use the “search and replace” function to replace all <code>.mov</code> extensions with <code>.braw</code>
+
+5. In your footage folder, rename all your video files back to <code>.braw</code> that were previously renamed <code>.mov</code>  in step 1.
+
+6. Open Adobe Premiere Pro and import the <code>.xml</code> like you would normally and you will have a synced timeline with Blackmagic RAW .BRAW footage. This will only work if you use our <Link href={"/BRAW_Studio/"}>BRAW Studio</Link> plugin for Premiere Pro, check it out!
+
+
+The trick is working in step 2. because the Blackmagic RAW file structure is based on the MOV/MP4 format and the audio is a simple WAVE (Uncompressed Linear PCM) track. Of course it can't read the video tracks but that is not necessary for PluralEyes. 
+
+Thanks to Marcello Mazzilli for this useful trick. Happy editing!

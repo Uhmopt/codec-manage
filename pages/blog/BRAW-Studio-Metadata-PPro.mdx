@@ -1,0 +1,124 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "BRAW Metadata on Premiere Pro's Project Panel",
+  preview:
+    "In this article you'll learn how to display the metadata contained inside your Blackmagic .BRAW shots, such as Reel, Scene, Take, Lens name, etc. in Adobe Premiere Pro ",
+  thumbnail: "images/_BR/Metadata_Post/metadata_Poster.jpg",
+  author: "Nicolas",
+  tags: ["BRAW Studio", "Timecode"],
+  date: "2019-08-24"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<VideoEmbed videoSrc={"Vv1QvV3loeg"}></VideoEmbed>
+
+# What metadata can I get ?
+
+Some of this metadata is set in the camera directly by the user, the rest is automatically saved in the braw file.
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/metadata_imageInCamera.jpg")}
+  hasShadow
+  scaledDown
+/>
+
+This is the list of the metadata automatically set to each <code>.BRAW</code> Source clip already imported into the Premiere Pro project, after you click on the <i>Display all BRAW sources metadata</i> button, on the <i>Metadata</i> tab of our panel (we will get back to it right ahead). All of the items are prefixed with <i>BR</i>, in order to differentiate them from the stock PPro ones.
+
+- BR Recorded Date
+- BR Camera Letter
+- BR Lens Type
+- BR Clip Name
+- BR Environment
+- BR Day/Night
+- BR Camera Name
+- BR Reel
+- BR Scene
+- BR Take
+- BR Good
+- BR Timecode
+- BR Compression Ratio
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/metadata_shownInProject.png")}
+  hasShadow
+/>
+
+If you think some metadata is missing from this list, please contact us !
+
+Note : <i>BRAW Studio Panel</i> can take a some time to process each <code>.BRAW</code> clip and, while the process takes place, it can feel a bit slow. Just wait for it to finish, or load footage in small batches.
+
+# How can I display this Metadata ?
+
+First, you need to generate the metadata for your clips with the <i>BRAW Studio Panel</i>. 
+
+In order to open this panel, go to <i>Window</i> &gt; <i>Extensions</i> %gt; <i>BRAW Studio Panel</i>.
+
+If you don't see <i>BRAW Studio Panel</i> (as displayed on the image below), then there may be a problem with the installation of your panel. Please try to re-install BRAW Studio or contact us.
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/metadata_visiblePanel2.png")}
+  hasShadow
+/>
+
+Then click on the <i>Metadata</i> tab of the panel. Scroll down and go to the <i>Display Metadata on Project Panel</i> section. You should be able to see the <i>Display all BRAW sources metadata</i> button. Go ahead and click it ! A blue popup window will show up once the process is done.
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/Metadata_Panel_Set_Metadata.png")}
+  hasShadow
+/>
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/SetMetadataToEveryBrawClipsButton.png")}
+  hasShadow
+/>
+
+After this, in order to see the metadata, take the following steps :
+
+1. Go to the <i>Project Panel</i>, and display the clips with the <i>List View</i> mode
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/metadata_listView.png")}
+  hasShadow
+/>
+
+2. Right-click on the header on the project items list, and click on <i>Metadata Display...</i>
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/metadata_rightClickOnTopToDisplay.png")}
+  hasShadow
+/>
+
+3. Open <i>Premiere Pro Project Metadata</i> and scroll down to the end of the list, then tick every item beginning by <i>BR</i>, then click <i>OK</i>
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/metadata_tickCheckbox.png")}
+  hasShadow
+/>
+
+After these steps, you will be able to see the BRAW Metadata directly on the <i>Project Panel</i>.
+
+<strong>
+  Note : You will now be able to use these new Metadata Columns to sort your
+  <code>.braw</code> in the project panel ! Please keep in mind you will need to repeat this process if you import new <code>.BRAW</code> to your project.
+</strong>
+
+# The BRAW File <i>Properties</i>
+
+Metadata can be also be seen (only if imported with BRAW Studio !) if you right-click on a native <code>.BRAW</code> clip (not a sequence!) and select <i>Properties...</i>
+
+<BlogImage
+  src={require("assets/images/_BR/Metadata_Post/metadata_otherProperties.png")}
+  hasShadow
+/>
+
+Finally, you can also check the metadata of each individual <code>.BRAW</code> clip by going straight to the <i>Metadata</i> tab on our panel after having highlighted the desired clip, either from the timeline or from the <i>Project Panel</i>.
+
+We hope these metadata features will help your workflow with BRAW Studio !
+
+# A free BRAW Studio feature for Blackmagic Plugin users
+
+This feature is free : you can use it with the Blackmagic plugin and get the same metadata without any BRAW Studio License !
+
+After installing BRAW Studio, in order to disable the BRAW Studio importer (for using the Blackmagic Plugin importer), please change the BRAW Studio options : <Link href={"/blog/BRAW-Studio-Settings-And-License-Popup/"}>check this article to know how to do !</Link>.

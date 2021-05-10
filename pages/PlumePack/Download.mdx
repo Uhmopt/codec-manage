@@ -1,0 +1,60 @@
+import { meta as indexMeta } from "./index.mdx";
+import ProductPage from "../../components/ProductPage";
+import Changelog from "../../components/Changelog";
+import DownloadPage from "../../components/Download";
+import { config } from "../../config";
+import changelog from "assets/docs/PlumePack Changelog";
+import Timeline from '../../components/Timeline';
+
+export const meta = {
+  ...indexMeta,
+  seoTitle: "Download PlumePack Installer for Windows",
+  timelineData: [
+    { date: '2020-02-16', label: 'Launch with ProRes, BRAW, R3D, Cineform etc.', version: '1.0' }, 
+    { date: '2020-04-16', label: 'H264, H265, cDNG, Images Sequence', version: '1.1' }
+  ],
+};
+
+export default props => (
+  <ProductPage
+    downloadPage
+    meta={meta}
+    {...props}
+    landerImage={require("assets/images/_PP/Autokroma_PlumePack_Premiere_Pro_product_background.jpg?trace")}
+  />
+);
+
+<DownloadPage productName={"PlumePack"} linkForMacOs={config.plumePackLinkForMacOs} linkForWindows={config.plumePackLinkForWindows} />
+<WindowsOnly strict mb={-4}>
+
+- <a href={config.plumePackLinkForWindows}>
+    Download and Install for Microsoft Windows
+  </a> : extract and run the Installer <code>.exe</code> - Free trial included !
+
+</WindowsOnly>
+
+<MacOnly strict mb={-4}>
+
+- <a href={config.plumePackLinkForMacOs}>
+    Download and Install for Apple macOS
+  </a> : extract (Open with Archive Utility) and run the Installer <code>.pkg</code> - Free trial included !
+
+</MacOnly>
+
+- <span><Link href="/PlumePack/User_Guide/">PlumePack User Guide</Link></span>
+- How To Update Plugins : download and install the usual way and it will update automatically, replacing old plugins with newer versions.
+- How To Uninstall Plugins : download and go into the "Uninstall Plugins" folder to find the Uninstaller. Don't forget to tick the <code>Uninstall PlumePack</code> checkbox !
+
+
+<H2 uppercase centered id="Changelog" underline={meta.mainColor}>
+  Changelog
+</H2>
+
+
+<Timeline data={meta.timelineData} color={meta.mainColor} />
+
+<Changelog
+  changelog={changelog}
+  color={meta.mainColor}
+  version={config.plumePackChangelogVersion}
+/>

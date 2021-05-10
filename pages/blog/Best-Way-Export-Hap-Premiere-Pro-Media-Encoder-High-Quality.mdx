@@ -1,0 +1,107 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "The Best Way to Export HAP Codecs from Premiere Pro and Media Encoder",
+  preview: "Full tutorial to export Hap / Hap Q and explanation of AfterCodecs benefits and features",
+  author: "Antoine",
+  date: "2020-03-06",
+  tags: ["Premiere Pro", "HAP", "AfterCodecs", "Media Encoder"],
+  thumbnail: "images/_Poster/AfterCodecs_Hap_PrPro_Poster.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+ 
+AfterCodecs is a new native plugin for the whole Adobe CC Video suite, working on both MacOS and Windows. It brings fast and efficient codecs to After Effects’ <i>Render queue</i> and a new <i>Format</i> choice in Premiere Pro and Media Encoder's <i>Export</i> window. **It supports HAP codecs, in any resolution**, with Snappy lossless compression and CPU chunks for multi-threaded decompression.
+
+# How to find AfterCodecs in Premiere Pro and Media Encoder
+
+<span><Link href={"/AfterCodecs/Download/"}>Download and install AfterCodecs (both trial and full version) with the installer provided here</Link>. It will install AfterCodecs for Premiere Pro, Media Encoder and After Effects.</span>
+
+
+Close any Adobe app running before launching the installer. Launch again Premiere Pro, select the sequence you would like to export and go to <i>File</i> &gt; <i>Export</i> &gt; <i>Media</i> in the top menu, this will open the <i>Export</i> window.
+
+In Media Encoder, once you have a sequence queued for export, click on the button in the <i>Format</i> column to open your export settings.
+
+From this point onwards, the process is exactly the same for both applications.
+
+Select AfterCodecs in the <i>Format</i> drop-down menu then, under the <i>Video</i> tab, select the <i>MOV</i> format (HAP codecs only support <code>.MOV</code> and <code>.AVI</code> containers).
+
+You can select your resolution now or after selecting your AfterCodecs settings. Unlike other HAP plugins, AfterCodecs has no resolution restrictions. This means you don’t have to worry about only being able to export resolutions that are multiples of 4, for example.
+
+Click on <i>Open AfterCodecs Settings</i>:
+ 
+<BlogImage src={require("assets/images/_AC/23_24/PPro_Export_Settings.png")} hasShadow scaledDown/>
+
+# Selecting your AfterCodecs settings
+## HAP Flavors
+
+On the <i>Video Codec</i> drop-down, choose between <i>HAP</i> and <i>HAP Q</i>. <i>HAP Q</i> flavors have improved image quality, at the expense of larger file sizes. <i>HAP</i> flavors have the lowest data-rate and a reasonable image quality. 
+
+<BlogImage src={require("assets/images/_AC/23_24/Video_codec.png")} hasShadow scaledDown/>
+
+Depending on whether you want to export the Alpha channel or not, there are four different types of HAP codecs to choose from: HAP, HAP Alpha, HAP Q and HAP Q Alpha.
+
+Note : VLC player does not currently support HAP Q Alpha.
+
+These are usually treated as four separate codecs settings, but AfterCodecs simplifies it by only having two options: <i>HAP</i> and <i>HAP Q</i>, with the choice to include an Alpha channel for either of them. 
+
+If you would like to export HAP A or HAP Q A, select either option from the <i>Video Codec</i> drop-down and you will be able to confirm that you require an Alpha channel later, from the PrPro export settings menu (see end of this article).
+
+## HAP Algorithms
+
+<BlogImage src={require("assets/images/_AC/23_24/Algorithm.png")} hasShadow scaledDown/>
+
+If you are exporting HAP or HAP Alpha (not HAP Q flavors), AfterCodecs also lets you select a different algorithm that suits your needs.
+
+* Vidvox / Squish Accelerated: This an optimised algorithm created by Autokroma that encodes HAP the slowest but will deliver the highest quality available.
+* Original FFmpeg: This is the original algorithm, it will render faster and deliver acceptable quality, but the Vidvox algorithm does look better.
+* JMP Preview: As the name states, this will deliver low quality files quickly, so it should only be used for previews that are needed fast.
+ 
+## Snappy
+ 
+<BlogImage src={require("assets/images/_AC/23_24/Chunks.png")} hasShadow scaledDown/>
+ 
+Select the number of CPU cores you would like to use for multi-threaded decoding. 1-2 cores is recommended for HD. 
+
+You can select more cores for 4K+ content, but they should not exceed the number of CPU cores in the computer used for playback.
+Above the chunks slider, you have the option of disabling snappy compression. This is not recommended without testing, as it can result in choppy playback. Without snappy compression, multithreaded decoding is disabled, so you will be unable to select your desired number of cores from the “chunks” slider.
+Once everything is configured to your liking, click OK on the Aftercodecs setting menu.
+ 
+## Alpha Channel
+
+
+<BlogImage src={require("assets/images/_AC/23_24/Export_Alpha_Box.png")} hasShadow scaledDown/>
+
+If you would like to include an Alpha channel in your export, simply tick the <i>Export Alpha Channel</i> box in the PPro/AME export settings, after configuring your AfterCodecs settings (this will only work if the codec you selected supports an Alpha channel). 
+Ticking this <i>Export Alpha Channel</i> box will export HAP Alpha or HAP Q Alpha, depending on which one you have chosen in the <i>Video Codec</i> drop-down of the AfterCodecs menu.
+
+* If you selected <i>HAP / HAP Alpha</i> from the menu and you tick the <i>Export Alpha Box</i>, it will export HAP Alpha, otherwise, HAP.
+* If you selected <i>HAP Q / HAP Q Alpha</i> from the menu and you tick the <i>Export Alpha Box</i>, it will export HAP Q Alpha, otherwise, HAP Q.
+
+# Export!
+
+Click <i>Export</i> in PrPro or the play button in AME and you’re done!
+
+
+For more information on HAP codecs, please consult https://hap.video/.
+
+
+Below is an overview of a few different AfterCodecs features you will also get for free when buying AfterCodecs. Don't forget, we have a 500 frames trial to test for free!
+
+
+<Link href={"/AfterCodecs/Download/"}>Download and install AfterCodecs (both trial and full version) from here!</Link>
+
+# AfterCodecs Bonus Features Overview
+
+AfterCodecs offers a range of features specific to Premiere Pro and Media Encoder. They can all save you a lot of time and frustration simply by eliminating the extra steps required to achieve the same results in vanilla Premiere. Some of these even allow you to do things that are completely impossible in regular Premiere. Here are a few of them:
+
+* **MultiRender**: When editing, it is often required to export multiple parts of a sequence in the same format. To do this in regular Premiere, you would have to export each clip individually, selecting your settings every time, or to create a new sequence with the clips and export it. Both of these methods are inconvenient at best, especially if it is a process you have to repeat often. AfterCodecs allows you to use markers to indicate which parts you would like to export, and the export settings only have to be selected once. This is a much simpler process and it can really save massive amounts of time.
+* **Multiple audio track export**: The audio export settings in regular Premiere Pro can be quite limited, especially when it comes to exporting multiple tracks on one file, as it is only possible on a few formats. AfterCodecs lets you export multiple tracks in mono, stereo or as a single multichannel track. This feature supports every format provided by AfterCodecs. So, for example, you can export an <code>H.264</code> file with as many tracks as you would like, which is impossible in vanilla Premiere.
+* **Quick Sub Resolutions**: In today’s world of video production, 4k+ resolutions are becoming increasingly common. However, except for final delivery, it is quite rare to actually be exporting 4k. This simple feature allows you to quickly set your export resolution to half, quarter, or an eighth of your sequence resolution, instead of having to type it in manually. It might not seem like a lot, but, if you are exporting many previews, this can save you a lot of time.
+* **Custom Framerates**: As well as higher resolutions, high framerates are becoming more common. Regular premiere only supports exports up to 60fps, only with certain preset framerates. Aftercodecs allows you to pick any framerate you want, whether it’s 74fps or 1000fps, in any format.
+
+
+
+<br />
+<Link href={"/AfterCodecs/Download/"}>Install and try for free AfterCodecs from here! 500 Frames trial included as well as the full version if you have a license</Link>.

@@ -1,0 +1,150 @@
+import { Flex } from 'rebass';
+import BlogPage from "../../components/BlogPage";
+import VideoEmbed from "../../components/EmbedVideo";
+
+export const meta = {
+  title: 
+    "Batch Export All Clips Quickly from Premiere Pro with our Panel",
+  preview:
+    "Tired of exporting manually all your individual clips from Premiere Pro? We got you covered with our new panel!",
+  author: "Antoine",
+  date: "2020-02-08",
+  lastUpdated: "2020-04-24",
+  tags: ["AfterCodecs", "Premiere Pro", "MultiRender"],
+  thumbnail: "images/_Poster/AfterCodecs_MultiRender_Panel_Poster.jpg",
+  hideReadMoreButton: false
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<VideoEmbed videoSrc={"ZvBEtJeceGE"}></VideoEmbed>
+
+## What is the MultiRender feature of AfterCodecs?
+
+<span><Link href={"/AfterCodecs"}>AfterCodecs, our Adobe CC Exporter plugin</Link> new <strong>MultiRender</strong> feature helps you export multiple clips at once from your Premiere Pro sequence. It means you'll only need to click <i>Export</i> and configure codecs parameters <strong>once</strong>, which is a huge save of your precious time. The way we do this is making AfterCodecs parse your timeline's markers to know which ins amd outs to export and with which prefix for the files output names. Previously, you had to create the markers manually, <Link href={"/blog/Batch-Export-Multiple-Clips-at-Once-in-Premiere-Pro-and-After-Effects"}>as our previous blog post explains</Link>, which could be a pain in some situations. That's why we developed a new panel for Premiere Pro that looks like this:</span>
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel.jpg")}
+  hasShadow
+  scaledDown
+/>
+
+This new panel can be installed with our installer, <Link href={"/AfterCodecs/Download/"}>just update AfterCodecs for free here</Link>! On MacOS, you should make sure you tick the <i>AfterCodecs Panel</i> checkbox. Just make sure to download the latest version of AfterCodecs, because this new panel is only available from version 1.8 on.
+
+## How to use AfterCodecs Panel 
+
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel_Open_b.jpg")}
+  hasShadow
+/>
+
+To see the panel, just click on <i>Window</i> &gt; <i>Extensions</i> &gt; <i>AfterCodecs Panel</i>. Now that you see the panel, you only have one thing to decide:
+* If you don't want to render all clips on the timeline, select the desired ones first, then click the <i>Add Markers for Selected Clips</i> button. 
+* If you want to render all clips on the timeline, make sure you have a sequence / timeline open containing a video track with your clips, and click either <i>Add Markers for All Video Tracks</i> or <i>Add Markers for First Video Track</i>.
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel_Selecting_Clips.jpg")}
+  hasShadow
+/>
+
+Once one of <i>Add Markers</i> buttons is clicked, you should have a confirmation thet the MultiRender markers were written. As you can see, their <i>Comments</i> section will be prefixed by an underscore "_" to indicate to our AfterCodecs plugin that they are MultiRender markers (as you could have other markers in your timeline that are not related to this feature).
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel_Markers_Added.jpg")}
+  hasShadow
+/>
+
+## Now export with AfterCodecs!
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel_Export.jpg")}
+  hasShadow
+  scaledDown
+/>
+
+Go to <i>File</i> &gt; <i>Export</i> &gt; <i>Media</i>, then select <i>AfterCodecs</i> in the <i>Format</i> drop-down list. Now click the <i>AfterCodecs Open Settings</i> button and tick the <i>MultiRender</i> checkbox as shown at the bottom of the second screenshot:
+
+<BlogImage
+  src={
+    require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel_Open_Settings.jpg")
+  }
+  hasShadow
+/>
+
+<BlogImage
+  src={
+    require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel_Configure.jpg")
+  }
+  hasShadow
+/>
+
+Premiere Pro or Media Encoder should be exporting all your clips one by one now:
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel_Exporting.jpg")}
+  hasShadow
+  scaledDown
+/>
+
+Once finished, you should have all your files exported to the same target folder with their names as a suffix before their extension:
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender_Panel/AfterCodecs_MultiRender_Panel_Resulting_Output_Files.jpg")}
+  hasShadow
+/>
+
+## Limitations of MultiRender
+
+First, let's talk about what MultiRender can't do: 
+
+* Your clips need to have the same resolution and framerate, because you need to place them in the same sequence to be exported.
+* You can't export audio only with AfterCodecs (yet).
+* The exported clips won't have their timecode written into output files.
+* It will only **export parts of your timeline**, not the clips as separate entities as present on your timeline. When you have multiple video tracks, it won't render the tracks below if they are hidden by clips on top of them. But you can disable the top video tracks before exporting ,if you wish to render only one specific video track, for example.
+
+<p><Link href={"/contact"}>Contact us</Link> if you need to overcome those limitations !</p>
+
+## Benefits of MultiRender
+
+We believe our new method is the best one available so far. Here's a breakdown of its benefits:
+
+* This method is **painlessly scalable to hundreds of clips**, the same process will be used and only a few clicks on our panel are necessary!
+* You are absolutely sure the rendered items will have **the same encoding settings** applied to them.
+* You can **prefix the output filenames** with whatever name you want.
+* You can **customize the markers** yourself after using the panel or even without using the panel at all, **store the markers** inside your Premiere Pro project for later and multiple use.
+* You'll also get only one item in queue in Adobe Media Encoder.
+* You can use Premiere Pro to quickly render the individual clips.
+* From Premiere Pro CC 2018 on, you can **change the timeline clip name** and this will affect the Markers Comments suffix (hence the output filename!), and this without changing the Source Clip name in the project panel.
+
+## F.A.Q.
+
+### How do I render audio only clips?
+
+You can select audio tracks to add markers with the <i>Add Markers for Selected Clips</i> button, but you can't disable the Video output in AfterCodecs yet. Contact us if you need the plugin to export audio only!
+
+### Why has my timeline been rendered multiple times?
+
+When you select multiple clips to add markers to your timeline with the panel, if they are on different tracks **you might add markers at the same time marks on your timeline**.
+
+MultiRender only renders parts of your timeline: it means that if you merge multiple clips by stacking them on multiple video tracks, it will render the result of this process! Basically, what you see on your <i>Program</i> monitor (preview of your timeline) is what you will export with the MultiRender feature. All effects added on your clips will also be included in the exports!
+
+You can disable some video and audio tracks before exporting though, if you only want to render one particular video track.
+
+
+### How do I change the names of the clips without changing their names on the <i>Project Panel</i>?
+
+From Premiere Pro CC 2018 on, you can right-click on any clip on your timeline and rename it without changing the name of the Source clip (as present on the <i>Project panel</i>), and our panel will take that new "sequence clip name" for the Markers Comments (and hence the output file suffix).
+
+### Is it compatible with Media Encoder ?
+
+Yes, of course! Just send your sequence to Media Encoder, it will keep the markers, and AfterCodecs for Media Encoder will be able to read them as long as you tick that checkbox in <i>AfterCodecs Codec Settings</i>. Please note that AfterCodec for Media Encoder is a different product than AfterCodecs for Premiere Pro and needs a separate license. But if you want to always use Media Encoder, you don't need to buy AfterCodecs for Premiere Pro, you could only use AfterCodecs for Media Encoder!
+
+### What if my clips are not from the same sequence?
+
+No worries, as long as they have the same resolution and framerate, you can create a sequence from the first clip and drag and drop the remaining clips to your timeline. They'll be stacked on the first video track, and all you need to do is to click the <i>Add Markers for First Video Track</i> button!
+
+
+### I have more needs not covered by this panel!
+
+Please  <Link href={"/contact"}>contact us</Link> to tell us more about your workflow and see how we can improve this MultiRender feature!

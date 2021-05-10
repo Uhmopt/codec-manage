@@ -1,0 +1,60 @@
+import ProductPage, {
+  FeaturesCard
+} from "../../components/ProductPage";
+import Screenshots from "../../components/Screenshots";
+import { config } from "../../config";
+import { ProductBlogpostList } from "../../components/BlogpostList";
+import { ExternalLinkIcon } from "../../components/ExternalLinkIcon";
+import { Flex, Box } from 'rebass';
+import { Features, TechnicalSpecs } from "../../components/content/PlumePack/Overview";
+
+export const meta = {
+  title: "PlumePack",
+  seoTitle: "Overview",
+  quicktagline: "The Best Project Manager for Premiere Pro !",
+  preview:
+    "PlumePack collects your PrPro projects & trim medias to make it lightweight : Trim, Archive, Organize and more!",
+  ogImage: "images/_PP/Autokroma_PlumePack_Premiere_Pro_product_background.jpg",
+  carouselImage: "images/_PP/Autokroma_PlumePack_Premiere_Pro_product_background.jpg",
+  //videoSrc: "",
+  playlistId: "PL95F-QjAL6dEaYoQKuIucLc91UcomgF4f",
+  mainColor: "#ffb82a",//"#eac11c",
+  secondaryColor: "#a97d26",//"#b47a3b",
+  supportedPlatforms: ["win", "mac", "AdobePPro"], //  , "AdobeAE", "AdobeAME"
+  pluginCapabilities: ["prores", "h265", "h264"], //  TO DO : add BRAW, R3D icons ?
+  buyLinkWin: "https://autokroma.onfastspring.com/plumepack-win/",
+  buyLinkMac: "https://autokroma.onfastspring.com/plumepack-mac/",
+  buyLinkDefault: "https://autokroma.onfastspring.com/plumepack/",
+  firstInCarousel: true
+};
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    landerImage={require("assets/images/_PP/Autokroma_PlumePack_Premiere_Pro_product_background.jpg?trace")}
+    {...props}
+  />
+);
+
+<Features mainColor={meta.mainColor} assetPrefix="" overview />
+
+<H2 uppercase centered underline={meta.mainColor}>Articles</H2>
+
+<ProductBlogpostList tag={"PlumePack"} btnColor={meta.mainColor} />
+
+<TechnicalSpecs mainColor={meta.mainColor} overview />
+
+<Flex alignItems="center" justifyContent="center">
+  <H2 uppercase centered underline={meta.mainColor}>
+    Screenshots
+  </H2>
+  <Box
+    as="a"
+    ml={2}
+    href={`/PlumePack/Screenshots`}
+  >
+    <ExternalLinkIcon />
+  </Box>
+</Flex>
+
+<Screenshots images={config.PlumePackScreenshots} meta={meta} />

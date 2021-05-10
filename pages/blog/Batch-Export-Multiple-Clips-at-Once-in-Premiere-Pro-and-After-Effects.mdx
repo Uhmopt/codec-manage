@@ -1,0 +1,108 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title:
+    "Batch Export Multiple Clips from the same Sequence in Premiere Pro and After Effects",
+  preview:
+    "Tired of exporting parts of your timeline in multiple clips from Premiere Pro and After Effects, having to set up output settings one by one ? Here's the solution for you.",
+  author: "Antoine",
+  date: "2019-09-21",
+  tags: ["AfterCodecs", "Premiere Pro", "After Effects", "MultiRender"],
+  thumbnail: "images/_Poster/Poster_MultiRender.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<span><Link href={"/AfterCodecs"}>AfterCodecs, our Adobe CC Exporter plugin</Link>, has a new <strong>MultiRender</strong> feature that will help you export multiple clips from the same sequence quickly. It means you'll only need to click <i>Export</i> and configure codecs parameters <strong>once</strong>, which is a huge save of your precious time. It also means that once you have a particular timeline set up, going through this process again (for example when you've done some changes and need newer versions of your videos) will be even easier.</span>
+
+Another benefit of this new method is that there's <strong>no room for errors of misconfiguring codecs output settings</strong> between the different files; you are guaranteed they will be the same.
+
+The trick we use for now is to put all clips you want to export on the same timeline and create markers to tell AfterCodecs (the Exporter plugin you're going to use) what portions of the timeline you want to export. It works if you already have the clips directly on your timeline (no need to create another sequence from clips if they're already there). If you need to export multiple timelines, you can create a new sequence containing those sequences and follow the same procedure.
+
+In fact, you can render whatever part of the timeline you want, not necessarily only clips. Let's say you have the following timeline in Premiere Pro:
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender/PProAME_TimelineWithMarkers.jpg")}
+  hasShadow
+/>
+
+After using our MultiRender feature, you would have rendered those files (Screenshot on Windows Explorer but it also works for MacOS) if your output file was <code>MultiRenderMarkersTest.mov</code>:
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender/PProAME_MultiRender_Results.jpg")}
+  hasShadow
+/>
+
+Now that you know you want to learn how to use this feature, here's a tutorial for Premiere Pro / Media Encoder and After Effects with screenshots :
+
+## MultiRender feature on Adobe Premiere Pro and Media Encoder
+
+So all you need to do is to create new markers, as shown on this screenshot:
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender/PProAME_AddMarker.jpg")}
+  hasShadow
+  scaledDown
+/>
+
+Then you need to right-click on a created marker and choose <i>Edit Marker</i>, to be able to increase the marker's duration and write in its <i>Comments</i> box:
+
+<BlogImage
+  src={[
+    require("assets/images/_AC/MultiRender/PProAME_EditMarker.jpg"),
+    require("assets/images/_AC/MultiRender/PProAME_EditMarkerPopup.jpg")
+    ]}
+  hasShadow
+  scaledDown
+/>
+
+You should edit your markers' <i>Comments</i> section and prefix them with an underscore <code>_</code>, to tell AfterCodecs this is a marker that should be used by MultiRender. Whatever is written after the underscore will be appended to the filename you choose for the exported files. The <strong>beginnings and endings of your markers indicate to AfterCodecs the in and out points</strong> of the clips which are to be exported. Now your timeline should look like this:
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender/PProAME_TimelineWithMarkers.jpg")}
+  hasShadow
+/>
+
+After having <Link href={"/AfterCodecs/"}>AfterCodecs correctly installed and licensed</Link> (please use AfterCodecs free 500 frames trial to test it before buying it!), you are ready to export. Go to <i>File</i> &gt; <i>Export</i> &gt; <i>Media</i> and select <i>AfterCodecs</i> in the <i>Format</i> drop-down list. Then click on the <i>AfterCodecs Settings</i> button and tick the <i>MultiRender</i> checkbox. Now you're good to go!
+
+<BlogImage
+  src={[
+    require("assets/images/_AC/MultiRender/PProAME_SelectAfterCodecsFormat.jpg"),
+    require("assets/images/_AC/MultiRender/PProAME_AfterCodecs_Button.jpg")
+  ]}
+  hasShadow
+/>
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender/PProAME_AfterCodecs_MultiRender_Checkbox.jpg")}
+  hasShadow
+/>
+
+The final result is there in your target output folder:
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender/PProAME_MultiRender_Results.jpg")}
+  hasShadow
+/>
+
+## MultiRender feature on Adobe After Effects
+
+You can already use this feature on After Effects if you just export your composition to Adobe Media Encoder's <i>Render Queue</i>. It works the same way. Your timeline / composition should look like this:
+
+<BlogImage
+  src={require("assets/images/_AC/MultiRender/AEfx_MultiRender_Markers.jpg")}
+  hasShadow
+/>
+
+As with Premiere Pro, you need to edit the marker's duration before being able to drag and drop its ins and outs.
+
+Rendering through Media Encoder is a bit slower, but you can do it while you are using After Effects.
+This feature hasn't been done directly from inside After Effects yet, but if you need it, please <Link href={"/contact"}>contact us</Link>! AfterCodecs also exists for After Effects, this might be achievable.
+
+## I don't like having to manually create the markers!
+
+Yes, we know, that's why we created a panel to automatically create and delete them! See our new blog post about it for more information: <Link href={"/blog/Batch-Export-Clips-Quickly-Premiere-Pro-with-our-Panel"}>Batch Export All Clips Quickly from Premiere Pro with our Panel</Link>
+
+<VideoEmbed videoSrc={"ZvBEtJeceGE"}></VideoEmbed>
+
+Happy editing!

@@ -1,0 +1,32 @@
+import { meta as indexMeta } from "./index.mdx";
+import ProductPage, { FAQ } from "../../components/ProductPage";
+import BlogpostList from "../../components/BlogpostList";
+import Link from "../../components/Link";
+
+export const meta = {
+  ...indexMeta,
+  seoTitle: "AfterCodecs for After Effects Features",
+};
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    {...props}
+    landerImage={require("assets/images/_AC/AC_product_background.jpg?trace")}
+  />
+);
+
+<H2>What you can do with an AfterCodecs for After Effects License</H2>
+
+* Export **directly from within After Effects native render queue**
+* Supports **both .MOV and .MP4 format and a broad range of codecs : H264, H265, ProRes, HAP** etc.
+  * H264 : <Link href={"/blog/Fastest-Export-H.264-Youtube/"}>a fast easy-to-use (one parameter to select) YouTube Upload profile that respects YouTube upload recommendation</Link>
+  * <Link href={"/blog/Best-Way-Export-Hap-After-Effects-Encoder-High-Quality/"}>HAP : all 4 codecs from Vidvox but with faster algorithms and without resolution restrictions</Link>
+  * VR180 and VR360 metadata option
+* Get the **taskbar progressbar icon while rendering**, so you know by looking at your After Effects icon the progress of your current export 
+
+
+<H2 centered id="Articles" underline={meta.mainColor}>Articles</H2>
+
+<BlogpostList tag={"AfterCodecs"} flat />
+

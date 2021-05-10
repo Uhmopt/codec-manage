@@ -1,0 +1,14 @@
+import ProductPage from "../../components/ProductPage";
+import { config } from "../../config";
+import { Features, TechnicalSpecs } from "../../components/content/BRAW_Studio/Overview";
+import { meta } from './index.mdx';
+
+export default props => (
+  <ProductPage
+    landerImage={require("assets/images/_BR/BR_product_background.jpg?trace")}
+    meta={meta}
+    {...props}
+  />
+);
+
+<Features mainColor={meta.mainColor} assetPrefix="" />

@@ -1,0 +1,35 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "After Effects : QuickTime ProRes Export on Windows Tutorial",
+  preview:
+    "In this post I'll show you how to export QuickTime ProRes on Windows directly from the After Effects render queue !",
+  thumbnail: "images/_Poster/Poster1_.jpg",
+  author: "Antoine",
+  tags: ["AfterCodecs", "ProRes", "After Effects"],
+  date: "2017-11-23"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+## AfterCodecs
+
+<span><Link href={"/aftercodecs/"}>AfterCodecs</Link> is a <strong>new plugin for After Effects</strong> bringing new codecs directly from the render queue. It is available on <Link href={"/AfterCodecs"}>our Website</Link>, click Download and follow the instructions (there is an automatic installer so you don't have to manually copy the files).</span>
+
+Now, render your composition and look into Output Module Settings. In the codecs list you will now be able to choose <code>AfterCodecs .mov</code> ! Click the <code>Format Options</code> button and now the AfterCodecs window pops up : you can select your ProRes flavor :
+
+<BlogImage src={require("assets/images/_AC/1/AfterCodecs_1.2.0_Screenshot_0.png")} />
+
+Don't forget to select <code>RGB + Alpha</code> if you want to export the Alpha Channel with ProRes 4444. You can now render ProRes directly from the render queue on Windows !
+
+## Is this ProRes reliable ?
+
+<span><Link href={"/aftercodecs/"}>AfterCodecs</Link> uses ffkroma under the hood, our own fork of <Link href={"https://www.ffmpeg.org/"}>ffmpeg</Link>. We fixed a few bugs in our ffkroma fork to help you produce the best ProRes video files possible. Some users are concerned because ffmpeg ProRes encoder is not officially endorsed by Apple, the original creator of the ProRes codec. However, ffmpeg use is widespread among video professionals, even among VFX studios and TV channels that do regular quality control tests.</span>
+
+Here are the bugs we found about the way AfterCodecs ProRes is interpreted by After Effects :
+- There is a color shift for AfterCodecs ProRes 422 (not ProRes 4444) in <strong>After Effects CC 2014 on Mac OS</strong> (when the video is re-imported back into AE) ;
+- On Windows ProRes 4444 with <strong>8 bit Alpha cannot be reimported in a 16 bpc AE project</strong>. If you're working with 16 bpc compositions and need alpha, you should export the Alpha in 16 bit. This is a special <Link href={"/aftercodecs/"}>AfterCodecs</Link> feature to lighten your alpha renders, Alpha from Quicktime ProRes is always 16 bit !
+
+Apart from these two After Effects bugs, <strong><Link href={"/Aftercodecs/"}>AfterCodecs</Link> is fully compatible with After Effects from CC 2015 included (so compatible with CC 2017, CC 2018, CC 2019, CC 2020..)</strong> !
+
+The plugin is also available for Premiere Pro and Media Encoder, and offers lots of new features for your everyday workflow ! More information <Link href={"/Aftercodecs/"}>here</Link>.

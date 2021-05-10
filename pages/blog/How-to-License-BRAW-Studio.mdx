@@ -1,0 +1,49 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to License BRAW Studio and access RAW Params",
+  preview:
+    "In this article you'll learn how to access the Settings and License of BRAW Studio in order to license it and remove the trial limitations !",
+  thumbnail: "images/_Poster/Poster_License_.jpg",
+  author: "Antoine",
+  tags: ["BRAW Studio", "aescripts"],
+  date: "2019-04-16"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# How to Install
+
+<span><Link href={"/BRAW_Studio/Download/"}>Download and follow instructions from this page</Link> and only tick the BRAW Studio checkbox if you're not interested <Link href={"/blog/Difference-Between-AfterCodecs-BRAW-Studio/"}>in our other plugin AfterCodecs</Link>.</span>
+
+<BlogImage src={require("assets/images/_CO/Installer/Installer_BRAW_Studio_Windows_1.png")} hasShadow />
+<BlogImage src={require("assets/images/_CO/Installer/Installer_BRAW_Studio_MacOS_1.png")} hasShadow />
+
+Here are the steps after downloading the plugin and testing the free trial : 
+
+# Retrieve License after Purchase
+
+The first step after purchasing <Link href={"/BRAW_Studio/"}>BRAW Studio</Link> (Blackmagic RAW Importer plugin) or even <Link href={"/AfterCodecs/"}>AfterCodecs</Link> (Another plugin we develop that lets you export in new codecs) is to retrieve your license. If you bought it here on this website you should have received the code on the purchase confirmation page and by email; for example it would look like this :
+
+<BlogImage src={require("assets/images/_BR/5/FastSpring_BRAW.png")} hasShadow />
+Your license key will be in bold blue text as seen above, please copy it and move on to the next step. If you can't find the email we sent you with the license <Link href={"/Send_My_License_Email/"}>you can request we send you again the license on this page.</Link>
+
+
+
+If you bought it on aescripts + aeplugins, a different reseller, please follow <Link href={"/blog/Retrieve-Your-License-From-aescripts/"}>this article</Link>.
+
+
+In order to remove the <Link href={"/BRAW_Studio/"}>BRAW Studio</Link> 500 frames import trial limit, you'll need to license it in the Settings popup : this is where you'll also find the BRAW Studio global settings (such as writing logs).
+
+# How to License BRAW Studio 
+
+Once you have your license code, you need to enter it from the "Settings &amp; License" popup.
+
+Please read <Link href={"/blog/BRAW-Studio-Settings-And-License-Popup/"}>this article</Link> to know how to open this popup.
+
+1. In the Settings tab you can paste the license you copied at the first step. If you're on Mac Mac OS you can use the "Paste Clipboard" button because <code>COMMAND</code>+<code>V</code> is not working.
+2. Click the Activate button. Please note you can enter any license for any Autokroma product here
+3. Click OK and restart Premiere Pro and you shouldn't be in Trial mode anymore 
+4. <strong>Please empty your media cache</strong> just in case you still have the 500 frames trial image in the cache : <Link href={"https://community.adobe.com/t5/Premiere-Pro/FAQ-How-to-clean-delete-or-trash-media-cache-files/td-p/8324672"}>How to clean (delete or trash) media cache files?</Link>
+
+<BlogImage src={require("assets/images/_BR/5/BR_License_from_desktop.png")} hasShadow />

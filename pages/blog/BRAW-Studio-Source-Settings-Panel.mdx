@@ -1,0 +1,185 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "The BRAW Studio Panel BRAW Settings tab",
+  preview: "Our V2 update of BRAW Studio introduces a new tab of our panel to let you color grade in a more efficient way and with batch modifications to a selection of .BRAW !",
+  author: "Nicolas",
+  date: "2020-05-22",
+  lastUpdated: "2020-05-22",
+  tags: ["BRAW Studio", "Premiere Pro"],
+  thumbnail: "images/_BR/PanelSourceSettings/thumbnail.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<center>
+  <VideoEmbed videoSrc="w4REl_U8K6c" />
+</center>
+
+# A new interface inspired from Lumetri and auto-updated with the current Selection
+
+With its design which will remind you of the Lumetri Panel, the BRAW Studio Panel gives you controls over your <code>.BRAW</code> Source Settings with a pleasant interface. 
+
+No more need to click on the tab each time you decide to tweek your <i>BRAW Settings</i>. Just select your footage on your timeline or on the <i>Project Panel</i> and the <i>BRAW Studio Panel</i> interface will be automatically updated accordingly to the selected element. 
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/poster.png")} hasShadow scaledDown></BlogImage>
+
+This new panel works **from Premiere Pro version 12.1** (second update of CC 2018), and so **it doesn't work in CC 2017 and CC 2018 first update**. 
+
+For Premiere Pro 2018.1 only, the selection from the timeline is a bit different. After selecting the braw file in the timeline, you need to click on the panel (anywhere) to update the <i>BRAW Studio Panel</i> selection.
+
+# Select Multiple Clips and Batch Apply Presets / Sidecar
+
+<VideoEmbed videoSrc={"BozKM5a9290"}></VideoEmbed>
+
+If you select many clips at the same time (from the timeline or the <i>Project Panel</i>), the panel will be in the <i>Multi-Selection Mode</i>.
+
+With this mode, you have several buttons available to apply the settings you want to the selected clips in one click ! 
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/batchApplyPreset.gif")} hasShadow>
+</BlogImage>
+
+So, for all the selected BRAW clips, in one click you can set :
+*  Presets : Load and apply a preset
+*  Sidecar : Save or load a <code>.sidecar</code> next to the <code>.BRAW</code> file
+*  <i>Camera Metadata</i> values
+*  <i>BRAW Default</i> values
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/multiClipMode.png")} hasShadow scaledDown>
+</BlogImage>
+
+
+# <i>Next</i> and <i>Prev</i> buttons : A quick way to crawl through the BRAW files on the timeline
+
+<VideoEmbed videoSrc={"AAxLU74D6fs"}></VideoEmbed>
+
+During the color grading stage, you can use the <i>Prev</i> and <i>Next</i> buttons to grade your <code>.BRAW</code> Sources one by one, following the time order on your timeline, without having to find the next Source to process.
+
+With this tool, you will be sure not to miss any <code>.BRAW</code> files and therefore to improve your workflow by processing all your BRAW Sources faster.
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/NextPrevVideo_betterQuality.gif")} hasShadow>
+</BlogImage>
+
+# <i>Set New Source</i> button to give different color grades to the same .BRAW Source
+
+<VideoEmbed videoSrc={"kR-2EFFtsgs"}></VideoEmbed>
+
+The <i>BRAW Settings</i> are applied on the Source file, meaning a <i>Project Item</i> in Premiere Pro. If you have 2 or more clips in your timeline which come from the same Source/<i>Project Item</i> (for example, after cutting a clip with the <i>Razor</i> tool), both will be linked to the same Source file, and thus the same <i>BRAW Settings</i>. If you change the <i>BRAW Settings</i> of one of these clips, the other related ones will be affected. 
+
+In order to have different <i>BRAW Settings</i> for each clip on your timeline coming from the same <code>.BRAW</code> Source, you would need to duplicate the Source file and replace the clip on your timeline. But the <i>In/Out</i> points of the initial cut clip would be lost, as well as its speed settings, scale, position, opacity and any effects on it.
+
+**That's why we made this new feature !** With the <i>Set New Source</i> button, you just need to select a clip on your timeline and click on the button. The original project file will be automatically duplicated without loosing any of its current settings (it will keep the same footage interpretation, parameters etc.). You can find this new project item on the <i>Project Panel</i>, in a new folder called <i>BRAW_Studio_Items</i>. The clip on the timeline will be re-assigned to this new project item (don't worry, the clip will also keep all of its settings : speed, position, opacity, effects etc.). You can now set the <i>BRAW Settings</i> for this clip without having other clips affected !
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/SetNewSource.png")} hasShadow >
+</BlogImage>
+
+# Trim your BRAW file 
+
+You can trim a BRAW file from the BRAW Studio Panel. Check <Link href={"/blog/BRAW-Studio-How-To-Trim-BRAW/"}>this article</Link> for more information.
+
+# Export a BRAW Frame 
+
+Exporting a frame as a BRAW file can be handy for some workflow, for discussing about different ways to grade a BRAW footage for example. Especially because you can save the BRAW Settings in a sidecar file next to the BRAW frame file. So for example if you receive a BRAW frame, you can change the exposure inside the sidecar and see how it would look like. 
+
+You can export a BRAW Frame directly inside the BRAW Studio Panel, at the bottom of the Source Settings. The exported frame number will be the one selected by the Source Monitor cursor (see image below).
+
+The current Source Settings set to the file will be automatically exported as a Sidecar next to the BRAW frame. If a sidecar was present next to the original file, the values will be baked into the file so in the "Camera Metadata" values.
+
+Note : by clicking on "To Src Monitor", on the top of the Source Settings Panel button, you will open the current selected BRAW file in the Source Monitor : it will be easy then to select the BRAW frame you want to export.
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/Autokroma_BRAW_Studio_PremierePro_Export_BRAW_Frame_chooseWithCursort.jpg")} hasShadow >
+</BlogImage>
+
+# Other Features
+
+## Fix Selection
+
+By clicking on the <i>Fix Selection</i> button, the <i>BRAW Studio Panel</i> will not be updated when you highlight another Source on the timeline or <i>Project Panel</i> anymore. 
+
+So it can be useful if you want to let the current selection in the panel "fixed" and not change it when you are working on your timeline. 
+
+Note that the <i>Prev</i> and <i>Next</i> buttons can still be used. 
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/FixedSelection.png")} hasShadow scaledDown >
+</BlogImage>
+
+## Proxy Warning
+
+Some users have been troubled when grading <code>.BRAW</code> Sources and using proxies. Indeed, once the proxy is created, the <i>BRAW Settings</i> will have no effects on it. You will need to tweek the <i>BRAW Settings</i> of the original Source (see the changes by disabling proxies) and then to export the proxy once again with the color grade changes.
+
+For this little issue, if the selected <code>.BRAW</code> on the panel has a proxy attached to it and the proxies are activated, you will see a this red message to warn you !
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/proxy.png")} hasShadow scaledDown >
+</BlogImage>
+
+When seeing this red <i>(Proxy!)</i> message, you should turn proxies off if you want to change the <i>BRAW Settings</i>. 
+
+## A better <i>Color Temp</i> slider
+
+The color temperature slider was not pleasant to work with, because a change in the range [2k - 10k] has more visual impact than a change in the range [10k - 50k]. With the <i>BRAW Settings</i> tab, we have changed this behavior and you should get a better feeling when using this slider. 
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/wbSliders.png")} hasShadow >
+</BlogImage>
+
+## Undo / Redo on Panel
+
+It was impossible to connect our Undo stack to the global Premiere Pro Undo stack, so they are not related. 
+
+There is no shortcut (<i>Ctrl</i>/<i>Cmd</i> + <i>Z</i>) for the "Panel Undo", because this shortcut is applied only to the Premiere Pro Undo stack. 
+
+You will find the 2 buttons (<i>Undo</i> and <i>Redo</i>) at the top of our panel. 
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/UndoRedo.png")} hasShadow >
+</BlogImage>
+
+# Install, License and Trial
+
+## How to install / update to BRAW Studio v2
+
+In order to install (or update to) BRAW Studio V2, you just need to <Link href={"/BRAW_Studio/Download"}>download and install the software with our installer</Link>.
+
+You can find the <i>BRAW Studio Panel</i> at the top menu, under <i>Window</i> &gt; <i>Extensions</i>.
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/extensionMenu.png")} hasShadow >
+</BlogImage>
+
+## License and Trial
+
+If you have already a license for BRAW Studio, please <Link href={"/blog/BRAW-Studio-V2-How-To-Upgrade-Source-Settings-Panel/"}>read this article</Link> to know how to upgrade to a Version 2 license.
+
+Without a valid license for BRAW Studio V2, the panel will be in "Trial Mode". Twenty minutes after your first change in the <i>BRAW Settings</i> tab, it will become disabled and you will need to restart Premiere Pro if you want to test it again. 
+
+# Advise / Warning
+
+## Restarting the Panel if You Have a Bug
+
+If you find a bug, please send us the logs by scrolling down the panel, clicking on <i>Settings & License</i> at the bottom and ticking the <i>Write debug logs</i> box on the app screen. Then reproduce your error and return to the app screen to click on <i>Open Logs Folder</i>.
+
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/SettingsLicense.png")} hasShadow scaledDown >
+</BlogImage>
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/OpenLogsFolder.png")} hasShadow scaledDown >
+</BlogImage>
+
+Otherwise, restarting the panel might solve your current problem. For that, no need to restart Premiere Pro. You just need to close the panel (see picture below) and relaunch it going to <i>Window</i> &gt; <i>Extensions</i>. 
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/closePanel.png")} hasShadow scaledDown >
+</BlogImage>
+
+## Using <i>BRAW Settings</i> on the <i>BRAW Studio Panel</i> and from the <i>Effect Controls</i> tab
+
+You should be able to use <i>BRAW Settings</i> in <i>Effect Controls</i> tab and the <i>BRAW Studio Panel</i> in the same session without any problems (one time one, one time the other). 
+
+However, even if we tested it, we advise you to stay with the same controls to have the best experience possible : if you start changing params from the <i>BRAW Studio Panel</i>, then continue with it!
+
+## Project Save Indication
+
+PPro doesn't change the top title to add a "*" inside (indicating that the project is not saved) after you changed a setting in the panel. 
+
+Don't worry : if you save your project, the change will be saved, but you should not trust this indication and save your project even if you don't see this "*" in the title.
+
+
+# We want your feedback ! 
+
+Do you like this new panel ? Is it helpful in your daily workflow ? What feature should we add to it ? <Link href={"/contact"}>Please send us your feedback !</Link>

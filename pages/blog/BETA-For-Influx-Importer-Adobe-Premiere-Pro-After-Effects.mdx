@@ -1,0 +1,50 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "BETA for Autokroma Influx (All-in-one Importer for Adobe Premiere Pro, Media Encoder and After Effects)",
+  preview: "Try out our first BETA for our new Importer plugin for Adobe CC video software !",
+  author: "Antoine",
+  date: "2021-04-11",
+  tags: ["Influx", "Premiere Pro", "Media Encoder", "After Effects"],
+  thumbnail: "images/_Poster/48_BETA-For-Influx-Importer-Adobe-Premiere-Pro-After-Effects.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+
+# What is Autokroma Influx ? 
+
+Autokroma Influx is our latest native plugin to let you import tons of new extensios, formats, containers, video and audio codecs directly inside Adobe Premiere Pro, Media Encoder and After Effects. Today we are releasing the first public free BETA of this project so you can test by yourself, for free, how it behaves on your computer. 
+
+For example you can import .MKV files with Influx, this container doesn't work natively with Adobe. Influx is based for now on ffmpeg codecs so a lot more of codecs and containers should be available for you. We're waiting for your feedback !
+
+# How to install and test Influx ?
+
+## Download 
+
+Click here to download the official Influx installer for Microsoft Windows 10 :  <Link href={"https://dl.autokroma.com/Influx/Influx_v0.1.0beta1_Windows_Installer.zip"}>zip name</Link>. Extract the .zip and launch the .exe installer like any other Autokroma plugin.
+
+Currently only compatible with Windows and Premiere Pro / Media Encoder / After Effects starting from CC 2019. Contact us if you need it for macOS and older versions of Adobe CC.
+
+## Changelog
+
+<code style={{fontFamily: "monospace"}}>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;First&nbsp;BETA&nbsp;of&nbsp;Influx&nbsp;:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Adobe&nbsp;will&nbsp;try&nbsp;to&nbsp;use&nbsp;Influx&nbsp;if&nbsp;it&nbsp;cannot&nbsp;import&nbsp;a&nbsp;file&nbsp;natively<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Support&nbsp;for&nbsp;.MKV&nbsp;.WEBM&nbsp;.AVI&nbsp;containers&nbsp;etc.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Use&nbsp;Premiere&nbsp;Pro&nbsp;DogEars&nbsp;to&nbsp;confirm&nbsp;that&nbsp;Influx&nbsp;is&nbsp;being&nbsp;used&nbsp;to&nbsp;decode&nbsp;the&nbsp;files<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Suffix&nbsp;your&nbsp;video&nbsp;files&nbsp;with&nbsp;.influx&nbsp;to&nbsp;import&nbsp;them&nbsp;with&nbsp;Influx&nbsp;instead&nbsp;of&nbsp;natively&nbsp;by&nbsp;Adobe,&nbsp;this&nbsp;way&nbsp;you&nbsp;will&nbsp;know&nbsp;for&nbsp;sure&nbsp;it's&nbsp;not&nbsp;Adobe&nbsp;decoding&nbsp;the&nbsp;files.&nbsp;Could&nbsp;be&nbsp;useful&nbsp;for&nbsp;troubleshooting&nbsp;Adobe&nbsp;and&nbsp;working&nbsp;around&nbsp;its&nbsp;bugs<br />
+</code>
+
+## Premiere Pro's DogEars : how to check Influx is used for decoding
+
+You can double check if Influx is decoding the footage by using Premiere Pro's DogEar feature :
+
+1. Press CTRL + F12 (Cmd + F12 on macOS)
+1. Copy paste this in the input that pops up and press enter: `debug.set EnableDogEars=true`
+1. Play the file or sequence and you should see now lots of information in the Preview Monitor about what is being decoded, included a mention of Influx if it is used
+1. To disable the messages you can do the same with `debug.set EnableDogEars=false`
+
+# What features do you need ? Tell us !
+
+We hope to get early feedback from you ! If a file doesn't work, <Link href={"/contact/"}>please contact us here</Link> and share the files with us (Google Drive, Dropbox, WeTransfer etc.). If you had sucessful decoding of your current files we would like to hear from you too.

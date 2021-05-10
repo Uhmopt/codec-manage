@@ -1,0 +1,75 @@
+import ProductPage, {
+  FeaturesCard
+} from "../../components/ProductPage";
+import Screenshots from "../../components/Screenshots";
+import { config } from "../../config";
+import { Features, TechnicalSpecs } from "../../components/content/BRAW_Studio/Overview";
+import { ProductBlogpostList } from "../../components/BlogpostList";
+import { ExternalLinkIcon } from "../../components/ExternalLinkIcon";
+import { Flex, Box } from 'rebass';
+
+export const meta = {
+  title: "BRAW Studio",
+  seoTitle: "Overview",
+  ogImage: "images/_BR/BR_product_background.jpg",
+  carouselImage: "images/_BR/BR_product_background.jpg",
+  preview: "Fully-featured Blackmagic RAW Importer plugins for Adobe CC",
+  mainColor: "#4367BC",
+  secondaryColor: "#22386E",
+  playlistId: "PL95F-QjAL6dFNQzsm-E3xKcwHPjmBnJaf",
+  quicktagline: "BRAW Studio Blackmagic RAW Importer for Adobe CC (After Effects, Premiere Pro and Media Encoder)",
+  buyLinkWin: "https://autokroma.onfastspring.com/braw-studio-2-win",
+  buyLinkMac: "https://autokroma.onfastspring.com/braw-studio-2-osx",
+  buyLinkDefault: "https://autokroma.onfastspring.com/braw-studio-2",
+  supportedPlatforms: ["win", "mac", "AdobeAE", "AdobeAME", "AdobePPro"],
+  pluginCapabilities: ["8k"]
+};
+
+export default props => (
+  <ProductPage
+    landerImage={require("assets/images/_BR/BR_product_background.jpg?trace")}
+    meta={meta}
+    {...props}
+  />
+);
+
+<Features mainColor={meta.mainColor} assetPrefix="" overview />
+
+<H2 centered underline={meta.mainColor}>Articles</H2>
+
+<ProductBlogpostList tag={"BRAW-Studio"} btnColor={meta.mainColor} />
+
+<TechnicalSpecs mainColor={meta.mainColor} overview />
+
+<br />
+<center>
+  <span style={{color: "#f00", fontSize: "150%"}}>
+    Please use the 500 Frames Trial before buying !
+  </span>
+</center>
+
+<br />
+
+<Flex alignItems="center" justifyContent="center">
+  <H2 centered underline={meta.mainColor}>
+    Screenshots
+  </H2>
+  <Box
+    as="a"
+    ml={2}
+    href={`/BRAW_Studio/Screenshots`}
+  >
+    <ExternalLinkIcon />
+  </Box>
+</Flex>
+
+<Screenshots images={config.BRAWStudioScreenshots} meta={meta} />
+
+<br />
+
+<center>
+  <a href={"https://docs.google.com/forms/d/e/1FAIpQLSfjLYch8EKPFzI44hzX2upzZfHUmOQ6Ee6jefnRfay3xB8PLA/viewform"}
+    style={{color: "#008", fontSize: "125%"}}>
+  Give us your feedback on BRAW Studio !
+  </a>
+</center>

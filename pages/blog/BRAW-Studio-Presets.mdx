@@ -1,0 +1,93 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "The BRAW Studio Presets",
+  preview: "Everything you should know about the BRAW Studio Presets feature !",
+  author: "Nicolas",
+  date: "2019-12-06",
+  lastUpdated: "2019-12-08",
+  tags: ["BRAW Studio"],
+  thumbnail: "images/_BR/Presets_Post/Presets_Poster2.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# Available directly in the Source Settings and Layer Settings
+
+You can't miss it ! You will find the presets dropdown menu in the Source Settings Tab of BRAW Studio Panel (Premiere Pro) and top of the Layer Settings (After Effects) UI parameters.
+
+<BlogImage src={require("assets/images/_BR/Presets_Post/Presets_GUI_Premiere_Pro_Panel.png")} hasShadow scaledDown>BRAW Studio Panel for Premiere Pro
+</BlogImage>
+
+<BlogImage src={require("assets/images/_BR/Presets_Post/Presets_GUI.png")} hasShadow scaledDown textPosition="left">
+  There is one dropdown list to select the preset you want to deal with, and 3 buttons to interact with the currently selected preset.
+</BlogImage>
+
+## Load Preset
+
+The second button "Load Preset" loads the parameters inside the current selected preset into the current Custom A or B RAW Parameters.
+
+When loading a preset, the "Decode Using" will automatically be switched to "Custom A" if it was on "Default" or "Camera Metadata".
+
+<Link href={"#loading-presets-errors"}>See also next section "Loading Presets Errors".</Link>
+
+<br/>
+
+## Save Preset
+
+The third button "Save Preset" writes the current RAW Parameters used to decode the image (whatever the "DecodeUsing" selected) into the current selected preset.
+
+- If no preset has been saved, the name will be "No Preset Saved Yet".
+- If the preset is saved and was named "No Preset Saved Yet", the name will become "Untitled Preset" automatically.
+- If the preset is named "Untitled Preset" but the preset file is not present, the name will be changed automatically to "No Preset Saved Yet"
+- A custom User Preset name will never be replaced automatically.
+
+If you'd like to have a different custom automated name from this one ("Untitled Preset"), with the current .braw footage name inside it for example, please <Link href={"/contact/"}>contact us</Link> !
+
+## Manage Preset and Partial Presets
+
+The first button "Manage Preset" opens a new window that allows the user to customize the preset. You can start by choosing a name for your preset. You are able to see all the parameters and values related to the preset that you’ve just created and more. It’s also possible to turn on/off parameters by clicking on their checkboxes one by one, so as to create Partial Presets. You have two new buttons to enable or disable all checkboxes in one click. 
+
+Preset name : note that only ASCII characters are allowed, and this character "|" is also not allowed, but our Preset Manager GUI should not allow you to enter forbidden characters.
+
+If you'd like more options <Link href={"/contact/"}>contact us</Link> !
+
+<BlogImage src={require("assets/images/_BR/Presets_Post/Presets_PresetManager.png")} hasShadow scaledDown />
+
+# Quick Copy / Paste feature cross App !
+
+The Preset feature can be used to quickly Copy / Paste BRAW parameters from one clip to another. Of course there are other ways to do this, <Link href={"/blog/Introduction-to-BRAW-Studio/"}>more informations in this article !</Link>, but as the BRAW Studio Presets are global, this feature is more handy to transfer them between different hosts : Premiere Pro and After Effects for example.
+
+When you have Premiere Pro and After Effects already opened, the dropdown preset list (and so the preset names) will be synced as well as the presets values. So if you save a preset and set its name in Premiere Pro, then switch to After Effects, the Preset name will be automatically loaded in the dropdown list found in the Layer Settings and you will be able to load the BRAW parameters saved previously in Premiere Pro into your current Layer Settings.
+
+# Loading Presets Errors
+
+When you load a preset with its dedicated button "Load Preset", there could be errors if some values inside the preset are not available in the current BRAW file. This can be the case for :
+
+- ISO : from one camera to another, or one "Analog Gain" to another (like in the BMPCC 4K), the available ISO List can change. So if you save a Preset with ISO 4000 for example, and if this ISO is not available in the current BRAW file ISO List (from 100 to 1000 for example), then a message will be displayed and the closest ISO below the Preset ISO will be set : in our example 1000 will be set as ISO.
+
+<BlogImage src={require("assets/images/_BR/Presets_Post/Presets_BluePopup.png")} hasShadow scaledDown />
+
+- LUT : you can set a LUT directly in the BRAW File in some cameras. In BRAW Studio you are able to turn the LUT on or off, and change the LUT between the one in the BRAW File and the one in the Sidecar. If you select a preset with a LUT Applied, the LUT will not be copied into the Preset, but the information on which LUT to apply (Embedded or Sidecar) will be. When applying the preset (Load Preset), if no LUT is available for this BRAW file, then you will get the following message and no LUT will be applied.
+
+<BlogImage src={require("assets/images/_BR/Presets_Post/Presets_BluePopup_LUT.png")} hasShadow scaledDown />
+
+# Backup / Share Presets
+
+If you want to save your current Preset List somewhere, or share it with someone else, you just need to <strong>copy a folder</strong>.
+
+<span><strong>The information</strong> of your presets are inside a folder located here (replace <code>[YOUR_USERNAME]</code> by your user account name)</span>
+
+- <strong>Windows : <code>C:\Users\[YOUR_USERNAME]\AppData\Roaming\Autokroma\BR_Preset</code></strong>
+- <strong>Mac : <code>/Users/[YOUR_USERNAME]/Library/Application Support/Autokroma/BR_Preset</code></strong>
+
+(Note that AppData in Windows and Library in Mac are hidden folders !)
+
+You can also just copy one of the preset file in this folder. The name of the file will represent the number of the preset in the list. 
+
+By going to the "Settings & License" popup, and clicking on the "Open Log Folder" button, you will find the "Autokroma" folder (where you can find the "BR_Preset" folder) in one of the parent folders of the folder that just opened.
+
+
+<BlogImage src={require("assets/images/_BR/Presets_Post/Presets_BackupFolder.png")} hasShadow scaledDown >
+Of course, if you want to apply these presets (values and name), you just need to replace the folder and the file at the same location.
+</BlogImage>

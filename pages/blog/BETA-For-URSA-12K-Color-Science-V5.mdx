@@ -1,0 +1,56 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "BETA for URSA 12K .BRAW & Color Science V5, BMPCC6K Pro (Import in Premiere Pro and After Effects)",
+  preview: "Try out our latest BETA implementing BRAW API 2.0 BETA, to import URSA Mini Pro 12K files, BMPCC 6K Pro and test BMD Color Science V5 into Adobe video apps !",
+  author: "Antoine",
+  date: "2020-07-26",
+  lastUpdated: "2021-03-27",
+  tags: ["BRAW Studio", "Premiere Pro", "Blackmagic", "After Effects"],
+  thumbnail: "images/_Poster/33_URSA_12K.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+Update 27 March 2021 : Blackmagic Design released officially the long awaited BRAW 2.0 with support for Color Gen V5, URSA 12K, BMPCC 6K Pro and latest camera firmware ! You can update for free <Link href="/BRAW_Studio/Download/">BRAW Studio on our Download page</Link>.
+
+# Blackmagic RAW SDK 2.0 BETA on OSX and Windows 
+
+Blackmagic released a BETA version of their next 2.0 version of the BRAW SDK, letting us import URSA 12K .BRAW files as well as test the latest Blackmagic Color Science Version 5.
+
+We are also releasing a BETA version of our next BRAW Studio (which uses the last BRAW Beta SDK) to let you test those new features inside Adobe Premiere Pro, Media Encoder and After Effects !
+
+<br/>
+
+## Information about the new "Color Science Version 5" BRAW parameter
+
+Before this beta, there was only one choice for the "Color Science" BRAW parameter : the "Version 4".
+
+Now Blackmagic has introduced the new "Version 5", which is <strong>available for any BRAW files</strong> (Shot from Any Camera at any time).
+
+As your old files have been shot with only the "Version 4" available in Camera, the Camera Metadata will have "Version 4" set by default, but you can now switch to "Version 5" in the "Color Science" dropdown parameter of the BRAW Source Settings. 
+
+<br/>
+
+## Information about the new "Gamut Compression" BRAW parameter
+
+There is also a new parameter to enable or disable Gamut Compression (only from the BRAW SDK Beta 3 !). 
+
+Gamut Compression is only available when decoding with the GPU. It is a limitation from the BRAW SDK. <strong>So it has no effect when decoding with the CPU.</strong>
+
+Gamut Compression was hidden before, and applied automatically only when the image was decoded with the GPU. So by disabling "Gamut Compression" when using the GPU, you will have the same render look than when using the CPU.
+
+Here are some details about using GPU to decode BRAW with BRAW Studio :
+<ul>
+  <li>Premiere Pro / Media Encoder : Decoding BRAW with GPU is only available in Windows with CUDA. You will need to tick the checkbox from the "Settings &amp; License" : "Premiere Pro / Media Encoder : Enable hybrid CPU-CUDA (nVidia) decoding".</li>
+  <li>After Effects : You will need first to choose a GPU acceleration in your Project Settings. Then you will need to tick the checkbox from the "Settings &amp; License" : "After Effects : Enable Layer Settings GPU when Project Settings are in GPU acceleration mode".</li>
+</ul>
+
+<br/>
+
+## BRAW Studio Beta Installer
+
+<strong>The last BETA we released used the 2.0 Beta 4 BRAW SDK (released in December 2020 by Blackmagic Design)</strong> and has been updated with latest features and bug fixes from BRAW Studio v2.2.4 (December 24). Now that the official BRAW 2.0 has been released this BETA is useless ! You can update for free <Link href="/BRAW_Studio/Download/">BRAW Studio on our Download page</Link>.
+<br />
+
+Don't forget **this is only a test version, not ready for production**. Do not save your current production projects with this version, always make backup and contact us if you find anything wrong !

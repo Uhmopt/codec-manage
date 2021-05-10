@@ -1,0 +1,13 @@
+import ProductPage from "../../components/ProductPage";
+import { Features } from "../../components/content/AfterCodecs/Overview";
+import { meta } from './index.mdx';
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    landerImage={require("assets/images/_AC/AC_product_background.jpg?trace")}
+    {...props}
+  />
+);
+
+<Features mainColor={meta.mainColor} assetPrefix="" />

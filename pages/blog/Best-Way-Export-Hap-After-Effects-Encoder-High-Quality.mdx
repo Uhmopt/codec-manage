@@ -1,0 +1,85 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "The Best Way to Export HAP Codecs from After Effects",
+  preview: "Full tutorial to export Hap / Hap Q from your Render Queue and explanation of AfterCodecs benefits and features",
+  author: "Antoine",
+  date: "2020-03-06",
+  tags: ["After Effects", "HAP", "AfterCodecs"],
+  thumbnail: "images/_Poster/AfterCodecs_Hap_AEfx_Poster.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+
+AfterCodecs is a new native plugin for the whole Adobe CC Video suite, working on both MacOS and Windows. It brings fast and efficient codecs to After Effects’ <i>Render Queue</i> and a new <i>Format</i> choice in Premiere Pro and Media Encoder's <i>Export</i> Window. **It supports HAP codecs, in any resolution**, with Snappy lossless compression and CPU chunks for multi-threaded decompression.
+
+
+# How to find AfterCodecs in After Effects
+## Render queue
+
+<span><Link href={"/AfterCodecs/Download/"}>Download and install AfterCodecs (both trial and full version) with the installer provided here</Link>. It will install AfterCodecs for Premiere Pro, Media Encoder and After Effects.</span>
+
+Close any Adobe app running before launching the installer. Launch After Effects again and add your composition to the After Effects <i>Render Queue</i>.
+In the <i>Render Queue tab</i>, click on the button shown on the right to bring up your <i>Output Module</i> settings.
+
+
+<BlogImage src={require("assets/images/_AC/23_24/Render_queue.png")} hasShadow scaledDown/>
+
+Once the settings panel is open, select the <i>AfterCodecs .mov</i> format (HAP codecs only support <code>.MOV</code> and <code>.AVI</code> containers).
+
+## Output Module: Alpha channel, bit depth
+
+Depending on whether you want to export the Alpha channel or not, there are four different types of HAP codecs to choose from: HAP, HAP Alpha, HAP Q and HAP Q Alpha. <i>HAP Q</i> flavors have improved image quality, at the expense of larger file sizes. <i>HAP</i> flavors have the lowest data-rate and a reasonable image quality.
+
+Note: VLC player does not currently support HAP Q Alpha.
+
+If you would like to include an Alpha channel in your export, simply switch from <i>RGB</i> to <i>RGB + Alpha</i> in the <i>Channels</i> drop-down menu and you can choose between <i>HAP</i> or <i>HAP Q</i> in the AfterCodecs settings. Choosing <i>RGB + Alpha</i> will export HAP Alpha or HAP Q Alpha, depending on which one you chose.
+
+As HAP is an 8 bit codec, there is no use selecting more than <i>Millions of colours</i> on the <i>Depth</i> drop-down, as it will just increase render times without any quality improvements.
+If you would like to select a different resolution for your composition, you can select it now by ticking the <i>Resize</i> box and entering your desired resolution. Unlike other HAP plugins, AfterCodecs has no resolution restrictions. This means you don’t have to worry about only being able to export resolutions that are multiples of 4, for example.
+
+<BlogImage src={require("assets/images/_AC/23_24/Output_module_settings.png")} hasShadow scaledDown/>
+
+# Selecting your AfterCodecs settings
+
+Open the AfterCodecs settings by clicking on <i>Format options</i> button. Now you can select more advanced encoding settings.
+
+<BlogImage src={require("assets/images/_AC/23_24/Video_codec.png")} hasShadow scaledDown/>
+
+Once the AfterCodecs settings window pops up, select your desired HAP flavor from the <i>Video Codec</i> drop-down menu. The Alpha channel will only be included if you selected <i>RGB+ Alpha</i> previously:
+
+* If you select <i>HAP / HAP Alpha</i> from the menu and you picked <i>RGB + Alpha</i> it will export HAP Alpha, otherwise, HAP
+* If you select <i>HAP Q / HAP Q Alpha</i> from the menu and you picked <i>RGB + Alpha</i> it will export HAP Q Alpha, otherwise, HAP Q.
+
+## HAP Algorithms
+
+<BlogImage src={require("assets/images/_AC/23_24/Algorithm.png")} hasShadow scaledDown/>
+
+
+If you are exporting HAP (not HAP Q), AfterCodecs also lets you select a different algorithm that suits your needs. 
+
+* Vidvox / Squish Accelerated: This an optimised algorithm created by Autokroma that encodes HAP the slowest, but will deliver the highest quality available.
+* Original FFmpeg: This is the original algorithm, it will render faster and deliver acceptable quality, but the Vidvox algorithm does look better.
+* JMP Preview: As the name states, this will deliver low quality files quickly, so it should only be used for previews that are needed fast.
+
+## Snappy
+
+<BlogImage src={require("assets/images/_AC/23_24/Chunks.png")} hasShadow scaledDown/>
+
+Select the number of cores you would like to use for multi-threaded decoding. 1-2 cores is recommended for HD. 
+
+You can select more cores for 4K+ content, but they should never exceed the number of CPU cores in the computer used for playback.
+Above the chunks slider, you have the option of disabling snappy compression. This is not recommended without testing, as it can result in choppy playback. Without snappy compression, multithreaded decoding is disabled, so you will be unable to select your desired number of cores from the <i>Chunks</i> slider.
+
+# Export!
+
+Once everything is configured to your liking, click <i>OK</i> on both popup menus (AfterCodecs Settings and the <i>Output Module</i> settings).
+
+Click <i>Render</i> on the <i>Render Queue</i> tab and you’re done!
+
+For more information on HAP codecs, please consult https://hap.video/
+
+<br />
+<Link href={"/AfterCodecs/Download/"}>Install and try for free AfterCodecs from here! 500 Frames trial included as well as the full version if you have a license</Link>.
+

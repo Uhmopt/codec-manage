@@ -1,0 +1,21 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "BRAW Studio 1.9 : New Export XML Feature in our Premiere Pro Panel",
+  preview: "Our latest feature introduces the best way to solve the Adobe timecode bug for timeline XML export",
+  author: "Antoine",
+  date: "2020-03-02",
+  tags: ["BRAW Studio", "Timecode"],
+  thumbnail: "images/_Poster/Poster20xml.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<strong>EDIT : From Premiere Pro 14.3, 23.976 fps BRAW files are not affected anymore by the timecode bug. You should need our "Export Correct FCP XML" feature only if you're using 29.97 fps braw files with Non Drop-Frame timecodes.</strong>
+
+In our latest version of BRAW Studio 1.9.0 we introduced a new feature in our BRAW Studio Panel for Premiere Pro : Export Corrected FCP .XML ! This can be used for example to export your timeline containing <code>.BRAW</code> from Adobe Premiere Pro to Blackmagic DaVinci Resolve. It would only be useful if you have the wrong timecode due to the Adobe bug for Blackmagic RAW 23.976 / 29.97 framerates. It is currently the best solution available : you won't need to correct timecodes and so won't experience any timeline shift inside Premiere Pro. More information in this article : <Link href={"/blog/BRAW-Wrong-Timecode-Adobe-Premiere-Pro/"}>Blackmagic RAW (BRAW) Wrong Timecode Issue in Adobe CC</Link>.
+<Link href={"/BRAW_Studio/Download/"}>You can download and update BRAW Studio for free as well as read our Changelog by clicking here.</Link>
+
+<BlogImage src={require("assets/images/_BR/Timecode_Post/Timecode_Panel_Export_FCP_XML.png")} hasShadow scaledDown/>
+
+Please note you can still use this feature if you're using Blackmagic RAW Premiere Pro plugin !

@@ -1,0 +1,82 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "Compatibility between Blackmagic RAW Plugin and BRAW Studio",
+  preview:
+    "All you need to know about compatibility between Blackmagic Design Adobe plugin and our plugin BRAW Studio.",
+  author: "Nicolas",
+  date: "2019-11-08",
+  lastUpdated: "2020-11-05",
+  tags: ["BRAW Studio", "Blackmagic"],
+  thumbnail: "images/_BR/DifferenceWithOfficialPlugin_Post/officialPlugInDiff_Poster.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+In our previous article <Link href={"/blog/BlackmagicRaw-Plugin-BRAW-Studio-Difference/"}>BlackmagicRaw Plugin and BRAW Studio - What's the difference ?</Link> we explained what each plugin was for and in which situation they are best fitted, as well as list of all bugs from Blackmagic and new features we offer (20 Presets, Custom A/B, Metadata import etc.).
+
+Now we will explain everything we know about their cross compatibility in detail, which heavily depends on Adobe CC software behavior and what Blackmagic implemented.
+
+# Can we use both plugins at the same time?
+
+When Premiere Pro needs to import BRAW files, if both plugins are installed, as they both are importers for this <code>.braw</code> extension, Premiere needs to make a choice and give the priority to one of the plugins. So only one plugin will run for one file, even if both plugins are installed.
+
+From BRAW Studio 1.8.1 onwards only, <strong>BRAW Studio has priority over the Blackmagic Plugin</strong>, so if you have both plugins installed, it will be BRAW Studio which should import your files in Premiere Pro and After Effects.
+
+# Can I use BRAW Studio in After Effects and the BMD plugin in Premiere Pro (or the opposite) ?
+
+No, you should choose one plugin and stick to it during the entire duration of your project. You can convert from Blackmagic RAW plugin to 
+
+# Switch a full Premiere Pro Project between the 2 plugins
+
+If you just install BRAW Studio and open a project started with the Blackmagic Plugin, you will likely have several problems like red popup from our panel, and you will loose every change you made in the BMD Source Settings effects, so : don't do this !
+
+We implemented for you a way to convert your existing project in a clean way, and it is really easy to do ! <Link href={"/blog/How-to-convert-your-project-to-BRAW-Studio"}>You can find in this article how to do this</Link>, or in this youtube tutorial :
+
+<VideoEmbed videoSrc={"i_rnQra4Iv4"}></VideoEmbed>
+
+# Using the BRAW Studio Panel with the Blackmagic Plugin
+
+Some features in the BRAW Studio Panel can be used with the Blackmagic Plugin and are <strong>free</strong> ! (No license needed).
+
+The free feature concerned are :
+
+*  Getting automatically the BRAW Metadata in the Project Panel
+*  Correcting NTSC Timecodes in Premiere Pro
+*  Helping tools in case of Timecode Shift issues
+
+So you can install BRAW Studio, delete BRAW Studio plugins from MediaCore, and use the panel with the Blackmagic RAW plugin from Blackmagic <strong>for free</strong> !
+
+
+# Uninstalling Blackmagic Design's Blackmagic RAW plugin ?
+
+## Why would I want to uninstall Blackmagic Adobe plugins ?
+
+BRAW Studio and Blackmagic plugins will enter into conflict, you need to choose one or the other. We can't know how Premiere Pro will react in all different computers if the two plugins are installed at the same time. For example, we already know it will prevent you from using "Reconnect Full Resolution" so we recommend uninstalling Blackmagic Adobe plugins. Also, you will never be sure which plugin you are using (but if you see black and red bars, it's Blackmagic plugin !)
+
+## Automatic uninstallation
+
+You can uninstall Blackmagic RAW by downloading the <Link href={"https://www.blackmagicdesign.com/fr/developer/product/camera"}>installer</Link> and when running it, choose "Remove". 
+
+<span><strong>The problem with this method is that you will also remove the Blackmagic RAW Player and the thumbnail previewer</strong> and we recommend using them to improve your daily experience with <code>.braw</code>. In order to only remove Blackmagic RAW Adobe plugins, <Link href={"/BRAW_Studio/Download/"}>we added a checkbox in our own uninstaller for that</Link>.</span>
+
+<br/>
+
+## Manual uninstallation
+
+You can also follow the manual uninstallation method to uninstall Blackmagic RAW plugins from Blackmagic Design (only the plugins for Adobe CC) : exit any Adobe software such as Premiere Pro, Media Encoder and After Effects. Then go to your MediaCore folder :
+
+* Windows : <code>C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore</code>
+* Mac OSX : <code>/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore</code>
+
+and remove the following :
+
+* <code>BlackmagicRawPremiereImporter</code>
+* <code>BlackmagicRawPremiereSourceEffect</code>
+* <code>BlackmagicRawAPI</code> (whole folder)
+
+<BlogImage src={require("assets/images/_BR/Compatibility_BMD_Plugin_Post/Mediacore_Win_Uninstall_BMD_Plugin.png")} hasShadow />
+
+
+
+That's all for now, don't forget to follow us on <Link href={"https://facebook.com/autokroma/"}>Facebook</Link> or subscribe to our newsletter at the bottom of this page to be sure to not miss any news! You can also <Link href={"/contact/"}>contact us</Link> if you have any trouble.

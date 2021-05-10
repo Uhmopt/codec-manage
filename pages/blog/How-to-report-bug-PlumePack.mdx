@@ -1,0 +1,88 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to report a bug in PlumePack?",
+  preview:
+    "When using PlumePack, in case you have trouble with the plugin, you should send us some logs so we can give you assistance and fix a potential bug in our plugin. Here's how to do it.",
+  author: "Marion",
+  date: "2021-02-16",
+  tags: ["PlumePack"],
+  thumbnail: "images/_PP/PP_ReportBug/Autokroma_PlumePack_ReportBug_Poster.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+You are experiencing some trouble with PlumePack and you want assistance to fix your problem or you just want to report a bug to improve PlumePack ?
+This article will explain you how to do it step by step.
+
+# Step 1: Activate Logs
+
+Logs are not enabled by default, because they decrease the processing speed of the plugin. So the first task is to enable Logs. For this, you need to click on the "Enable Logs" button at the bottom of the PlumePack panel.
+
+In case you could not open the Panel or if nothing happens when you click on the button, please refer to the special section at the end of this article.
+
+<BlogImage
+  src={require("assets/images/_PP/PP_ReportBug/Autokroma_PlumePack_Premiere_Pro_Panel_Premium_Enable_Logs_tuto.jpg")}
+  hasShadow
+/>
+
+<strong>Once it's done, don't send us immediately the logs!</strong> You first need to reproduce the problem so the logs will contain enough information. 
+
+# Step 2: Reproduce your bug / crash
+
+Once the logs are activated, please reproduce your issue. If it's a crash, then reproduce the crash, using the same options you used when it crashed, with the same original project, etc.
+
+# Step 3: Send us the zip!
+
+<BlogImage
+  src={require("assets/images/_PP/PP_ReportBug/Autokroma_PlumePack_Premiere_Pro_Panel_Premium_Create_Zip_Logs_tuto.jpg")}
+  hasShadow
+/>
+
+After you reproduced the issue, click on "Create Zip Logs" at the botton of the panel. It will automatically open a folder with the zip log inside (the folder could be opened behind Premiere Pro so you could not immediately see it).
+
+Note : if there is several zip inside the opened folder, then the good one is the one with the good date and hour in its name).
+
+Please send us this zip ! <Link href={"/contact"}>You can contact us and attach the zip on our Contact page</Link>
+
+<BlogImage
+  src={require("assets/images/_PP/PP_ReportBug/Autokroma_PlumePack_zipped_logs.png")}
+  hasShadow
+/>
+
+# Remember to disable logs afterwards!
+
+Writing logs asks for a lot of resources from your computer, so please remember to disable logs after these steps, to get the full speed of PlumePack.
+
+<BlogImage
+  src={require("assets/images/_PP/PP_ReportBug/Autokroma_PlumePack_Premiere_Pro_Open_Desktop_popup_Settings_License_tuto.jpg")}
+  hasShadow
+/>
+
+To disable logs you need to click on "Settings &amp; License" to open a popup where you can uncheck "Write debug logs", and then click "Ok".
+
+<BlogImage
+  src={require("assets/images/_PP/PP_ReportBug/Autokroma_PlumePack_Desktop_disable_logs.png")}
+  hasShadow
+/>
+
+# How to report a bug if the Panel can't be opened or doesn't respond
+
+In that case : please go to the Panel Install folder and check that you can see this folder : 
+
+* Windows : <code>C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\com.autokroma.plumepackpanel\ProcessUtils</code>
+* MacOS : <code>/Library/Application Support/Adobe/CEP/extensions/com.autokroma.plumepackpanel/ProcessUtils</code>
+
+Note : If the folder doesn't exist, please try to re-download and re-install PlumePack and contact us if it still doesn't work.
+
+You will see an executable file called "PlumePack.exe" (Win) / "PlumePack.app" (MacOS). By double clicking on this file, you will be able to enable Logs. Then press Ok and close the popup.
+
+Please restart Premiere Pro, try to open the PlumePack Panel and then return to the PlumePack executable where you enabled the logs, but this time click on "Open Logs folder", then send us the zip which will be displayed !
+
+# What's next?
+
+You tell us!
+
+We have already planned a lot of features for this year, give us your ideas and advices by <Link href={"https://docs.google.com/forms/d/e/1FAIpQLSdQmpdatWzsX1dllrFhLyHvYhCFvkoAElb0EvIGV0h1bjFKhQ/viewform?usp=pp_url"}>answering this Form</Link>.
+
+How do you use PlumePack, what are your pain points ? <Link href={"/contact"}>Contact us to tell us ! We might find more solutions to your issues</Link>

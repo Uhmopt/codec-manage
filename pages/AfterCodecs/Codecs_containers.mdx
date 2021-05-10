@@ -1,0 +1,14 @@
+import { meta } from './index.mdx';
+import ProductPage, { BackToProductLink } from "../../components/ProductPage";
+import { CodecsAndContainers } from "../../components/content/AfterCodecs/Overview";
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    landerImage={require("assets/images/_AC/AC_product_background.jpg?trace")}
+    {...props}
+  />
+);
+
+<BackToProductLink {...meta} product="AfterCodecs" title="Codecs and Container" />
+<CodecsAndContainers mainColor={meta.mainColor} / >

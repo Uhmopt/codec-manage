@@ -1,0 +1,80 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to trim your BRAW files in Premiere Pro",
+  preview: "You can now trim your BRAW files in Premiere Pro !",
+  author: "Nicolas",
+  date: "2021-03-18",
+  tags: ["BRAW Studio", "Premiere Pro"],
+  thumbnail: "images/_BR/Trim_Post/Autokroma_BRAW_Studio_PremierePro_Trim_Poster.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+In this article you will learn how to trim your BRAW files in Premiere Pro !
+
+# What does Trimming mean ?
+
+Trimming is like copying a part of your footage. It will remove the frames before an InPoint and after an OutPoint set for the footage, while keeping all the file metadata and Source Settings.
+
+# Trim you BRAW file with the BRAW Studio Panel
+
+If you don't know about the BRAW Studio Source Settings Panel, please check <Link href={"/blog/BRAW-Studio-Source-Settings-Panel/"}>this article</Link> to know everything about it.
+
+## Choose the BRAW file and trim bounds
+
+First, you will need to select a BRAW file in your timeline or in the Project Panel.
+
+Then you will need to open this BRAW file in the Source Monitor. For this, at the top of the panel you can click on the "To Src Monitor" button, but you can also double click on a BRAW file in the Project Panel. Double clicking on a clip in your timeline will not work because it will open the Clip and not the Project Item in the Source Monitor.
+
+The In/Out points set in the Source Monitor (see picture bellow) will represent the bounds of the exported trimmed BRAW file.
+
+<BlogImage src={require("assets/images/_BR/Trim_Post/Autokroma_BRAW_Studio_PremierePro_Trim_SourceMonitorInOut.jpg")} hasShadow>
+</BlogImage>
+
+## Trim you BRAW !
+
+Once the In/Out are chosen from the Source Monitor, you just need to click on the "Trim BRAW" button at the bottom of the BRAW Studio Panel on the Source Settings tab. 
+
+The BRAW Settings currently set in the Source Settings Panel will be exported into a sidecar next to the BRAW file (so those values should be automatically loaded by any player if the sidecar file is still present next to the file).
+
+If a sidecar file is present next to the original file, the values inside this sidecar file will be baked into the "Camera Metadata" values of the trimmed BRAW.
+
+Note : SubClip with hard boundaries are not supported.
+
+<BlogImage src={require("assets/images/_BR/Trim_Post/Autokroma_BRAW_Studio_PremierePro_Trim_BRAWTrimming.jpg")} hasShadow>
+</BlogImage>
+
+# PlumePack : Trim from used parts in Timeline and Auto-Replace in the project !
+
+You should be interested in our other Autokroma product called <Link href={"/PlumePack/"}>PlumePack</Link>. It works like a Project Manager but can trim your files without changing the codec. 
+
+It can be used in different kind of situations :
+
+## Start editing with a lighter project 
+
+After importing your BRAW files inside Premiere Pro, and before starting to edit your project, add your files to a timeline and then crop your files to select only the parts you want to use.
+
+Then run PlumePack and your Project Items will be automatically replaced with the trimmed BRAW files. 
+
+That's really handy especially if you are working on SSD where space can be short.
+
+## Transfer lighter projects between team members
+
+PlumePack can save you a LOT of space used by your project, without altering quality (which will stay exactly the same) and by keeping your BRAW codecs. You can also only trim a part of your project easily. So it is perfectly suited for speed up your project transfer.
+
+## Save Lighter Backups
+
+When it's time to backup your project, use PlumePack to be sure to collect everything needed in your project, and get the lighter project as possible while keeping footage codecs and quality.
+
+## More features with PlumePack 
+
+PlumePack has a lot of other features like organizing your new trimmed project media structure, copying dependencies of your After Effects composition, and PlumePack can trim a lot of other codecs such as R3D RAW, ProRes, ProRes RAW, H.264, H.265, DNG, Image Sequence, ...
+
+You can find more informations about PlumePack on <Link href={"/blog/Introduction-to-PlumePack/"}>this introduction article</Link>.
+
+<BlogImage src={require("assets/images/_PP/PP_SharedImages/Autokroma_PlumePack_Premiere_Pro_Premium_Version.jpg")} hasShadow>
+</BlogImage>
+
+
+Now you know everything about Trimming BRAW in Premiere Pro, you should be able to get lighter and more efficient projects in Premiere Pro ! 

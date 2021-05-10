@@ -1,0 +1,116 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to Export H264 in 8K from Adobe Premiere Pro, Media Encoder and After Effects",
+  preview: "Full tutorial on how to export H.264 8K in Premiere Pro, Media Encoder and After Effects using our plugin, AfterCodecs",
+  author: "Antoine",
+  date: "2020-05-15",
+  tags: ["Premiere Pro", "After Effects", "AfterCodecs"],
+  thumbnail: "images/_AC/27/8K_Export_thumbnail.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# What does AfterCodecs do?
+
+AfterCodecs is a new native plugin for the whole Adobe CC Video suite, working on both MacOS and Windows. It brings fast and efficient codecs to After Effects’ <i>Render Queue</i> and a new <i>Format</i> choice in Premiere Pro and Media Encoder's <i>Export</i> window. AfterCodecs also removes a lot of the limitations that are found in regular Premiere Pro, including letting you export whatever resolution you require in many different codecs.
+
+In today’s world of video production, 4K+ resolutions are becoming increasingly common. However, the options for exporting higher resolutions can be quite limited in regular Premiere Pro, especially when using the <code>H.264</code> codec. 
+The maximum export resolution for <code>H.264</code> in regular Premiere is 4096X4096, slightly above 4K. With AfterCodecs installed, this limit goes up to 16384X16384, which is over 16K! This article will show you how to export these higher resolutions from Adobe Premiere Pro, Media Encoder and After Effects in <code>H.264</code>.
+
+
+
+# How to Export H264 in 8K from Adobe Premiere Pro and Media Encoder
+
+In Premiere Pro, select the sequence you would like to export and go to <i>File</i> &gt; <i>Export</i> &gt; <i>Media</i>, this will open your export settings.
+In Media Encoder, once you have a sequence queued for export, click on the button in the <i>Format</i>column to open your export settings.
+From this point onwards, the process is exactly the same for both applications.
+Select <i>AfterCodecs</i> in the <i>Format</i> drop-down menu, then, under the <i>Video</i> tab, select <i>MP4</i> or <i>MOV</i> as format.
+Click on <i>Open AfterCodecs Settings</i>.
+
+<BlogImage src={require("assets/images/_AC/27/8K_Export_Settings.png")} hasShadow scaledDown/>
+
+# Selecting your AfterCodecs settings
+
+In the video codec drop-down, select one of the <code>H.264</code> variants:
+
+<BlogImage src={require("assets/images/_AC/27/H264_variants.png")} hasShadow scaledDown/>
+
+* <strong><code>H.264</code></strong> is the normal option of the codec.
+* <strong><code>H.264 Youtube Upload</code></strong> is the AfterCodecs preset that follows the recommended Youtube export specifications. This is the simplest profile to use, as it only has a render speed slider. <i>Speed</i> = 8 should be avoided for final uploads, as they will produce low quality files.
+* <strong><code>H.264 RGB</code></strong> is for power users only. Do not use it if you don't know what you're doing.
+* <strong><code>H.265</code></strong> is a more advanced codec compared to <code>H.264</code>, leading to better quality or lower file sizes, if you can afford to spend more time compressing the file. It can also be exported following this same tutorial.
+
+The AfterCodecs menu also offers a wide range of export settings for this codec.
+So that the export suits your needs, you can toggle between three main “trade-offs” when choosing your settings: <i>Quality</i>, <i>Bitrate</i> and <i>FileSize</i>.
+
+<BlogImage src={require("assets/images/_AC/27/H264_tradeoffs.png")} hasShadow scaledDown/>
+
+* <strong>Quality</strong>: If you would like to maintain a constant quality standard throughout the video. A quality between 80-90% is excellent, so there is no need to go above that. An extreme quality of 99 or 100 may result in an unplayable file, depending on where you are trying to play it.
+* <strong>Bitrate</strong>: If you would like to maintain a specific bitrate throughout the video, which can be at the expense of quality.
+* <strong>Filesize</strong>: If you have specific size requirements, this option will give you the best quality file for that size.
+
+The speed affects compression optimisation, meaning lower render speeds will result in smaller files, and faster speeds will result in larger files. However, if you choose <i>Bitrate</i> or <i>File Size</i>, the algorithm will also compromise file quality to get your render out faster. <i>Speed</i> = 8 should be only be used for quick previews, as they will produce low quality files. As a general rule, with slower render speeds, you will get smaller files of higher quality.
+
+As you can see, each of them has a slider that will affect that specific parameter, so choose the one that works best for you.
+
+Do keep in mind that higher resolutions will always create larger files with longer render times, so it is even more important that you choose your settings carefully in order to get the file size/quality that you need.
+
+There are also more advanced settings that make changes to color range and the video processing algorithm. Remember that if you want more information about any AfterCodecs settings, you can simply hover over it with your cursor and an explanation will pop up on the right. Changing these settings without knowing what they do may create an export that is unplayable on some software/players. 
+
+<BlogImage src={require("assets/images/_AC/27/Advanced_settings.png")} hasShadow />
+
+Under the <i>Audio Codec</i> options, if you choose <i>AAC</i> a slider that lets you select the bitrate will appear. 
+
+<BlogImage src={require("assets/images/_AC/27/AAC_Options.png")} hasShadow />
+
+Higher quality audio bitrates will encode slower, and lower quality ones will encode faster.
+
+At the bottom of the <i>Encoding</i> tab, you will see a feature called <i>Fast start</i>. This is an AfterCodecs feature that optimises your video for web streaming. It will allow your video to start playing quicker online and it also means Youtube will process it faster, making it available sooner after uploading.
+
+<BlogImage src={require("assets/images/_AC/27/Fast_Start.png")} hasShadow />
+
+Once everything is configured to your liking, click <i>OK</i> on the AfterCodecs menu.
+
+# Selecting your Resolution
+
+Under the <i>Video</i> tab, uncheck the box on the right and select your desired resolution.
+
+<BlogImage src={require("assets/images/_AC/27/PPro_Res_selection.png")} hasShadow scaledDown/>
+
+Although AfterCodecs supports resolutions over 8K, Premiere Pro can get very slow when exporting and especially when importing files with 8K+ resolutions, depending on your computer specs. If you have to work with large resolution files, it is recommended to use the Premiere Pro proxy workflow.
+
+Only 16:9 resolutions were used in this guide, but AfterCodecs allows you to choose any resolution up to 16384X16384. It is also worth noting that VLC player will only read up to 8K resolutions. Warning: Do not attempt to enter a resolution over the maximum limit, as this can result in Premiere Pro crashing. This is a known issue that will be fixed soon.
+
+Once you have selected all your settings, click <i>Export</i> in PPro or the play button in AME and you’re done!
+
+# How to Export H.264 in 8K from After Effects
+
+First, add your composition to the After Effects <i>Render Queue</i>.
+In the <i>Render Queue</i> tab, click on the button shown on the right to bring up your Output Module settings.
+
+<BlogImage src={require("assets/images/_AC/27/AE_Render_queue.png")} hasShadow scaledDown/>
+
+Select <i>AfterCodecs .mov</i> or <i>Aftercodecs .mp4</i> from the <i>Format</i> drop-down menu and click on <i>Format Options</i> to open the AfterCodecs settings.
+
+<BlogImage src={require("assets/images/_AC/27/AE_Output_module_settings.png")} hasShadow scaledDown/>
+
+<strong>For all information required on setting up your export, please refer to “Selecting your AfterCodecs settings”, earlier in this article.</strong>
+
+Once everything is configured to your liking, click <i>OK</i> on the AfterCodecs settings menu.
+
+### Selecting your resolution
+
+If you would like to export a different resolution than the one your composition is set to, tick the <i>Resize</i> box and enter the new desired resolution.
+
+<BlogImage src={require("assets/images/_AC/27/AE_Resize.png")} hasShadow scaledDown/>
+
+Only 16:9 resolutions were used in this guide, but AfterCodecs allows you to choose any resolution up to 30000X30000. Although AfterCodecs supports resolutions over 8K, After Effects can get very slow when exporting and especially when importing files with 8K+ resolutions, depending on your computer specs.
+It is also worth noting that VLC player will only read up to 8K resolutions.
+
+Click <i>OK</i> on the <i>Output Module</i> settings.
+Click <i>Render</i> in the After Effects queue and you’re done!
+ 
+
+<br />
+<Link href={"/AfterCodecs/Download/"}>Install and try for free AfterCodecs from here! 500 Frames trial included as well as the full version if you have a license</Link>.

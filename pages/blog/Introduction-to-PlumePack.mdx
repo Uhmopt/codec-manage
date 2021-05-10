@@ -1,0 +1,99 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "Introduction to PlumePack for Premiere Pro",
+  preview:
+    "What is the purpose of our plugin PlumePack and its features ? The PrPro Panel presentation and how to use it.",
+  thumbnail: "images/_PP/PP_Introduction/Autokroma_PlumePack_Premiere_Pro_Introduction_Poster.jpg",
+  author: "Marion",
+  tags: ["PlumePack"],
+  date: "2021-02-16"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+<VideoEmbed videoSrc="xQC1Y_GX54o"/>
+
+# What does PlumePack do?
+
+PlumePack is a Premiere Pro panel intended for helping you consolidate your project, keeping all your media and dependencies into the same folder. It can also transform your projects to be lighter: taking less space on disk and removing useless stuff not used in your project.
+
+The product comes with 2 different licenses : Basic and Premium. 
+
+PlumePack Basic is an improvement of the Premiere Pro "Project Manager" Collect &#38; Copy feature.
+
+**PlumePack Premium can also Trim your media files losslessly without re-encoding!**
+
+Trimming removes the extra frames in each footage (more or less depending of the handle option), based on their use in your current project. The shorten media will keep their own codec and quality: you keep the exact pixels values from your original medias.
+
+You can find the list of the supported codecs for this Trimming feature below.
+
+All PlumePack options are explained in <Link href={"/blog/PlumePack-Parameters-Explained"}>this dedicated article</Link>
+
+<BlogImage src={require("assets/images/_PP/PP_SharedImages/Autokroma_PlumePack_Premiere_Pro_Introduction_Image.jpg")} hasShadow />
+
+# Why should I use PlumePack?
+
+## PlumePack Premium is suited for RAW Footage use!
+
+Keeping the codecs of your media can be really useful for RAW kind of footages! They are associated with parameters called Source Settings to decode the image in a different way, which gives to the colorist a powerful tool with more potantial than re-encoding this file with another Codec. 
+
+So if you are working with R3D, BRAW or ProRes RAW footages in your project, you will be able to have project much liter in terms of disk usage, without losing their Source Settings power!
+
+## Get rid over the current native Project Manager bugs!
+
+Some of you are already using the Project Manager and already know all its problems:
+
+* Nested sequence are not taken into account if you want to consolidate from a main sequence
+* After Effects Dynamic Linked Compositions are not copied with their dependencies
+* Final Folder Project organization is a mess: everything is put into the same folder
+* Collect & Copy: RAW footages like R3D or BRAW footages are not copies with their sidecar file.
+* A lot of projects are failing for different reasons ...
+  
+## Fast Transfer projects for team work
+
+Transfering huge projects with every medias is tricky and can take a lot of time. PlumePack reduces your Project size and makes those transfers way quicker!
+
+## Lighter Backups
+
+Archive the project without useless stuff and lighter medias!
+
+## Clean your project 
+
+You can use PlumePack whenever to :
+* Remove unused project items, isolate one sequence, reduce disk space used.
+* Gather everything used in your project at the same location on your computer.
+* Speed up Premiere with less materials to handle.
+
+<BlogImage src={require("assets/images/_PP/PP_SharedImages/Autokroma_PlumePack_Premiere_Pro_Premium_Version.jpg")} hasShadow />
+
+# How can I install / open / test / license PlumePack?
+
+## Install PlumePack
+
+<p>In order to <strong>Install or Update PlumePack</strong>, <Link href={"/PlumePack/Download"}>just download the installer following this link</Link>, unzip it and execute the <code>.exe</code> (Windows) or <code>.pkg</code> (Mac OSX).</p>
+
+## Open PlumePack
+
+The PlumePack Panel can be found in the Premiere Pro top menu, under "Window" -> "Extensions" -> "PlumePack Panel".
+
+## TRIAL
+
+If you want to have a preview of PlumePack capabilities before buying it, <strong>you can try the plugin with no license in TRIAL mode</strong>.
+
+The only available feature is the Analysis that will gives you a lot of infos about your project medias <strong>in terms of the options used</strong>: which one should be trimmed, which one should be copied and why, how many space can be saved, etc.
+
+<BlogImage src={require("assets/images/_PP/PP_Introduction/Autokroma_PlumePack_Premiere_Pro_TRIAL.jpg")} hasShadow />
+
+## License 
+
+To remove the restrictions of the TRIAL you will have to purchase a license and register it. In order to do it, <Link href={"/blog/How-to-License-PlumePack"}>please follow this article</Link>.
+
+If you already have a Basic license and want to upgrade to a Premium License, <Link href={"/blog/PlumePack-Upgrade-License"}>please follow this article</Link>.
+
+# What's next?
+You tell us!
+
+We have already planned a lot of features for this year, give us your ideas and advices by <Link href={"https://docs.google.com/forms/d/e/1FAIpQLSdQmpdatWzsX1dllrFhLyHvYhCFvkoAElb0EvIGV0h1bjFKhQ/viewform?usp=pp_url"}>answering this Form</Link>.
+
+How do you use PlumePack, what are your pain points? <Link href={"/contact"}>Contact us to tell us! We might find more solutions to your issues</Link>

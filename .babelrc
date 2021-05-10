@@ -1,0 +1,9 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    "styled-components",
+    "@babel/plugin-proposal-optional-chaining",
+    "macros",
+    "./babel-plugin-nextjs-mdx-patch"
+  ]
+}

@@ -1,0 +1,58 @@
+import { Flex } from 'rebass';
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: 
+    "Title",
+  preview:
+    "Tagline",
+  author: "Antoine",
+  date: "2020-02-15",
+  tags: ["BRAW Studio", "AfterCodecs", "Premiere Pro", "After Effects"],
+  thumbnail: "images/_Poster/Poster.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+## Title header <h2>
+### Title header <h3>
+
+<VideoEmbed videoSrc={"ZvBEtJeceGE"} playlistId={""}></VideoEmbed>
+
+<span>To not have <link> being display block or something else I don't remember</span>
+<Link href={"/relative/path"}>Link to website</Link>
+
+ <code>.braw</code>
+ <code>.MOV</code>
+
+<BlogImage
+  src={require("assets/images/whatever.jpg")}
+  hasShadow
+  scaledDown
+/>
+
+<BlogImage
+  src={[
+      require("assets/images/imageLeft.jpg"),
+      require("assets/images/imageRight.jpg"),
+  ]}
+  hasShadow
+/>
+
+to add a comment and floating text :
+<BlogImage src={require("assets/images/_BR/Presets_Post/Presets_GUI.png")} hasShadow scaledDown textPosition="left" float>
+  There is one dropdown list to select the preset you want to deal with, and 3 buttons to interact with the currently selected preset.
+</BlogImage>
+
+paragraph
+
+
+* unordered list element 1
+* unordered list element 2
+
+
+Please  <Link href={"/contact"}>contact us</Link> to tell us more about your workflow to see how we can improve on this MultiRender feature !
+
+<!-- todo_audio
+To find out how to include these various audio types in a multichannel sequence, read <Link href={"/blog/31_Creating-Multichannel-File-PPro"}> our multichannel article</Link>.
+-->

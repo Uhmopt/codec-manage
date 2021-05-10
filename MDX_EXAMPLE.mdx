@@ -1,0 +1,100 @@
+import { Box } from "rebass";
+import Link from './components/Link';
+
+# Examples of correct MDX
+
+## Example 1
+
+## Header <b>Bold part of the header</b>
+
+## Example 2
+
+<Box color="green">Some content inside of React component</Box>
+
+## Example 3
+
+<Box backgroundColor="green">
+    React component have multiple levels
+    <Box color="blue">
+        I'm blue text
+    </Box>
+    <Box>
+        <code>Could mix html as <b>well</b></code>
+    </Box>
+</Box>
+
+## Example 4
+
+<div style={{ color: 'green', fontWeight: 'bold' }}>
+    How to write css styles. Css props should be in CamelCase
+</div>
+
+- List written in markdown
+- Second option mixed with React <Box display="inline" color="green">syntax</Box>
+
+## Example 5
+
+<Box>
+    You can use javascript inside of curly braces.
+    1 + 2 = {1 + 2}
+</Box>
+
+## Example 6
+
+Text before the link => [This link will work](google.com) <Box display="inline" color="green">You can have text inside of React component after markdown link</Box> or even markdown `code snippet` or *italic text*
+
+<Link href={"https://google.com"}><Box color="red" display="inline">this link will work</Box></Link> but you can't write markdown `here` 
+
+# Incorrect MDX
+
+## Example 1
+
+<Box>
+    - Markdown syntax doesn't work inside of React
+    - It will be rendered as plain text
+    - It won't throw an error
+</Box>
+
+## How to fix it
+
+Add empty line inside of react component
+
+<Box>
+
+    - Markdown syntax doesn't work inside of React
+    - It will be rendered as plain text
+    - It won't throw an error
+    
+</Box>
+
+
+## Example 2
+
+<Box>
+    Don't leave empty lines inside of React components
+
+    <Box>This won't throw an error, but will be rendered as plain text. Not expected behavior. Because of empty line above.</Box>
+</Box>
+
+## ^^^ How to fix top example ^^^
+
+<Box>
+    Simply remove empty line
+    <Box>That's better!</Box>
+</Box>
+
+## Example 3
+
+<Link href={"https://google.com"}>this link will work</Link> but you can't write markdown `here`. so if you start your line with React you have to finish it in react.
+
+## ^^^ How to fix top example ^^^
+
+<Link href={"https://google.com"}>this link will work</Link>
+
+`or`
+
+Wrap line in parental element like `<p>`:
+
+<p><Link href={"https://google.com"}>this link will work</Link> but you can't write markdown `here`. so if you start your line with React you have to finish it in react.</p>
+
+_Important_ to have one empty line in between. This markdown *will work*

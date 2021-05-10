@@ -1,0 +1,57 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to report a bug in BRAW Studio ?",
+  preview:
+    "When using BRAW Studio, in case you have trouble with the plugin, you should send us some logs so we can give you assistance and fix a potential bug in our plugin. Here's how to do it.",
+  author: "Nicolas",
+  date: "2019-09-17",
+  tags: ["BRAW Studio"],
+  thumbnail: "images/_BR/ReportBug_Post/reportBug_Poster.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# Step 1 : Activate Logs
+
+Logs are not activated by default, because they decrease the performances of the plugin. So the first task is to activate Logs. For this, you need to go to the "Settings &amp; License" popup.
+
+If you don't know how to access the "Settings &amp; License" popup, please read <Link href={"/blog/BRAW-Studio-Settings-And-License-Popup/"}>this article</Link>.
+
+Once you are in this popup, you just need to <strong>tick the checkbox "write logs" and click "OK"</strong>. But don't send us immediately the logs ! You need to reproduce the problem when logs are activated and after this send us the zipped logs (See below Step 3).
+
+<BlogImage
+  src={require("assets/images/_BR/ReportBug_Post/reportBug_tickCheckboxAndOk.png")}
+  hasShadow
+/>
+
+# Step 2 : Reproduce your bug / crash
+
+Once the logs are activated, please reproduce your issue. If it's a crash, then reproduce the crash, if the frames have the wrong colors, then display the image with the wrong colors on the screen, etc.
+
+# Step 3 : Send us the zip !
+
+After you reproduced the issue, please go to the "Settings & License" again (if you experienced a crash, you will need to start your app again, or use BRAW Studio Desktop), and this time click on "Open log folder", the button on the right. It will automatically open a folder with the zip log inside (if there is several zip inside, then the good one is the one automatically selected).
+
+Please send us this zip ! <Link href={"/contact/"}>You can contact us and attach the zip on our Contact page</Link>
+
+<BlogImage
+  src={require("assets/images/_BR/ReportBug_Post/reportBug_openLogsFolder.png")}
+  hasShadow
+/>
+
+Note : when clicking on the "Open log folder", if logs were not activated before, there will be a warning like in the image below. If you see this image, please check that you have activated logs AND you have reproduced your issue !
+
+<BlogImage
+  src={require("assets/images/_BR/ReportBug_Post/reportBug_warningMsg.png")}
+  hasShadow
+  scaledDown
+/>
+
+# How can I do if it crashes before being able to go to "Settings & License" ?
+
+In that case, please use <Link href={"/blog/BRAW-Studio-Settings-And-License-Popup/"}>the BRAW Studio for Desktop</Link> to activate the logs (don't forget to click Ok !), then launch your app (Premiere Pro / After Effects / Media Encoder), reproduce the crash and return to the BRAW Studio for Desktop for the Step 3 above.
+
+# Remember to disable logs afterwards !
+
+Writing logs asks for a lot of resources from your computer, so please remember to disable logs after these steps, to get the full speed of BRAW Studio.

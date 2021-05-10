@@ -1,0 +1,88 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "How to trim your Image Sequence in Adobe Premiere Pro",
+  preview: "You can now trim your Image Sequence in Premiere Pro !",
+  author: "Marion",
+  date: "2021-04-16",
+  tags: ["PlumePack", "Premiere Pro"],
+  thumbnail: "images/_PP/PP_TrimImageSequence/TrimImageSequence_Poster.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# What does Trimming mean ?
+
+Trimming is like copying a part of your footage. It will remove the images before an InPoint and after an OutPoint set for the footage, while keeping all the file metadata and Source Settings.
+
+# Trim you Image Sequence with the PlumePack Panel
+
+To be able to trim your files you need a PlumePack Premium license.
+
+## Import your files and choose your bounds
+
+First, import all the files you want to trim in a timeline.
+
+To import an Image Sequence you need to open the "Import" dialog window, then select the first image of the image sequence and check "Image Sequence" option at the bottom of the window.
+
+<BlogImage src={require("assets/images/_PP/PP_TrimImageSequence/Autokroma_PlumePack_Premiere_Pro_Import_Image_Sequence.jpg")} hasShadow>
+</BlogImage>
+
+Second, add all the Image Sequence you want to trim in a timeline.
+
+<BlogImage src={require("assets/images/_PP/PP_TrimImageSequence/Autokroma_PlumePack_Premiere_Pro_Timeline_Image_Sequence.jpg")} hasShadow>
+</BlogImage>
+
+Then choose the bounds (inPoint and outPoint) for each file. 
+
+<BlogImage src={require("assets/images/_PP/PP_TrimImageSequence/Autokroma_PlumePack_Premiere_Pro_Trim_Bounds_Image_Sequence.jpg")} hasShadow>
+</BlogImage>
+
+Now you are ready to trim your files! 
+
+As you may have noticed, editing your timeline as usual has the same effect : your clips in timeline will be cropped and ready to be trimmed for backup or project transfer !
+
+Open PlumePack Panel: Window -> Extensions -> PlumePack Panel.
+
+To learn a bit more on all PlumePack options you can read <Link href={"/blog/PlumePack-Parameters-Explained.mdx"}>this article</Link>
+
+Then just click on "PlumePack It!" and choose a folder to save your trimmed medias. It also saves a copy of your project with files replaced by the trimmed files.
+
+<BlogImage src={require("assets/images/_PP/PP_TrimH264/Autokroma_PlumePack_Premiere_Pro_Consolidation.jpg")} hasShadow>
+</BlogImage>
+
+At the end of the trimming process, the output choosen folder is opened with all your files inside the "Medias" directory.
+
+# PlumePack: a powerful tool in your workflow !
+
+PlumePack does more than just trimming your files, it works like a Project Manager.
+
+It can be used in different kind of situations :
+
+## Start editing with a lighter project 
+
+After importing your files inside Premiere Pro, and before starting to edit your project, add your files to a timeline and then crop your files to select only the parts you want to use.
+
+Then run PlumePack and your Project Items will be automatically replaced with the trimmed files. 
+
+That's really handy especially if you are working on SSD where space can be short.
+
+## Transfer lighter projects between team members
+
+PlumePack can save you a LOT of space used by your project, without altering quality (which will stay exactly the same) and by keeping your codecs. You can also only trim a part of your project easily. So it is perfectly suited for speed up your project transfer.
+
+## Save Lighter Backups
+
+When it's time to backup your project, use PlumePack to be sure to collect everything needed in your project, and get the lighter project as possible while keeping footage codecs and quality.
+
+## More features with PlumePack 
+
+PlumePack has a lot of other features like organizing your new trimmed project media structure, copying dependencies of your After Effects composition, and PlumePack can trim a lot of other codecs such as R3D RAW, ProRes, ProRes RAW, H.264, H.265, DNG, ...
+
+<BlogImage src={require("assets/images/_PP/PP_SharedImages/Autokroma_PlumePack_Premiere_Pro_Premium_Version.jpg")} hasShadow>
+</BlogImage>
+
+
+Now you know everything about Trimming Image Sequence in Premiere Pro, you should be able to get lighter files and more efficient projects in Premiere Pro ! 
+
+<Link href={"/contact"}>Contact us to tell us your needs! We might find more solutions to your issues</Link>

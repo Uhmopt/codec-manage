@@ -1,0 +1,87 @@
+import { meta as indexMeta } from "./index.mdx";
+import ProductPage, { FAQ } from "../../components/ProductPage";
+import BlogpostList from "../../components/BlogpostList";
+import Link from "../../components/Link";
+
+export const meta = {
+  ...indexMeta,
+  seoTitle: "User Guide",
+  faq: [
+    {
+      categoryName: 'General',
+      questions: [
+        [
+            "How do I update PlumePack ?",
+            <Link href={"/PlumePack/Download"}>
+                See the Download page
+            </Link>
+        ],
+        [
+            "How do I uninstall PlumePack ?",
+            <Link href={"/PlumePack/Download"}>
+                See the Download page
+            </Link>
+        ],
+        [
+            "What are the requirements, tech specs and codecs available?",
+            <>
+                You can find all of this info on the <Link href={"/PlumePack"}>Overview of PlumePack page</Link>. Also, don't forget to regularly check for updates and read the <Link href={"PlumePack/Changelog"}>Changelog of PlumePack</Link> !
+            </>
+        ],
+        [
+          "Windows : PlumePack is not loading or I get the vcruntime dll loading error !",
+          <>
+            Please download and install <Link href={"https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads"}>the latest Visual C++ 2019 Redistributable</Link>. Here's a direct link to <Link href={"https://aka.ms/vs/16/release/vc_redist.x64.exe"}>vc_redist.x64.exe</Link> : download, double click on it and pursue installation.
+          </>
+        ],
+        [
+          "How do I install PlumePack silently or by command line ?",
+          <>
+            On Windows you should run your cmd.exe or Powershell in Administrator Mode, then run PlumePack installer executable with the <code>/S</code> argument, for example in Powershell : <code>./"PlumePack v1.0.0 Installer.exe" /S</code> if you're in the extracted folder from the downloaded zip
+          </>
+        ]
+      ]
+    },
+    {
+      categoryName: 'Licensing',
+      questions: [
+        [
+            "How do I License PlumePack ?",
+            <>
+                Please follow our article : <Link href={"/blog/How-to-License-PlumePack"}>How to License PlumePack</Link>
+            </>
+        ],
+        [
+            "How do I upgrade from Basic to Premium license? ?",
+            <>
+                Please follow our article : <Link href={"/blog/PlumePack-Upgrade-License"}>Upgrading from Basic to Premium license</Link>
+            </>
+        ],
+      ]
+    }
+  ]
+};
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    {...props}
+    landerImage={require("assets/images/_PP/Autokroma_PlumePack_Premiere_Pro_product_background.jpg?trace")}
+  />
+);
+
+<H2 centered id="User-Guide" underline={meta.mainColor}>Documentation</H2>
+
+* <Link href={"/blog/How-to-License-PlumePack"}>How to License PlumePack</Link>
+* <Link href={"/blog/Introduction-to-PlumePack"}>Introduction to PlumePack</Link>
+* <Link href={"/blog/PlumePack-Parameters-Explained"}>PlumePack options explained</Link>
+
+
+<H2 centered id="FAQ" underline={meta.mainColor}>FAQ</H2>
+
+<FAQ product={"PlumePack"} faq={meta.faq}></FAQ>
+
+<H2 centered id="Articles" underline={meta.mainColor}>Articles about PlumePack</H2>
+
+<BlogpostList tag={"PlumePack"} flat />
+

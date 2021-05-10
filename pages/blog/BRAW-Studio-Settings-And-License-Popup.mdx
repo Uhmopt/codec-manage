@@ -1,0 +1,97 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "BRAW Studio Settings & License Popup",
+  preview:
+    "The BRAW Studio Settings &amp; License Popup is the place where you will register your license and change the global settings of BRAW Studio",
+  author: "Nicolas",
+  date: "2020-06-28",
+  tags: ["BRAW Studio"],
+  thumbnail: "images/_BR/Settings_And_License_Post/Poster_Res150.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# What is it for ?
+
+As indicated in its name, the "Settings &amp; License" Popup need to be used for registering your BRAW Studio license or to change some of your BRAW Studio options.
+
+You will also need it to activate debug logs and send us bug reports. There is an "Installation Diagnostic" button which will check if everything has been well installed in your computer. 
+
+There are different ways to open the BRAW Studio Settings &amp; License popup, but any of those will let you register any Autokroma License.
+
+If you want all the options to be displayed in the popup, you should open it from the BRAW Studio application, because otherwise only the concerned options will be available : if you open the popup from Premiere Pro for example, the After Effects options will not be displayed.
+
+<strong>Don't forget to click on "Ok"</strong> at the end when closing the popup if you want to save your change, and restart your Adobe applications (after registering license or changing an option).
+
+
+<BlogImage src={require("assets/images/_BR/Settings_And_License_Post/Poster_Res150.png")} hasShadow />
+
+# How to open it ?
+
+## The BRAW Studio application
+
+From here, you will get all the BRAW Studio options available.
+
+You just need to double click on the <code>BRAW_Studio.exe</code> (<code>BRAW_Studio.app</code> on Mac) which is located in the MediaCore folder, next to the BRAW Studio plugins :
+
+*  Windows : <code>C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\Autokroma BRAW Studio</code> 
+*  Mac : <code>/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/Autokroma BRAW Studio</code> 
+
+<BlogImage src={require("assets/images/_BR/ReportBug_Post/reportBug_mediacoreFolderWinScreen.png")} hasShadow />
+
+## In Premiere Pro
+
+### From the BRAW Studio Panel
+
+In Premiere Pro, you can use the BRAW Studio panel :
+
+1. Open the Panel : In the top Menu bar, click on "Window" -> "Extensions" -> "BRAW Studio Panel"
+2. At the bottom of the Panel, click on the <i>"Settings &amp; License"</i> button
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/extensionMenu.png")} hasShadow />
+
+<BlogImage src={require("assets/images/_BR/Settings_And_License_Post/panelButton.png")} hasShadow />
+
+### From the Source Settings Effect
+
+You can also access it from any BRAW Source Settings :
+
+1. Import a .BRAW file
+<BlogImage src={require("assets/images/_BR/5/BRAW_Studio_MainImage.jpg")} hasShadow />
+2. Open the <strong>BRAW Studio Source Settings</strong> : add the new clip to a timeline (or create a new sequence from the clip and open the new timeline created), then go to Effects Options panel, and you will see two tabs at the top. Source Settings will be the first tab prefixed <i>"Master"</i>.
+<BlogImage src={require("assets/images/_BR/5/BRAW_Studio_SourceSettings_Settings_WhereToFind.jpg")} hasShadow />
+ <strong>This is where you'll be able to change all the RAW import parameters for your .BRAW clips and change the way they are interpreted by BRAW Studio</strong>
+3. In the BRAW Studio Source Settings, just click on the <i>"Settings &amp; License"</i> button
+
+## In Media Encoder
+
+In Adobe Media Encoder, all you have to do is import a <strong>.BRAW file into your render queue</strong>, click right and select "Source Settings..." and the same BRAW Studio Settings popup will be displayed (see image above). Please note that it won't work with a PPro project, only for a .BRAW file.
+
+<BlogImage src={require("assets/images/_BR/5/BRAW_Studio_Popup_Settings_WhereToFind_MediaEncoder.png")} hasShadow />
+
+## In After Effects
+
+Please read our article about <Link href={"/blog/BRAW-Studio-For-After-Effects/"}>BRAW Studio for After Effects</Link> to learn how to access the Layer Settings as well as the Settings & License button.
+
+<BlogImage src={require("assets/images/_BR/BR_For_AE/layerSettingsInList.png")} hasShadow />
+
+<BlogImage src={require("assets/images/_BR/BR_For_AE/layerSettings.png")} hasShadow />
+
+You can also access the Popup by going into the Interpretation of your <code>.braw</code> and clicking "More Options".
+
+# The BRAW Studio options
+
+## Optimizations 
+
+You will also find some performance optimization options. It could improve your BRAW Studio performance, depending on your hardware setup.
+
+Just try these options and see in your computer the difference ! You can enable the "Premiere Pro Dog Ears" to have some indications about the render engine's performance. 
+
+In order to enable/disable these "Dog Ears" (Premiere Pro feature), just use the shortcut : <strong>Ctrl + Shift + F11</strong> (or <strong>Cmd + Shift + F11</strong> in OSX), then press SPACE to play your timeline with the information about the playback performance. Use the same shortcut to disable the messages.
+
+## Timecode Warning
+
+If you are working with NTSC BRAW files (framerate 23.97 or 29.97), sometimes your timecode will be wrong in Premiere Pro. See our article about <Link href={"/blog/BRAW-Wrong-Timecode-Adobe-Premiere-Pro/"}>having a wrong BRAW timecode in Premiere Pro</Link>.
+
+It can be good to know for some users if their timecode is good or not after import. However some don't care about it.  We are displaying a yellow warning popup after import to warn about this wrong timecode. If you think this yellow popup is annoying, you can use this option to disable it.

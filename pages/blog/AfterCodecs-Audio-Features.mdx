@@ -1,0 +1,94 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  draft: true,
+  title: "AfterCodecs Premiere Pro Audio Features",
+  preview: "Full Tutorial on how to use the AfterCodecs Audio Features in Premiere Pro",
+  author: "Antoine",
+  date: "2021-10-11",
+  tags: ["Premiere Pro", "AfterCodecs", "Audio"],
+  thumbnail: "images/_AC/32/Aftercodecs_audio_thumbnail.png"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+
+
+# What is AfterCodecs?
+
+AfterCodecs is a new native plugin for the whole Adobe CC Video suite, working on both Mac OS and Windows. It brings fast and efficient codecs to After Effects’ render queue and a new <i>format</i> choice in Premiere Pro and Media Encoder's <i>Export</i> Window.
+
+Premiere Pro has a wide variety of audio options, but they can still be somewhat limited when it comes to supporting certain formats. AfterCodecs gives you more options, especially when it comes to multichannel exports. This article will cover general AfterCodecs audio export settings as well as more specific multichannel and 5.1 options.
+
+
+# AfterCodecs Audio Export Settings
+
+Go to <i>File</i> &gt; <i>Export</i> &gt; <i>Media</i>. Once there, open the <i>Format</i> drop-down menu and select <i>AfterCodecs</i>. Under the Video tab, select your desired wrapper (<code>.MP4</code>/<code>.MOV</code>) and click <i>Open AfterCodecs Settings</i>.
+
+<strong>Note: The <code>.MP4</code> wrapper does not support uncompressed <code>WAVE</code> audio, you will have to use <code>.MOV</code> to be able to select <code>WAVE</code>.</strong>
+
+Once the AfterCodecs menu is open, you will find the audio settings under the encoding tab.
+
+<BlogImage src={require("assets/images/_AC/32/Bitrate_selection.png")} hasShadow />
+
+If you choose <code>AAC</code>, select your bitrate using the slider. Keep in mind that higher birates (&gt; 250 kbps) will increase encoding time as well as audio quality. <code>WAVE</code> is uncompressed and will have a high bitrate by default.
+
+The compression in <code>AAC</code> audio can introduce a slight delay between the video and the audio. As a result, it is recommended to use <code>WAVE</code> for any final exports.
+
+It is worth noting that <code>WAVE</code> can also have a large file size due to being uncompressed. This file size will vary based on Bit Depth, Sample Rate and number of channels.
+
+Below is an example of the file size for a 10min stereo <code>WAVE</code> file with various settings:
+
+<BlogImage src={require("assets/images/_AC/32/WAVE_Size_Table.png")} hasShadow scaledDown/>
+
+As you can see, what settings you pick can have a big effect on file size, especially for long form content.
+
+
+# Exporting 5.1
+
+Exporting 5.1 with AfterCodecs is a straightforward process but to make sure there are no issues it is recommended you export from a dedicated 5.1 sequence.
+
+Go to <i>File</i> &gt; <i>New</i> &gt; <i>Sequence</i> and select a 5.1 Master under the <i>Tracks</i>tab to create your 5.1 sequence. Make sure it also has a 5.1 track.
+
+<BlogImage src={require("assets/images/_AC/32/New_5.1_sequence.png")} hasShadow />
+
+Once you have added clips to your 5.1 sequence and you are ready to export, open up the export menu and select the <i>AfterCodecs</i> format. For more information about exporting 5.1 check out our <Link href={"/blog/30_Export-Import-Audio-PPro"}>audio import/export article</Link>.
+
+Under the <i>Video</i> tab, select your desired wrapper (<code>.MP4</code>/<code>.MOV</code>) and click <i>Open AfterCodecs Settings</i> to select your video/audio codec, as shown earlier in this article.
+
+Once you have selected your AfterCodecs settings, click <i>OK</i> and go to the <i>Audio</i> tab of the PPro export window. Select your desired bit depth and sample rate (keeping in mind the file size table from earlier). Then use the <i>Channel Layout</i> drop-down and select your desired 5.1 layout. The most common is 5.1 SMPTE.
+
+<BlogImage src={require("assets/images/_AC/32/Audio_settings_5.1.png")} hasShadow />
+
+Once you are happy with the rest of your settings, click <i>Export</i> and you’re done.
+
+
+# Exporting Multichannel
+
+Multichannel can be quite complex to export and Premiere does have limitations on which formats support multichannel. Using AfterCodecs for multichannel exports removes some of those limitations. For example, you can create an <code>.MP4 H.264</code> multichannel file which is impossible in regular Premiere Pro. The AfterCodecs multichannel export is compatible with all codecs in <code>.MP4</code> or <code>.MOV</code> wrappers.
+
+To export multichannel, you have to correctly setup a multichannel sequence first. For more information on how to setup multichannel sequences check out <Link href={"/blog/31_Creating-Multichannel-File-PPro"}> our multichannel article</Link>.
+
+Once the multichannel sequence is setup, open up the export settings and select the <i>AfterCodecs</i> format. Under the <i>Video</i> tab select your desired wrapper (<code>.MP4</code>/<code>.MOV</code>) and click <i>Open AfterCodecs Settings</i> to select your video/audio codec, as shown earlier in this article.
+
+Once you have selected your AfterCodecs settings, click <i>OK</i> and go to the <i>Audio</i> tab of the PPro export window. From the <i>Channels Layout</i> drop-down menu select one of the multichannel options:
+
+<BlogImage src={require("assets/images/_AC/32/Audio_settings_multichannel.png")} hasShadow />
+
+* Individual Stereo Tracks: This will export all the channels in your sequence as stereo tracks. For example, if you have 6 channels in your sequence, the export will contain 3 L/R stereo tracks.
+* Individual Mono Tracks: This will export all the channels in your sequence as mono tracks. For example, if you have 6 channels in your sequence, the export will contain 6 mono tracks.
+* One Multichannel Track: This exports all the channels in a single track. Unfortunately, this feature is not working as intended at the moment so it should be avoided.
+
+
+Below the channel layout, you can select bit depth and sample rate. Remember to select these carefully as they can greatly affect file size, especially with <code>WAVE</code>.
+
+Once you are happy with your settings, hit <i>Export</i> and you will have a multichannel file! If you have issues with the channels in your file, make sure to double check your track channel assignment in the multichannel sequence. For more information on multichannel, check out <Link href={"/blog/31_Creating-Multichannel-File-PPro"}> our multichannel article</Link>.
+
+If you have requests for new audio features or experience any issues, please do not hesitate to contact the AfterCodecs team.
+
+
+<br />
+<Link href={"/AfterCodecs/Download/"}>Install and try AfterCodecs for free from here ! 500 Frames trial included as well as the full version if you have a license.</Link>
+
+
+

@@ -1,0 +1,55 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "Our Progress on BRAW Studio and Future Features : Tell Us About Your Needs !",
+  preview: "A quick recap of what we've achieved recently in BRAW Studio and a public poll for you to tell us what features you need the most",
+  author: "Antoine",
+  date: "2020-08-20",
+  //lastUpdated: "2020-08-13",
+  tags: ["BRAW Studio"],
+  thumbnail: "images/_Poster/Progress_BRAW_Studio_34.jpg"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+TL;DR <Link href={"https://docs.google.com/forms/d/e/1FAIpQLSdp9mJ9CS_1GsMR2b9qH9W45U3Xl5wl8AOB_AQD74cBMwq9Fg/viewform"}>we have a new poll for you to fill !</Link> Here is more information about the history and evolution of BRAW Studio and how we responded to the latest poll we sent you :
+# Our Progress on BRAW Studio 
+
+## BRAW Studio Version 1 
+
+<p>Since the inception of this project back at the end of 2018, we've worked hard to bring you a rich, consistent and bug-free experience of Blackmagic RAW files import in Adobe CC video apps (Premiere Pro, Media Encoder and After Effects). Over the course of more than a year and a half we kept our plugin suite up to date with the latest Blackmagic RAW SDK features, fixed or worked around Adobe bugs and report common issues to Adobe and Blackmagic.</p>
+
+<p><Link href={"/blog/BRAW-Wrong-Timecode-Adobe-Premiere-Pro"}>Adobe Timecode bug</Link> has recently been fixed in latest Adobe versions, so there won't be random shifts and FCP .XML will work again out-of-the-box without having to use our fix. If you get the <Link href={"/blog/Premiere-Pro-Timeline-Shift-First-Frame-After-Moving-Project-Relinking"}>PrPro 2020 relinking shifts</Link> we have an advanced relocation panel for you you can use to work around this bug. </p>
+
+<p>We also created <Link href={"/blog/BRAW-Studio-For-After-Effects"}>BRAW Studio Layer Settings</Link>, a unique effect in After Effects for you to reimport & color grade at the same time your .BRAW. Using all the BRAW Settings you are used to on Premiere Pro and DaVinci Resolve, and GPU accelerated ! Talking about RAW Settings, we also brought many new features in the Source Settings and Layer Settings : <Link href={"/blog/Introduction-to-BRAW-Studio#setting--braw-studio-presets"}>20 Global Presets</Link> and <Link href={"/blog/Introduction-to-BRAW-Studio#setting--custom-a-and-custom-b"}>Custom A/B switch</Link> to quickly compare and store different color grades.</p>
+
+## BRAW Studio Version 2 
+
+The biggest feature we did recently is our brand new <Link href={"/blog/BRAW-Studio-Source-Settings-Panel"}>BRAW Studio Source Settings Panel for Premiere Pro</Link>, where you'll get all your RAW Settings (like the Lumetri color panel), as well as awesome tools for you day-to-day workflow in Premiere Pro. This panel also lets you do new advanced batch operations on your BRAW, saving you a huge time everyday. We also listened to your feedback and <Link href={"/blog/BRAW-Studio-V2-How-To-Upgrade-Source-Settings-Panel#our-change-of-licensing"}>decided to simplify our licensing model</Link> to include all Adobe apps at the same time, while not letting behind previous customers (free upgrades).
+
+We continue <Link href={"/BRAW_Studio/Download#Changelog"}>to support our software and fix your issues</Link> ! If you are using the Blackmagic plugin that got out in September 2019 and <Link href={"/blog/BlackmagicRaw-Plugin-BRAW-Studio-Difference"}>suffer from their bugs</Link> you can switch to BRAW Studio to get the best Blackmagic RAW experience and support available.
+# Latest poll : features we solved for you
+Last year (2019) we sent to all our users a poll to understand what were common issues working with BRAW. Main concerns were about performance, GPU utilization, After Effects compatibility as well as color grading workflow pain points.
+
+**We are glad to announce most of those issues are solved using BRAW Studio** : we brought full After Effects compatibility, continued to work on performance up to the point of having the same (sometimes better) decoding speed than Blackmagic Premiere Pro plugin. On top of that our Premiere Pro Panel solves most color grading issues :
+
+* Not having a side panel to tweak RAW Settings like the Lumetri Panel : you can now do the color grading in the Source Settings tab of <Link href={"/blog/BRAW-Studio-Source-Settings-Panel"}>your BRAW Studio Premiere Pro Panel</Link>
+* Not having to click all the time on the "Master" tab of each .BRAW : this Panel can be docked wherever you want in your Premiere Pro UI, you don't need to click there all the time anymore !
+* Not being able to customize RAW Settings for each clip placed on the timeline : <Link href={"/blog/BRAW-Studio-Source-Settings-Panel#set-new-source-button-to-give-a-different-color-grading-for-the-same-braw-footage"}>we have a new "Set New Source" button</Link>  that is creating a new Project Item in your Project Panel for the same .BRAW, letting you create an alternative color grading without affecting the previous color grade on the same .BRAW
+* Not having the possibility to save presets for Source Settings : <Link href={"/blog/Introduction-to-BRAW-Studio#setting--braw-studio-presets"}>20 Global Presets</Link> 
+* Not able to batch modify RAW settings on multiple .BRAW at the same time : this Panel is compatible with batch modification such as batch Apply Presets on a selection of .BRAW (either in your Project Panel or in your current timeline), Load All .sidecar and even Save All .sidecar
+
+
+# Upcoming Features : Tell US what YOU need !
+
+What's coming next for BRAW Studio ? With Blackmagic RAW SDK 2.0, BRAW Studio <Link href={"/blog/33_BETA-For-URSA-12K-Color-Science-V5"}>will soon be compatible with URSA 12K .braw files and let you grade with Blackmagic Design Color Science V5</Link>. Also, <Link href={"/blog/Blackmagic-RAW-1-7-Bug-Thumbnails-File-Access-Issues"}>BRAW 1.7 File Access issues</Link> should be solved in that next update, improving your experience in After Effects and in Windows Explorer.
+
+We have lots of ideas to improve your .BRAW day-to-day workflow, but we believe it's time for YOU to tell US what are your pain points and what you would like to be fixed. <strong>Need more metadata ? Have trouble organizing your .BRAW items in your Project Panel ? Do you have some action you are performing multiple times each day that could be automated ? Have issues working with proxies and .BRAW at the same time ? </strong>
+
+Here's a poll for you to fill and give us your feedback : https://docs.google.com/forms/d/e/1FAIpQLSdp9mJ9CS_1GsMR2b9qH9W45U3Xl5wl8AOB_AQD74cBMwq9Fg/viewform
+ 
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdp9mJ9CS_1GsMR2b9qH9W45U3Xl5wl8AOB_AQD74cBMwq9Fg/viewform?embedded=true" width="100%" height="600px" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+
+
+We can't wait for your answers ! And if you have more specific issues you can <Link href={"/contact/"}>contact us</Link> directly

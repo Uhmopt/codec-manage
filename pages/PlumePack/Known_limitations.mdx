@@ -1,0 +1,14 @@
+import { meta } from './index.mdx';
+import ProductPage, { BackToProductLink } from "../../components/ProductPage";
+import { KnownLimitations } from "../../components/content/PlumePack/Overview";
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    landerImage={require("assets/images/_AC/AC_product_background.jpg?trace")}
+    {...props}
+  />
+);
+
+<BackToProductLink {...meta} product="PlumePack" title="Known Limitations" />
+<KnownLimitations mainColor={meta.mainColor} / >

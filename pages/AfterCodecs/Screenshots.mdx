@@ -1,0 +1,22 @@
+import ProductPage from "../../components/ProductPage";
+import { meta } from './index.mdx';
+import Screenshots from "../../components/Screenshots";
+import { config } from "../../config";
+import { Flex } from 'rebass';
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    landerImage={require("assets/images/_AC/AC_product_background.jpg?trace")}
+    {...props}
+  />
+);
+
+<Flex mt={4} justifyContent="center">
+    <Link href="/AfterCodecs">Go Back to AfterCodecs</Link>
+</Flex>
+
+<H2 centered underline={meta.mainColor}>
+  Screenshots
+</H2>
+<Screenshots images={config.AfterCodecsScreenshots} meta={meta} />

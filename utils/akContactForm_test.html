@@ -1,0 +1,276 @@
+<html>
+    <head>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    </head>
+    <style>
+        body
+        {
+            font-family:'Courier New';
+        }
+    </style>
+    
+    <body>
+        <div id="form">
+            <table>
+                <tr>
+                    <td>Topic:</td>
+                    <td>
+                        <select class="p-input" name="question_type" id="question_type_selector" required>
+                            <option value="">Please choose one of the list...</option>
+                            <option value="aftercodecs">AfterCodecs</option>
+                            <option value="brawstudio">BRAW Studio</option>
+                            <option value="general">General enquiry</option>
+                            <option value="sales">Sales enquiry related to a product bought</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="subject">Enter subject: </label></td>
+                    <td><input id="subject" type="text" name="subject" id="subject" required value="Greetings"></td>
+                </tr>
+                <tr>
+                    <td><label for="name">Enter your name: </label></td>
+                    <td><input id="name" type="text" name="name" value=""></td>
+                </tr>    
+                <tr>
+                    <td><label for="email">Enter your email: </label></td>
+                    <td><input id="email" type="email" name="email" required value="test@dornstetter.com"></td>
+                </tr>    
+                <tr>
+                    <td><label for="message">Enter message: </label></td>
+                    <td><textarea id="message" name="message" id="message" cols='60' rows='10'>Hello,&#13;&#10;&#13;&#10;Long time no see!&#13;&#10;&#13;&#10;<b>Regards</b>,&#13;&#10;Jean-Christophe</textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="attachment">Attachment: </label></td>
+                    <td><input id="attachment" type="file" multiple name="attachment" accept="image/*,.log,.zip" onchange="onAttachmentChanged()"><span id="attachments_size"></span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div id="recaptcha" style="display:none;" class="g-recaptcha" data-sitekey="6LfpPbwUAAAAAGo7eanJzS_vTFY69H5BxlzGHP6v" data-callback="send"></div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="button" onclick="send()">Send</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="sending_success" style="display:none;">
+            Success!
+        </div>
+        <div id="sending_failure" style="display:none;">
+            Failure!
+        </div>
+        <div id="error_message">
+        </div>
+
+        <table>
+            <tr>
+                <td>
+                    <div id="input" style="border:1px blue solid;margin:10px;padding:10px;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="output" style="border:1px red solid;margin:10px;padding:10px;">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </body>
+
+    <script>
+
+    //-----------------------------------------------------------------------------
+    function read_attachment(file)
+    {
+        return new Promise(function(resolve,reject)
+            {
+                var reader = new FileReader();
+                reader.onload = function()
+                    {
+                        resolve(reader.result);
+                    };
+                reader.onabort = function()
+                    {
+                        resolve(null);
+                    };
+                reader.readAsDataURL(file);    
+            });
+    } // read_attachment()
+
+    //-----------------------------------------------------------------------------
+    async function get_attachment_list()
+    {
+        var attachment_list = [];
+        var files = document.getElementById('attachment').files;
+        var n = files.length;
+
+        for(var i=0;i<n;i++)
+        {
+            var file = files[i];
+            var data = await read_attachment(file);
+            attachment_list.push(
+                {
+                    name        : file.name,
+                    size        : file.size,
+                    type        : file.type,
+                    data        : data,
+                });
+        } // for()
+
+        return attachment_list;
+    } // get_attachment_list()
+
+    //-----------------------------------------------------------------------------
+    function get_attachements_total_size()
+    {
+        var total_size = 0;
+        var files = document.getElementById('attachment').files;
+        var n = files.length;
+
+        for(var i=0;i<n;i++)
+        {
+            var file = files[i];
+            total_size += file.size;
+        } // for()
+
+        return total_size;
+    } // get_attachements_total_size()
+
+    //-----------------------------------------------------------------------------
+    function is_attachments_too_big()
+    {
+        var size_max = 5000000; // 5Mo
+        return get_attachements_total_size() > size_max;
+    } // is_attachments_too_big()
+
+    //-----------------------------------------------------------------------------
+    async function onAttachmentChanged()
+    {
+        var total_size = get_attachements_total_size();
+
+        var format = function(x)
+            {
+                if(x < 1000000)
+                    return (x*0.001).toFixed(2) + ' Ko';
+                else
+                    return (x*0.000001).toFixed(2) + ' Mo';
+            };
+        var size_max = 5000000; // 5Mo
+        var size_max_text = format(size_max);
+        var total_size_text = format(total_size);
+
+        document.getElementById('attachments_size').innerHTML = '('+total_size_text+' / '+size_max_text+' max.)';
+    } // onAttachmentChanged()
+
+    //-----------------------------------------------------------------------------
+    async function send()
+    {
+        var question_type = document.getElementById('question_type_selector').value;
+        var rcr = grecaptcha.getResponse();
+        if('' == question_type)
+        {
+            document.getElementById('error_message').innerHTML = 'Please select a topic';
+        }
+        else if(is_attachments_too_big())
+        {
+            document.getElementById('error_message').innerHTML = 'The maximum attachments size is 5Mo';
+        }
+        else if('' == rcr && true)
+        {
+            document.getElementById('recaptcha').style.display = 'block';
+        }
+        else
+        {
+            var attachment_list = await get_attachment_list();
+            var json_input =
+                {
+                    rcr         : rcr,
+                    topic       : question_type,
+                    name        : document.getElementById('name').value,
+                    email       : document.getElementById('email').value,
+                    subject     : document.getElementById('subject').value,
+                    message     : document.getElementById('message').value,
+                    attachments : attachment_list.length > 0 ? attachment_list : null,
+                };
+            insert('input',json_input);
+            var h = {};
+            n = 1;
+            m = 1;
+            for(var i=2;i<10;i++)
+            {
+                n *= i;
+                m += n;
+            }
+            h['f-'+n] = 'f-'+m;
+            var local = false; // false for AWS cloud
+            myXHR(h,local
+                    ? 'http://localhost:3000/send'
+                    : 'https://egwtbgi9yd.execute-api.eu-west-1.amazonaws.com/prod'
+                    //: 'https://fwmtvgsyz1.execute-api.eu-west-3.amazonaws.com/prod'
+                    ,json_input)
+                .then(async function(json_output)
+                    {
+                        document.getElementById('form').style.display = 'none';
+                        document.getElementById('error_message').innerHTML = '';
+                        document.getElementById('sending_success').style.display = 'block';
+                        insert('output',json_output);
+                    })
+                .catch(async function(err)
+                    {
+                        document.getElementById('form').style.display = 'none';
+                        document.getElementById('error_message').innerHTML = '';
+                        document.getElementById('sending_failure').style.display = 'block';
+                    })
+                ;
+
+            
+        }
+    }
+
+    //-----------------------------------------------------------------------------
+    function myXHR(headers,endpoint,json_input)
+    {
+        return new Promise(async function(resolve,reject)
+            {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST',endpoint,true);
+                xhr.setRequestHeader("Content-Type","application/json");
+                if(null != headers)
+                {
+                    for(var h in headers)
+                    {
+                        xhr.setRequestHeader(h,headers[h]);
+                    } // for()
+                }
+                xhr.onload = function()
+                    {
+                        var json_output = JSON.parse(xhr.responseText);
+                        resolve(json_output);
+                    };
+                xhr.onerror = function()
+                    {
+                        resolve('error');
+                    };
+                s = JSON.stringify(json_input);
+                xhr.send(s);
+            });
+    } // myXHR
+
+    //-----------------------------------------------------------------------------
+    function insert(id,json)
+    {
+        document.getElementById(id).innerHTML =
+            JSON.stringify(json,null,4)
+                .replace(/\n/g,'<br>')
+                .replace(/ /g,'&nbsp;')
+                ;
+    } // insert()
+
+    //-----------------------------------------------------------------------------
+
+    //setTimeout(send,1000);
+    
+    </script>
+</html>

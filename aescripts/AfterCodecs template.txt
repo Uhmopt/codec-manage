@@ -1,0 +1,18 @@
+<p><img src="/media/catalog/product/t/h/three_products_bundle_banner_4.jpg" alt="" /></p>
+<div style="float: right; position: relative; top: -67px; left: -45px;">{{addtocart button_label="ADD AFTERCODECS ADOBE SUITE TO CART" product_id="1224"}}</div>
+<p>{{video type="youtube" video_id="j4K_U8Qc6RA"}}</p>
+
+
+
+<!-- Beginning -->   
+
+
+<!-- Ending -->
+<h1>AfterCodecs AE vs. Exporting with AME</h1>
+<p>AfterCodecs will create a smaller, better looking file directly in the After Effects render queue. What's not to love?</p>
+<p>{{image label="Comparison with AME" animated="true"}} <br /><br /></p>
+
+<h1 style="padding-bottom: 15px;">How to install : <strong></strong>unzip and use the included installer !</h1>
+<h1>AfterCodecs for After Effects Tutorial</h1>
+<p>{{video type="youtube" video_id="AxkqdNZFKPk"}}</p>
+<p>&nbsp;</p>

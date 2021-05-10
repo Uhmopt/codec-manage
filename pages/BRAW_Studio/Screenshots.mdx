@@ -1,0 +1,22 @@
+import ProductPage from "../../components/ProductPage";
+import { meta } from './index.mdx';
+import Screenshots from "../../components/Screenshots";
+import { config } from "../../config";
+import { Flex } from 'rebass';
+
+export default props => (
+  <ProductPage
+    landerImage={require("assets/images/_BR/BR_product_background.jpg?trace")}
+    meta={meta}
+    {...props}
+  />
+);
+
+<Flex mt={4} justifyContent="center">
+    <Link href="/BRAW_Studio">Go Back to BRAW Studio</Link>
+</Flex>
+
+<H2 underline={meta.mainColor}>
+  Screenshots
+</H2>
+<Screenshots images={config.BRAWStudioScreenshots} meta={meta} />

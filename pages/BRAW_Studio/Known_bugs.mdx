@@ -1,0 +1,15 @@
+import ProductPage, { BackToProductLink } from "../../components/ProductPage";
+import { KnownBugs, ProductDescription } from "../../components/content/BRAW_Studio/Overview";
+import { meta } from './index.mdx';
+
+export default props => (
+  <ProductPage
+    landerImage={require("assets/images/_BR/BR_product_background.jpg?trace")}
+    meta={meta}
+    {...props}
+  />
+);
+
+<BackToProductLink {...meta} product="BRAW Studio" title="Known Bugs" />
+<ProductDescription {...meta} />
+<KnownBugs mainColor={meta.mainColor} / >

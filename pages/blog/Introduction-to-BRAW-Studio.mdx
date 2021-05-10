@@ -1,0 +1,199 @@
+import BlogPage from "../../components/BlogPage";
+
+export const meta = {
+  title: "Introduction to BRAW Studio for Premiere Pro and Media Encoder",
+  preview:
+    "What is our plugin BRAW Studio and its basic function ? Limitations of the trial, the Panel for PPro, explanation about the Source Settings and the Sidecar workflow are all discussed in this article",
+  thumbnail: "images/_BR/Basics_Post/Basics_Poster.jpg",
+  author: "Nicolas",
+  tags: ["BRAW Studio", "Premiere Pro"],
+  date: "2019-09-02"
+};
+
+export default props => <BlogPage meta={meta} {...props} />;
+
+# What is BRAW Studio for Adobe CC ?
+
+BRAW Studio is a Premiere Pro / Media Encoder / After Effects plugin which uses the official Blackmagic RAW API made by Blackmagic Design to import, decode and process your <code>.braw</code> files.
+
+It means that your imported footage will have the same look and visual quality than in the official Blackmagic tools (DaVinci Resolve and BRAW Player), using the Blackmagic's Color Science Version 4 Algorithms (the only version available as of now in the BRAW API).
+
+We always update our plugin as quickly as possible when a new version of the BRAW API is available (see our <Link href={"/BRAW_Studio/Download/#Changelog/"}>Changelog</Link>), which is usually when a new firmware for your camera or a new version of DaVinci Resolve is released.
+
+In order to <strong>Install or Update BRAW Studio for free </strong>, <Link href={"/BRAW_Studio/Download/"}>just download the installer following this link</Link>, unzip it and execute the <code>.exe</code> (Windows) or <code>.pkg</code> (Mac OS).
+
+<BlogImage src={require("assets/images/_BR/PremierePro_BRAW_Studio.jpg")} hasShadow />
+
+
+# Licensing
+
+## Trial vs. Full Version
+
+With the TRIAL Version in PrPro, you can see how our plugin is running on your computer before buying it; please check that its performance is good enough for you and there is no issue preventing you from using it. <code>.braw</code> files will be fully decoded until 500 frames, for each of them. After that, a gray "Trial Image" will be displayed, asking you to license the plugin. In order to license BRAW Studio, <Link href={"/blog/How-to-License-BRAW-Studio/"}>please follow this article</Link>.
+
+<span><strong>One license can be used on up to 2 computers, but not at the same time</strong>. So for example, you can register the license on your Windows computer and on your Mac, or on your personal and professional computers, but you will not be able to use them at the same time. </span>
+
+
+# The BRAW Studio Panel for Premiere Pro
+
+The BRAW Studio Panel can be found in the Premiere Pro top menu, under "Window" -> "Extensions" -> "BRAW Studio Panel".
+
+## Source Settings in the Panel
+
+You can directly grade your footage (and so access the BRAW Source Settings) from this Panel. There are also some feature to improve your workflow when working with BRAW files in Premiere Pro. <Link href={"/blog/BRAW-Studio-Source-Settings-Panel/"}>Check our article about these Source Settings in Panel</Link>.
+
+## Generating BRAW Metadata
+
+Some metadata is saved in the BRAW File, such as the camera name, the lens name, the compression ratio, the "Scene/Shot" numbers, ... You can only access them with BRAW Studio in Premiere Pro . <Link href={"/blog/BRAW-Studio-Metadata-PPro/"}>Please read our dedicated article about the BRAW Metadata for more information</Link>.
+
+<VideoEmbed videoSrc={"Vv1QvV3loeg"}></VideoEmbed>
+
+## Correct wrong Timecode and Export corrected FCP XML
+
+You could have issues with the timecodes (which Premiere Pro automatically sets) of NTSC BRAW Files (23.96 fps and 29.97 fps footage). The timecodes for these files are wrong with our importer. There is no big issue with this except if you want to export your timeline into XML to import it later in another software (for example : to finish the color grade in DaVinci Resolve). In order to solve this kind of situation, <Link href={"/blog/BRAW-Wrong-Timecode-Adobe-Premiere-Pro/"}>please follow our tutorial here</Link>.
+
+## Correct Projects suffering from the "Premiere Pro 2020 Shift Issue"
+
+Some people could suffer from this Shift issue, which happen on Premiere Pro 2020 and often shift your clips in timeline when relinking your footages. More information in <Link href={"/blog/Premiere-Pro-Timeline-Shift-First-Frame-After-Moving-Project-Relinking/"}>this article</Link>.
+
+## Some Free features for the Blackmagic Plugin Users ! 
+
+You can also use some features of this Panel for free with the Blackmagic Plugin !
+
+The free feature concerned are :
+
+*  Getting automatically the BRAW Metadata in the Project Panel
+*  Correcting NTSC Timecodes in Premiere Pro
+*  Helping tools in case of Timecode Shift issues
+
+<BlogImage src={require("assets/images/_BR/PanelSourceSettings/poster.png")} hasShadow scaledDown />
+
+
+# The BRAW Studio Source/Layer Settings 
+
+Source/Layer Settings are the official RAW parameters you can set to change the way your <code>.braw</code> files are decoded. In order to create a seamless experience with BRAW Studio, we took inspiration from the same UI in DaVinci Resolve to design our GUI for our BRAW Studio Source Settings. Any user switching from Resolve to/from Premiere Pro should easily find the same parameters without confusion.
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_SourceSettings.png")} hasShadow />
+
+The two different effects (Source Settings or Layer Settings) correspond to the same parameters but applied to a different element. 
+
+The Source Settings are applied to the Source, so if you cut a clip in two parts, changing the parameters in the Source Settings will change the aspect of both parts of the clip at the same time because they have the same "Source". 
+
+The Layer Settings are applied to the Layer, so if you cut a clip in two parts, each effect will change its own part. 
+
+In Premiere Pro, the Source Settings can be accessed from the "Effect Controls" Panel. You can double-click on your clip in the project panel, or if you have already added your clip to a timeline, you can select the clip in the timeline, then in the "Effect Controls" Panel, click on the "Master" tab. For now, there is now "Layer Settings" in Premiere Pro.
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_SS_Master.png")} hasShadow scaledDown />
+
+In After Effects, you can't change the Source Settings, but the Layer Settings is an effect to apply to a braw layer to be able to tweak its parameters. <Link href={"/blog/BRAW-Studio-For-After-Effects/"}>See our AE dedicated article</Link>.
+
+For now, the BRAW Studio importer for Adobe Media Encoder does not offer any way to set the Source Settings to your braw files and just apply the default settings, which corresponds to the "Decode Using : Camera Metadata" (see below). However, in order to apply different settings you can use a sidecar file (see below : "What about the sidecar file ?").
+
+## Setting : BRAW Studio Presets
+
+The official Premiere Pro Presets functionality doesn't work well with BRAW Studio, and we strongly advise you to not use it ! 
+
+That's why we have implemented the "BRAW Studio Presets" feature directly in the Source Settings  : you can load and save your RAW settings in up to 20 different presets, fast and easy! 
+
+<Link href={"/blog/BRAW-Studio-Presets/"}>More informations in our dedicated article !</Link>
+
+<BlogImage src={require("assets/images/_BR/Presets_Post/Presets_GUI.png")} hasShadow />
+
+## Setting : Decode Using
+
+The "Decode Using" setting indicates how your file is decoded. There are 3 available values :
+
+*  <strong>Decode Using - Camera Metadata</strong> : The default value. It corresponds to the settings used in the camera when the braw file has been shot. If a sidecar file is present for this braw, its values will be set here. (see below section : "What about the sidecar file ?")
+*  <strong>Decode Using - BRAW Default</strong> : This corresponds to the fixed default settings for every parameter. These default values have been taken from the BRAW API documentation. Note that : Color Science, Gamut, ISO, Gamma and LUT don't have fixed default settings, so the one used here are the ones from "Camera Metadata". 
+*  <strong>Decode Using - Custom (A or B)</strong> : This corresponds to the custom settings you would want to set for your braw file. <strong>All the other parameters can be changed only in this mode !</strong> When you import a file and switch "Decode Using" from "Camera Metadata" to "Custom", you should not see any difference in the the render, because all parameters of the "Decode Using : Custom (A and B)" are initialized with the values from the "Decode Using : Camera Metadata". 
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_decodeUsing.jpg")} hasShadow />
+
+## Setting : Custom A and Custom B
+
+<VideoEmbed videoSrc={"zbRYiUcNZNM"}></VideoEmbed>
+
+From BRAW Studio 1.7.4, we implemented two "Decode Using : Custom" : A and B. It means there are two internals set of RAW Params you can change and access :
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_switchAB2.jpg")} hasShadow scaledDown />
+
+Thanks to this new feature, you can quickly compare two different color grades by clicking on the "Switch A/B" button (the image preview on the right will update) :
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_switchAB3.jpg")} hasShadow />
+
+Note that loading a preset or the clip sidecar will load the values inside the current Custom (or in CustomA, if DecodeUsing : Camera Metadata or BRAW Default is selected).
+
+## Setting : Color Science
+
+The only color science available at the moment from the Blackmagic RAW API is the "Color Science Version 4". This option is displayed as an indication, but as it is the only option possible, you can't change this setting. 
+
+## Setting : ISO 
+
+The available ISO List depends on the camera used to shoot the braw. Some cameras (like the BMPCC 4K for example) have a DUAL ISO system : if you shoot between ISO 100 and ISO 1000, you will be able to change the ISO in BRAW Studio only between this range (100-1000), and same for the range between 1250 and 25600. For more informations about the DUAL ISO system, you can follow this article : https://fstoppers.com/education/what-dual-iso-and-why-lowest-iso-not-always-best-option-343087
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_ISO.png")} hasShadow />
+
+## Setting : LUT
+
+In some Blackmagic Cameras, it is possible to set a LUT in the camera itself. If BRAW Studio detects a LUT in the braw or in the sidecar file attached, there will be an option available to apply it in BRAW Studio, and select the LUT Source ("Embedded" for the LUT in Camera or "Sidecar" for the LUT in the sidecar file). 
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_LUT.png")} hasShadow scaledDown />
+
+## Setting : Update and Load Sidecar buttons
+
+*  <strong>Update sidecar</strong> will put the settings from "Decode Using : Custom" into the sidecar next to the braw file. 
+*  <strong>Load sidecar</strong> will set the settings in "Decode Using : Custom" from the sidecar next to the braw file (if present).
+
+A blue popup should be displayed at the bottom right of Premiere Pro, indicating if the sidecar has been updated/loaded or not found.
+
+Note : For now, the LUT feature is not saved or loaded by these buttons into the sidecar.
+
+# How to copy Source Settings <strong>from one clip to another</strong>
+
+In Premiere Pro effects, there are 2 ways of applying existing effect parameters to another. The "Copy/Paste" feature and the "Preset" feature.
+
+<strong>The save/apply preset feature of Premiere Pro should not be used with BRAW Studio, as it could result in undesired effects.</strong>
+
+So in order to apply the parameters from one clip to another :
+*  Go to its Source Settings
+*  Select the effect and use the shortcut "Ctrl + C" (Cmd + C on Mac) to copy (you can also right-click on the Effect name and select "copy")
+*  Then in the project panel you can select <strong>one OR many clips</strong> and use the shortcut "Ctrl + V" (Cmd + V on Mac) to apply the BRAW Parameters to these clips !
+
+Note : The clip you are pasting the source settings to might have a different ISO list available ! If the ISO setting you copied from the first clip is not available in the clip you are pasting it to, there will be blue popup which will appear at the bottom right of Premiere Pro, saying that the ISO has been set to the lowest value possible under the original ISO value.
+
+<BlogImage src={require("assets/images/_BR/Basics_Post/Basics_SS_Copy.png")} hasShadow scaledDown />
+
+# Sidecar file Workflow
+
+The Sidecar file is a JSON file with the <code>.sidecar</code> extension, which is associated with a <code>.braw</code> file if it has the same name and is located in the same folder. It is Blackmagic's official reversible way to change the way <code>.braw</code> files are decoded <strong>without modifying the original <code>.braw</code> file</strong>. The content of the Sidecar changes the behavior of "Camera Metadata". If no Sidecar is present, "Camera Metadata" will take its RAW params values from what's stored inside the <code>.braw</code> footage. 
+
+If a sidecar is present next to the BRAW file when imported into Premiere Pro with BRAW Studio, or when an existing project is loaded, its values will be used in the "Decode Using : Camera Metadata" mode. But it change it if the Sidecar file is <strong>created, moved or deleted during the Premiere Pro session and after the braw file import</strong>. <!--todo-->
+
+In the "Decode Using : Custom" mode, you will be able to export (Save) the current settings in the Sidecar, or import (Load) the settings of the Sidecar inside the Source Settings. 
+
+The sidecar can be used in some workflows, mainly to export the RAW params and use them in another software. For example, if you grade inside Premiere Pro with BRAW Studio, and export your timeline as a FCP XML to import it in Resolve, you will not have the values of the BRAW parameters inside the XML meaning they will be not present in Resolve after importing the XML. A workaround is to export the Sidecar and you will keep your BRAW Settings !
+
+# BRAW Studio for Desktop 
+
+From BRAW Studio 1.7.0, BRAW Studio for Desktop is available. It is called BRAW_Studio.exe in Windows and BRAW_Studio.app in Mac OS next to the plugins.
+
+You will find it here : 
+
+*  <strong>Windows : C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore</strong>
+*  <strong>Mac : /Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore</strong>
+
+The BRAW Studio for Desktop is the same window that is opened from the "Settings & License" button in the Source Settings.
+
+From it, you will be able to set options for BRAW Studio, but also register your license(s).
+
+For example if you get a crash before being able to access the Source Settings of a clip, we will need some logs to help you, and it is only possible to activate logs from here ! (<Link href={"/blog/How-to-report-bug-BRAW-Studio/"}>See our article about reporting a bug !</Link>)
+
+# Does BRAW Studio use the GPU ?
+
+The Premiere Pro SDK for importers like BRAW Studio doesn't allow us to code a full GPU Importer sadly.
+
+However <strong>there is a hybrid CPU-CUDA solution available for Premiere Pro on Windows that you can enable in the Settings tab</strong>, only if you have a recent nVidia graphics card.
+
+In After Effects, from BRAW Studio 2.1.0 you can now use the full GPU mode with the Layer Settings ! <Link href={"/blog/BRAW-Studio-For-After-Effects/"}>See our AE dedicated article</Link>.
+
+Please send us your feedback about any performance difference you experience when using this setting !

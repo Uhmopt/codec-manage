@@ -1,0 +1,317 @@
+import { meta as indexMeta } from "./index.mdx";
+import ProductPage, { FAQ } from "../../components/ProductPage";
+import BlogpostList from "../../components/BlogpostList";
+import Link from "../../components/Link";
+import { BlogImage } from "../../components/Image";
+
+export const meta = {
+  ...indexMeta,
+  seoTitle: "User Guide",
+  faq: [
+    {
+      categoryName: 'General and Licensing',
+      questions: [
+        [
+          "What are the requirements, specs and known issues of BRAW Studio ?",
+          <>
+            You can find all of this information on the <Link href={"/BRAW_Studio/"}>Overview of BRAW Studio page</Link>. Also, don't forget to regularly check for updates and read the <Link href={"/BRAW_Studio/Download/#Changelog/"}>Changelog of BRAW Studio</Link> !
+          </>
+        ],
+        [
+          "How do I uninstall BRAW Studio ?",
+          <>
+            <strong>You can use our official uninstaller</strong>! <Link href={"/AfterCodecs/Download/#How-To-Uninstall-Plugins"}>More information here</Link>
+            <br/>
+            If it didn't work here's the manual process to do so :
+            <br/>
+            1. Exit All adobe softwares
+            <br/>
+            2. Delete this folder :
+            <br/>
+            (Windows) <code>C:\Program Files\Adobe\Common\Plug-ins\7.0\MediaCore\BRAW Studio</code>
+            <br/>
+            (Mac OS) <code>/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/Autokroma BRAW Studio</code>
+            <br/>
+            3. Delete folder named <code>com.autokroma.brawStudioPanelVisible</code> in this folder (delete also <code>com.autokroma.brawStudioPanelHidden</code> if you find it !) :
+            <br/>
+            (Windows) <code>C:\Program Files (x86)\Common Files\Adobe\CEP\extensions</code>
+            <br/>
+            (Mac OS) <code>/Library/Application Support/Adobe/CEP/extensions</code>
+            <br/>
+            4. Relaunch your Adobe softwares
+            <br/>
+            If you performed a manual installation of BRAW Studio yourself you need to look for "BRAW_Studio" and delete all related files !
+          </>
+        ],
+        [
+          "Why do I still have the 500 frames trial limit ?",
+          <>
+            Please double check you entered a BRAW Studio license and not an AfterCodecs one <Link href={"/blog/Difference-Between-AfterCodecs-BRAW-Studio/"}>read our article here for more details</Link>.
+            Once licensed, please empty your media cache (<Link href={"https://community.adobe.com/t5/Premiere-Pro/FAQ-How-to-clean-delete-or-trash-media-cache-files/td-p/8324672"}>How to clean (delete or trash) media cache files?</Link>) and restart your Adobe applications.
+            If you converted some <code>.braw</code> files for proxies or into another codec (or exported a Premiere Pro project containing <code>.braw</code>) before entering the license, you'll need to reconvert them again with the plugin licensed because <strong>the trial image is burned forever</strong> in them (BRAW Studio is not used anymore to make the proxies!)
+          </>
+        ],
+        [
+          "How do I upgrade to V2 ?",
+          <>
+            <Link href={"/blog/BRAW-Studio-V2-How-To-Upgrade-Source-Settings-Panel"}>BRAW Studio Version 2 Next Upgrade with Source Settings Panel</Link>)
+          </>
+        ],
+        [
+          "Can I use this on multiple computers ?",
+          "One license is for the same user on up to two computers not used at the same time. For example you can do Mac OS + Windows not at the same time, or your professional computer and your personal laptop not used at the same time."
+        ],
+        [
+          'Can I register BRAW Studio for After Effects and Premiere Pro with one license ?',
+          "Yes : BRAW Studio used to be available in two different licenses for different uses, but it was recently merged into the same license in Version 2 so now you'll get access to BRAW Studio on all Adobe applications. Don't forget to update to get the latest version."
+        ],
+        [
+          "Mac OS : I can't run the .pkg installer !",
+          <>
+            If you're on Mac OS Catalina or higher (10.15+) sometimes Apple notarization system doesn't work so you can't open easily our installer .pkg. Please allow opening unnotarized applications in your Security Preferences, see this article : <Link href={"https://support.apple.com/en-us/HT202491"}>Safely open apps on your Mac on Apple.com</Link>
+          </>
+        ],
+        [
+          "Mac OS : Premiere Pro is not lauching anymore with BRAW Studio installed",
+          <>
+            Could you try to delete <code>BRAW_Studio.app</code> in this folder : <code>/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/Autokroma BRAW Studio/</code>; also delete if it exists the same for AfterCodecs : <code>/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/Autokroma AfterCodecs/AfterCodecs.app</code>
+            <br/>
+            In any case, <Link href={"/contact/"}>contact us !</Link>
+          </>
+        ],
+        [
+          "Windows : BRAW Studio is not loading or I get the vcruntime dll loading error !",
+          <>
+            Please download and install <Link href={"https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads"}>the latest Visual C++ 2019 Redistributable</Link>. Here's a direct link to <Link href={"https://aka.ms/vs/16/release/vc_redist.x64.exe"}>vc_redist.x64.exe</Link> : download, double click on it and pursue installation.
+          </>
+        ],
+        [
+          "How do I install BRAW Studio silently or by command line ?",
+          <>
+            On Windows you should run your cmd.exe or Powershell in Administrator Mode, then run BRAW Studio installer executable with the <code>/S</code> argument, for example in Powershell : <code>./"BRAW Studio v2.1.2 Installer.exe" /S</code> if you're in the extracted folder from the downloaded zip.<br />
+            WARNING : if you have Blackmagic RAW Adobe plugins installed, it will uninstall them without asking you for confirmation (since there is no GUI here) and will redirect you to a webpage explaining the incompatibility between the two plugins
+          </>
+        ]
+      ]
+    },
+    {
+      categoryName: 'Workflow',
+      questions: [
+        [
+          "How do I use .BRAW proxies with Premiere Pro ?",
+          <>
+            You can export proxies and convert (Right click -> Export Media) your .BRAW directly from Adobe Premiere Pro and it will open up Media Encoder for conversion.  If you converted your proxies before entering the license, you'll need to reconvert them again with the plugin licensed because <strong>the trial image is burned forever</strong> in them (BRAW Studio is not used anymore to make the proxies!)
+          </>
+        ],
+        [
+          "How is the Sidecar workflow and Decode Using Camera Metadata ?",
+          <>
+            .BRAW imported into Adobe Media Encoder are decoded by default with the "Camera Metadata" setting, like on DaVinci Resolve. This means that it will try to read the <code>.sidecar</code> next to your <code>.braw</code> to apply the color grade. If it can't find it, it will use the settings from your Camera when you shot the footage. If you changed the <code>.sidecar</code> after importing the footage, it will keep the same old <code>.sidecar</code> values until your restart Media Encoder / Premiere Pro.
+          </>
+        ],
+        [
+          "Will my footage look the same between Premiere Pro and Media Encoder ?",
+          <>
+            When you send a project or a <code>.braw</code> clip from Premiere Pro to Media Encoder's render queue, it will act as a dynamic link between the two softwares; this means the render will look <strong>exactly the same as it looked like on Premiere Pro</strong> (i.e. it will take Exposure, ISO, Color Balance, Contrast etc. from the Source Settings). See previous answer if you import your <code>.braw</code> from Media Encoder's UI
+          </>
+        ],
+        [
+          "Are sidecar files created automatically ?",
+          <>
+            No, you need to click "Update Sidecar" in order to create or update the <code>.sidecar</code> files. Please note that you might need Administrator Rights for some folders where you don't have permissions to write !
+          </>
+        ],
+        [
+          'Why is "Reconnect Full Resolution Media" not working ?',
+          "You should make sure you don't have Blackmagic RAW Adobe plugins installed because they will conflict with BRAW Studio and prevent you from reconnecting your .braw"
+        ],
+        [
+          "Can I use both Blackmagic RAW plugin from BMD and BRAW Studio ?",
+          <>
+            No they are fully incompatible. More information here : <Link href={"/blog/BlackmagicRaw-Plugin-BRAW-Studio-Difference/"}>BlackmagicRaw Plugin and BRAW Studio - What's the difference ?</Link>. Please note we are only talking about the Adobe plugins from Blackmagic RAW. You can use Blackmagic RAW Player and the thumbnail previewer along with BRAW Studio there's no incompatibility. We even have a checkbox in our installer to install them automatically !
+          </>
+        ],
+        [
+          "How do I solve the error 'Video filter missing: AE.ADBE BlackmagicRawPremiereSourceEffect' ?",
+          <>
+            This error message means that you opened a Premiere Pro project that was using Blackmagic's Adobe plugins for Blackmagic RAW, and now you don't have that plugin installed anymore so it cannot find the Source Settings effect linked to each .BRAW in your Premiere Pro project.<br />
+            The simplest to fix this issue to install again Blackmagic Design's Adobe plugin. If you're now using BRAW Studio you will have a missing Source Settings filter in the Master tab of your .BRAW and won't be able to retrieve your Source Settings color grade.
+          </>
+        ],
+        [
+          "How do I solve the error 'Video Filter missing:  AE.ADBE_BRAW_Source_Settings' ?",
+          <>
+            This error message means that you opened a Premiere Pro project that was using Autokroma BRAW Studio plugins, and now you don't have our plugin installed anymore so it cannot find the Source Settings effect linked to each .BRAW in your Premiere Pro project.<br />
+            The simplest to fix this issue to install again BRAW Studio.
+          </>
+        ],
+      ]
+    },
+    {
+      categoryName: 'PrPro : bugs and troubles',
+      questions: [
+        [
+          "When I try to import a BRAW footage, the progress bar hangs and my file is never imported !",
+          <>
+            This is a bug from Adobe with plugins and cache. Please start Premiere Pro and maintain the "Shift" Key pressed. You should get a message "Are you sure you want to reset your plugin caches ?" : answer Yes !
+          </>
+        ],
+        [
+          "How can I properly export an .XML for e.g. DaVinci Resolve ?",
+          <>
+            In old versions of Premiere Pro (before 14.3 version) there was a bug where the timecode is misinterpreted and shifted through time. It should only affect NTSC framerates (23.96 and 29.97 fps). <Link href={"/blog/BRAW-Wrong-Timecode-Adobe-Premiere-Pro/"}>We developed the BRAW Studio Panel to fix this ! We recommend using the "Export Corrected XML" feature</Link>.
+          </>
+        ],
+        [
+          'All my clips "in" and "out" points are shifted !',
+          <>
+            If you're using Premiere Pro 2020 it might be a bug from Adobe : <Link href={"/blog/Premiere-Pro-Timeline-Shift-First-Frame-After-Moving-Project-Relinking/"}>Premiere Pro Timeline Shifts (or First Frame) After Moving Project or Relinking Footage</Link>.
+            If you modified the "Media Start" timecodes of your <code>.BRAW</code> you might suffer from an Adobe hidden behavior, please read this article : <Link href={"/blog/Clip-Shifted-Issue-BRAW-Studio"}>How do I avoid the Shift Issue in BRAW Studio.</Link>
+            So you need to ask yourself two questions : 1) Am I using 2020 version ? 2) Did I modify the timecodes of my footages ? You could have both issues at the same time, but you need to study both issues separately if you want to make sure you fix both !
+          </>
+        ]
+      ]
+    },
+    {
+      categoryName: 'PrPro / AME Image rendering',
+      questions: [
+        [
+          "Video track or Audio track disappears when bringing the .BRAW into the timeline !",
+          <>
+            You might have disabled all audio or video tracks, please be sure at least one of each are enabled before brining the footage in the timeline, see this image : <BlogImage src={require("assets/images/_BR/PPro_EnableVideoTrack.png")} hasShadow />
+          </>
+        ],
+        [
+          "How do I set different RAW settings on the same .braw ?",
+          <>
+            The way Source Settings works in Premiere Pro is to modify all instances of the same clips on all timelines, so any change will affect all instance of the same <code>.braw</code> imported. This is only an issue on Premiere Pro because on After Effects you have the Layer Settings filter that is applying the RAW parameters on the current layer and not the source.
+            <strong>The best way to apply different RAW settings on the same footage on Premiere Pro is to use the BRAW Studio Panel feature</strong> : "Set New Source". You just need to select a clip and click on the button in the BRAW Studio Panel ! 
+            <Link href={"/blog/BRAW-Studio-Source-Settings-Panel#set-new-source-button-to-give-a-different-color-grading-for-the-same-braw-footage"}>More information and youtube tutorial here !</Link>
+            If you want to do it manually, you have 2 choices  :
+            1. Import the same footage many times (as much as you need different color corrections on this footage) and change each Source Settings 
+            2. Or Use the "SubClip" feature, <Link href={"https://www.premiumbeat.com/blog/subclips-premiere-pro/"}>see this article</Link> : 
+            <br />
+            <ul>
+              <li>Import your braw footage</li>
+              <li>In the "Source Monitor" panel, choose the bounds to your first "Sub Clip"</li>
+              <li>Right click in the Project panel in your footage and select "Make Subclip"</li>
+              <li>After this : you will have a new source in the project (the subclip) with different RAW Parameters.</li>
+            </ul>
+          </>
+        ],
+        [
+          "Why does my clip displays red and black bars ?",
+          <>
+            Most probably because you opened your Premiere Pro project with BlackmagicRaw plugin from Blackmagic Design installed and used to decode <code>.braw</code> instead of BRAW Studio ! More information in this article : <Link href={"/blog/BlackmagicRaw-Plugin-BRAW-Studio-Difference/"}>BlackmagicRaw Plugin and BRAW Studio - What's the difference ?</Link>. And don't forget to <Link href={"/BRAW_Studio/Download/"}>update BRAW Studio</Link> !
+          </>
+        ],
+        [
+          "Why is my clip glitching ?",
+          'We have seen a lot of errors coming for Adobe. Pleas try to switch your rendering engine to "Software" in your project settings. On Mac OS you can also try "Metal" instead of "OpenCL"'
+        ],
+        [
+          "I get a Prefs size error, how do I clean the plugin cache ?",
+          <>
+            Please restart Premiere Pro by holding the <code>SHIFT</code> key and press <code>OK</code> to the popup that's asking you if you want to clean the plugin cache, then Premiere Pro will start by having the plugin cache cleaned and the error should disappear. Please contact us if you still get this error!
+          </>
+        ],
+        [
+          "Why won't any effect render on top of my .braw ?",
+          "Please make sure you don't have the Global FX Toggle turned on!"
+        ],
+        [
+          "Why doesn't it save the render, I always get a Yellow or Red line ?",
+          <>
+            Please read this Adobe Blog post : <Link href={"https://theblog.adobe.com/red-yellow-and-green-render-bars/"}>Red, yellow, and green render bars and what they mean</Link>.
+            We noticed that with <code>.braw</code> you can't add other effects on top (like Lumetri) without cancelling any cache renders, it will always go back to the Red color when you relaunch Premiere Pro.
+          </>
+        ]
+      ]
+    },
+    {
+      categoryName: 'PrPro BRAW Studio Panel',
+      questions: [
+        [
+          "How can I open the BRAW Studio Panel ?",
+          <>
+            At the top menu bar, click on Window -> Extensions -> BRAW Studio Panel to open it !
+          </>
+        ],
+        [
+          "After selecting a BRAW file, I can't set all the BRAW Parameters : some are grayed out. What should I do ?",
+          <>
+            You need to select "DecodeUsing" -> "Custom A" (or "Custom B") to be able to set the other parameters below. 
+            Gamma Controls like Saturation, Constrast, ... are only available if Gamma is set to Blackmagic Design Film, Blackmagic Design Extended Video or Blackmagic Design Custom.
+          </>
+        ],
+        [
+          "When selecting BRAW Clips, I still get at the top of the Panel : No BRAW Selected. What should I do ?",
+          <>
+            The panel could be not well initialized. At the bottom of the Panel, please try to hit the "Reload Panel" button.
+            Note that for Premiere Pro CC 2018 12.0 it's normal, you will need to click inside the Panel to update its content. 
+            If you still have the problem, <Link href={"/blog/How-to-report-bug-BRAW-Studio"}>please send us some logs</Link> !
+          </>
+        ],
+        [
+          "How many BRAW clips can I select in order to batch apply some command to all these clips like applying Preset ?",
+          <>
+            You can select up to 100 clips at the same time and then for all of them you can : apply a preset, reset to Camera Metadata / BRAW Default, or Export / Load the Sidecar.
+          </>
+        ]
+      ]
+    },
+    {
+      categoryName: "After Effects Image rendering",
+      questions: [
+        [
+          "Does it supports 32 bpc (32 bits per channel) ?",
+          "Yes BRAW Studio for After Effects supports 32 bpc if you configure your project in 32 bpc."
+        ],
+        [
+          'Why is it not written "Floating point" or "Trillion of Colors" instead of "Millions of Colors" in After Effects Importer description ?',
+          `
+            After some tests in our side, "Floating point" could be displayed but then After Effects would always ask for 32bits to be rendered, even if "8bits" or "16bits" is selected in Project Settings. This would involve performance issues because 32bits takes more time to be rendered. Same for "Trillion of Colors" : 16bits would be always asked for 8bits and 16bits and that would also involve performance issues. 
+            For us, the current behavior is the best : if you configure your project in 8bits, then After Effects will ask 8bits to our importer, and same respectively for 16bits and 32bits. Sadly, the description will stay as "Million of Colors" even if it's true only in 8bits. 
+          `
+        ]
+      ]
+    },
+    {
+      categoryName: "Shooting BRAW",
+      questions: [
+        [
+          "How long can I record BRAW with my camera and storage ?",
+          "There is a good website for that, check it out ! https://www.braw.info/capacity/"
+        ]
+      ]
+    }
+  ]
+};
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    {...props}
+    landerImage={require("assets/images/_BR/BR_product_background.jpg?trace")}
+  />
+);
+
+<H2 centered id="User-Guide" underline={meta.mainColor}>Documentation</H2>
+
+First you have this <Link href={"https://www.youtube.com/watch?v=EQxg2xCxQRo"}>YouTube Quick Start Tutorial</Link> to guide you through BRAW Studio. We also have the following articles / tutorials and a FAQ :
+There's also this <Link href={"https://www.youtube.com/watch?v=w4REl_U8K6c"}>Youtube tutorial for the Premiere Pro Source Settings Panel.</Link>
+
+* <Link href={"/blog/How-to-License-BRAW-Studio"}>How to License BRAW Studio and access RAW Params</Link>
+* <Link href={"/blog/Introduction-to-BRAW-Studio"}>Introduction to BRAW Studio for Premiere Pro and Media Encoder</Link>
+* <Link href={"/blog/BRAW-Studio-For-After-Effects"}>BRAW Studio for After Effects is available now</Link>
+* <Link href={"/blog/BlackmagicRaw-Plugin-BRAW-Studio-Difference"}>Blackmagic RAW Plugin and BRAW Studio - What's the difference ?</Link>
+* <Link href={"/blog/BRAW-Studio-Presets"}>The BRAW Studio Presets</Link>
+
+<H2 centered id="FAQ" underline={meta.mainColor}>FAQ</H2>
+
+<FAQ product={"BRAW_Studio"} faq={meta.faq}></FAQ>
+
+
+<H2 centered id="Articles" underline={meta.mainColor}>Articles about BRAW Studio</H2>
+
+<BlogpostList tag={"BRAW-Studio"} flat />

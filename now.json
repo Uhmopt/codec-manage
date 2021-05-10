@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "alias": "akAutokroma.com",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "out" }
+    }
+  ],
+  "routes": [
+    {
+      "src": ".*\\.(js|css|jpg|jpeg|gif|png|svg|txt|ttf|woff2|webmanifest)$",
+      "headers": {
+        "Cache-Control": "public, max-age=157680000, s-maxage=157680000"
+      }
+    }
+  ]
+}

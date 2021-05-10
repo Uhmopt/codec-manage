@@ -1,0 +1,28 @@
+import { meta as indexMeta } from "./index.mdx";
+import ProductPage from "../../components/ProductPage";
+import Changelog from "../../components/Changelog";
+import { config } from "../../config";
+import changelog from "assets/docs/PlumePack Changelog";
+
+
+export const meta = {
+  ...indexMeta,
+  seoTitle: "Changelog"
+};
+
+export default props => (
+  <ProductPage
+    meta={meta}
+    {...props}
+    landerImage={require("assets/images/_PP/Autokroma_PlumePack_Premiere_Pro_product_background.jpg?trace")}
+  />
+);
+
+<H2 centered>
+  Changelog
+</H2>
+<Changelog
+  changelog={changelog}
+  color={meta.mainColor}
+  version={config.plumePackChangelogVersion}
+/>
