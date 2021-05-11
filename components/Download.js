@@ -3,17 +3,19 @@ import { IText as Text } from "./Text";
 import Button from "./Button";
 import WinIcon from "assets/windows.svg";
 import MacIcon from "assets/mac.svg";
+import SubscribeModal from "./SubscribeModal";
 
-const DownloadPage = props => {
+const DownloadPage = (props) => {
   return (
     <>
       <Flex id="download-page" my={4} justifyContent="center">
+        <SubscribeModal />
 
-        { props.linkForMacOs != "" &&
+        {props.linkForMacOs != "" && (
           <Box mr={4}>
             <Button
               linkId="download-btn-macos"
-              hoverColor={props => props.theme.colors.yellow}
+              hoverColor={(props) => props.theme.colors.yellow}
               color="black"
               href={props.linkForMacOs}
             >
@@ -23,12 +25,12 @@ const DownloadPage = props => {
               </Flex>
             </Button>
           </Box>
-        }
+        )}
 
         <Box mr={4}>
           <Button
             linkId="download-btn-win"
-            hoverColor={props => props.theme.colors.yellow}
+            hoverColor={(props) => props.theme.colors.yellow}
             color="black"
             href={props.linkForWindows}
           >
